@@ -1,0 +1,25 @@
+aime to-do
+------------------------------
+
+
+- favorites
+    - look & feel 
+    - save at local storage
+
+- island - design amie open island/museum - for virtual presentation
+
+
+
+- utils
+    - aime-setting
+    - aime-log
+
+- database
+- entites
+    - admins
+    - users
+    - worlds
+        - lights
+        - cameras
+        - models
+        - controllers

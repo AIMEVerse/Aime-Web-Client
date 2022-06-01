@@ -1,0 +1,33 @@
+{
+  "name": "aime-server",
+  "version": "1.0.0",
+  "description": "AIME Personal Metaverse Server",
+  "main": "aime.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite build && vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AIMEVerse/AIME-Server.git"
+  },
+  "keywords": [
+    "AIME"
+  ],
+  "author": "captain-crypto",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/AIMEVerse/AIME-Server/issues"
+  },
+  "homepage": "https://github.com/AIMEVerse/AIME-Server#readme",
+  "dependencies": {
+    "@tensorflow-models/handpose": "^0.0.7",
+    "@tensorflow/tfjs": "^3.18.0",
+    "nipplejs": "^0.9.1",
+    "three": "^0.140.2",
+    "vite": "^2.9.9"
+  }
+}

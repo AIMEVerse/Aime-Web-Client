@@ -1,0 +1,112 @@
+Examples:
+
+
+pai-code-interface:
+---------------------
+
+    command:
+    ---------
+
+        without parameters:
+        --------------------
+        {"command-name":"command name", "js-function":"js function name"}
+
+        with parameters:
+        ---------------- 
+        {"command-name":"command name", "js-function":"js function name",
+            "params" : [
+                {"name":"param-name", "label":"param label", "description":"param description", "required":true}
+            ]
+        }
+
+
+hello world:
+-------------
+
+    commands:
+    ----------
+    {"command-name":"hello-world", "js-function":"hello_world",
+      "params" : [
+        {"name":"name", "label":"you name", "description":"what is your name", "required":true}
+      ]
+    },
+    {"command-name":"search-world", "js-function":"search_world",
+      "params" : [
+        {"name":"filter", "label":"filter", "description":"filter", "required":true}
+      ]
+    },
+    {"command-name":"update-world", "js-function":"update_world",
+      "params" : [
+        {"name":"filter", "label":"filter", "description":"filter", "required":true},
+        {"name":"updates", "label":"updates", "description":"updates", "required":true}
+      ]
+    },
+    {"command-name":"del-world", "js-function":"del_world",
+      "params" : [
+        {"name":"filter", "label":"filter", "description":"filter", "required":true}
+      ]
+    }
+
+    pai-entities:
+    -------------
+    {
+      "name": "hello-world-entity",
+      "fields": [
+        {"name": "world-id","type": "string", "required": true},
+        {"name": "world-name","type": "string", "required": true},
+        {"name": "world-image","type": "string", "required": true},
+        {"name": "Creator","type": "string", "required": true}
+        ]
+      }
+
+    pcm-main(functions)
+    --------------------
+
+    /**
+     * This command acceptes the user name and welcome it with hello world!
+     * @param {PAICodeCommand} cmd PAI-Code_Command
+     * @return {string} module version
+     */
+    async hello_world(cmd) {
+        const world_name = cmd.params['name'].value; // this is how to access the PAICodeParameter value 
+        await this.add_world(world_name); //unmark this to use pai-ddb
+        return `hello world ${world_name}`;  
+    }
+
+
+    async add_world(world_name) {
+        let hello_world_entity = pai_entity_manager.get_empty_entity("hello-world-entity");
+        hello_world_entity["world-id"] = PAIUtils.pai_guid();
+        hello_world_entity["world-name"] = world_name;
+        await pai_ddb.add_entity(hello_world_entity);
+        console.log(`new world id: ${hello_world_entity["world-id"]} name:${hello_world_entity["world-name"]}`);
+    }
+
+
+    async search_world(cmd) {
+        const filter = cmd.params["filter"].value;
+        const res = pai_ddb.find("hello-world-entity", JSON.parse(filter));
+        return JSON.stringify(res);
+    }
+
+
+    async del_world(cmd) {
+        const filter = JSON.parse(cmd.params["filter"].value);
+        const res = pai_ddb.delete("hello-world-entity", filter);
+        return JSON.stringify(res);
+    }
+
+    async update_world(cmd) {
+        const filter = JSON.parse(cmd.params["filter"].value);
+        const updates = JSON.parse(cmd.params["updates"].value);
+        const res = pai_ddb.update("hello-world-entity",updates,filter);
+        return JSON.stringify(res);
+    }
+
+
+    PAI.js
+    -------
+     //execute hello-world pai-code-command
+    const hello_world_pai_code = `${pai_code_module_name} hello-world name:"pai-bot"`
+    res = await PAICode.run(hello_world_pai_code);
+    PAILogger.info(res);

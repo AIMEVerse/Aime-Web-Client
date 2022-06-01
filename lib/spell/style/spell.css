@@ -1,0 +1,253 @@
+html{
+    height:100%;
+}
+
+body {
+    height: 100%;
+    color:#4E2D64;
+    padding:0;
+    margin:0;
+    font-family: Raleway, sans-serif
+}
+
+a:hover {
+    color:#4E2D64;
+    text-decoration: underline;
+}
+
+a  {
+    color:#4E2D64;
+    text-decoration: none;
+}
+
+
+
+#spell-data {
+    color: #212529;
+}
+
+
+
+
+@media screen and (min-width: 601px) {
+  
+  }
+  
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  @media screen and (max-width: 600px) {
+   
+  }
+
+  :root {
+    --bg-color: black;
+    --bg-color-trans: rgba(0, 0, 0, 0.5);
+    --text-color: #afafaf;
+    --line-color: #afafaf;
+    --red-color: red;
+    --green-color: green;
+    --blue-color: blue;
+}
+
+.toolbar {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: fit-content;
+    width: 15vw;
+    height: 100vh;
+    padding: 10px;
+    /* border-right: 3px solid var(--line-color); */
+    /* background-color: #232323; */
+    /* background: linear-gradient(to right,  #0a2c41 0%, #ffffff00); */
+}
+
+.spell-primitive {
+    /* min-width: 40vw; */
+    height: 8vmin;
+    font-size: min(6vmin, 2.5vw);
+    border-radius: 1vmin;
+    text-align: center;
+    line-height: 8vmin;
+    color: white;
+    cursor: pointer;
+    background-color: #232323;
+    transition: all 0.3s ease-in-out;
+}
+
+.spell-primitive:hover {
+    background-color: #333333;
+    transition: all 0.1s ease-in-out;
+}
+
+.spell3d-player {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    /* position: absolute;
+    left: 0;
+    top: 0; */
+    background-color: var(--bg-color);
+    z-index: -1;
+}
+
+
+#spell-player {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    z-index: 10;
+    display: none;
+
+}
+
+.spell-text {
+
+    height: 30px;
+}
+
+.terminal {
+    position: absolute;
+    left: 2vw;
+    width: 96vw;
+    bottom: 10px;
+}
+
+.terminal-line {
+    width: 100%;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: var(--text-color) solid 1px;
+
+}
+
+.fps-label {
+    color: var(--text-color);
+    position: absolute;
+    left: 50px;
+    top: 20px;
+    width: 10vw
+}
+
+
+.view-title {
+    text-align: center;
+    border-bottom: var(--text-color) solid 1px;
+    background-color: #afafaf;
+    width: 100%;
+}
+
+.spell-om-list {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    width: 150px;
+    height: 80vh;
+    border: var(--text-color) solid 1px;
+    background-color: var(--bg-color-trans);
+    overflow-y: hidden;
+}
+
+.spell-om-acc {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.spell-om-list-item {
+
+    color: var(--text-color);
+    border: #aeaeae solid 0.3px;
+    margin: 5px;
+    text-align: center;
+    height: 40px;
+}
+
+.spell-object-prop {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    width: 150px;
+    height: 80vh;
+    border: var(--text-color) solid 1px;
+    background-color: var(--bg-color-trans);
+    overflow-y: hidden;
+}
+
+.spell-object-prop:hover,
+.spell-om-list:hover {
+    overflow-y: auto;
+    /* transition: overflow ease 0.5s ; */
+
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #2b2b2b;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    transition: all 0.5s;
+    background-color: #5a5a6e;
+    border-radius: 50vw;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    transition: all 0.5s;
+    background-color: #4e4eaa;
+}
+
+.sop-row {
+    padding-top: 1rem;
+}
+
+.sop-label {
+    color: var(--text-color);
+    padding-left: 1rem;
+    width: 50%;
+    height: 30px;
+}
+
+.sop-text {
+    width: 30%;
+    height: 30px;
+}
+
+
+
+.red_text {
+    color: var(--red-color);
+}
+
+.green_text {
+    color: var(--green-color);
+}
+
+.blue_text {
+    color: var(--blue-color);
+}
+
+.spell-joystick {
+    display: block;
+    position: static;
+    left:0;
+    bottom:0
+}
