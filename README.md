@@ -1,17 +1,17 @@
 # AIME
 
-AIME (Personal Metaverse Server) enables everyone to create WEB3 Metaverese space.
+AIME Web Client
 
 ## Prerequisite 
 
-- Node.JS 16+
+- Browser :)
 
 ## Installation
 
 - Clone/Download the repo and navigate to project root folder
 - Run "npm install" to install packages
-- Run "npm run aime-server" to run the server
-- Browse to http://<server-ip>:8080 to config the server
+- Run "npm run dev" to run the development
+- Browse to http://<server-ip>:3000 to browse your dev server
 
 
 Copyright AIME Web3 Technologies

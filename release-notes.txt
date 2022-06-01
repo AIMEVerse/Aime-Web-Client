@@ -1,23 +1,9 @@
-AIME Personal Metaverse
+AIME web client
 
 
 
 1.0.0:
 ---------
-
-
-- aime-logger
-    - log to console
-    
-- aime-setting
-    - file + folder creation
-
-- aime-web-server
-    - config
-    - wormholes support
-
-
-
 
 
 
