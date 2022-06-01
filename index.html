@@ -34,7 +34,7 @@
         import { Spell, Spell3d, Spell3dModule, SpellUI, SpellUIModule, SpellData ,SpellEvents } from '/lib/spell/index.js'
         import * as THREE from 'three'
         import { Quaternion } from "three";
-        import { SpaceHudObjects, HudWindow } from '/spells/space-hud.js'
+        import { SpaceHudObjects, HudWindow } from '/src/space-hud.js'
         import "/lib/spell/style/spell.css"
         import "/public/style/space-hud.css"
 
@@ -50,9 +50,11 @@
 
         let delta = new THREE.Clock();
 
+        
 
 
 
+        //
         let spell_ui_module = new SpellUIModule()
         Spell.load_module(new Spell3dModule())
         spell_ui_module.engine.import_objects(SpaceHudObjects)
