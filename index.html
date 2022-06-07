@@ -120,7 +120,6 @@
                         enable_cam(vid)
                     }
                 )
-                console.log(button);
             },1000
         
         )
@@ -318,13 +317,6 @@
                     animation: "fade",
                     spells: [
                         {
-                            _id: "fps-label",
-                            _type: "label",
-                            _data_source: "fps",
-                            _format: "FPS $fps",
-                            style: "color:white",
-                        },
-                        {
                             _id: "pos-label",
                             _type: "label",
                             _data_source: "joystick-position",
@@ -390,6 +382,18 @@
 
         Spell.get_module("spell-ui").engine.load_control(joystick)
 
+        const dashboard = {
+            _type: "spell-dashboard",
+            _parent_element: "spell-controls",
+        }
+
+        Spell.get_module("spell-ui").engine.load_control(dashboard)
+
+
+
+
+
+
         let fav_data = {
             _id: "hud-4",
             _type: "hud-favorites",
@@ -414,20 +418,21 @@
         
         document.addEventListener('keydown', async (event) => {
 
-            event.preventDefault()
-            event.stopPropagation()
-            if (event.key.toLocaleLowerCase() == "~" && event.shiftKey) {
-                
-                toggle_spell()
-                return
 
-            }
-            if (event.key == "Enter") {
-                send_command()
-                return;
-            }
+            // if (event.key.toLocaleLowerCase() == "~" && event.shiftKey) {
+            //     event.preventDefault()
+            //     //event.stopPropagation()
+            //     toggle_spell()
+            //     return 
 
-            else if (event.key == "j") {
+            // }
+            // if (event.key == "Enter") {
+            //     event.preventDefault()
+            //     send_command()
+            //     return;
+            // }
+
+             if (event.key == "j") {
                 //Spell.get_module('spell3d').engine.set_camera_path()
                 Spell.get_module('spell3d').engine.om.spell_objects["pointer"]["onframe"] = "follow-path"
                 return;
