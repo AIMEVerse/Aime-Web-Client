@@ -26,7 +26,7 @@ const world_objects = {
             _type: "sphere-geometry",
             widthSegments: 8,
             heightSegments: 8,
-            radius: 0.05
+            radius: 0.5
         },
         _material: {
             _type: "basic-material",
@@ -37,7 +37,7 @@ const world_objects = {
         _position: { x: 1, y:1, z: 0 },
         _rotation: { x: 0, y: 0, z: 0 },
         castShadow: true,
-        onframe: `follow-landmark 0`
+        onframe: `follow-keypoint detector:handpose index:0 keypoint:0`
     },
     "pointer2": {
         _type: "sphere",
@@ -57,7 +57,7 @@ const world_objects = {
         _position: { x: 1, y:1, z: 0 },
         _rotation: { x: 0, y: 0, z: 0 },
         castShadow: true,
-        onframe: `follow-landmark 4`
+        onframe: `follow-keypoint 4`
     },
     "pointer21": {
         _type: "sphere",
@@ -77,7 +77,7 @@ const world_objects = {
         _position: { x: 1.5, y:1, z:2 },
         _rotation: { x: 0, y: 0, z: 2 },
         castShadow: true,
-        onframe: `follow-landmark 20`
+        onframe: `follow-keypoint 20`
     },
     "pointer22": {
         _type: "sphere",
@@ -97,7 +97,7 @@ const world_objects = {
         _position: { x: 1.5, y:1, z:2 },
         _rotation: { x: 0, y: 0, z: 2 },
         castShadow: true,
-        onframe: `follow-landmark 16`
+        onframe: `follow-keypoint 16`
     },
     "pointer23": {
         _type: "sphere",
@@ -117,7 +117,7 @@ const world_objects = {
         _position: { x: 1.5, y:1, z:2 },
         _rotation: { x: 0, y: 0, z: 2 },
         castShadow: true,
-        onframe: `follow-landmark 12`
+        onframe: `follow-keypoint 12`
     },
     "pointer24": {
         _type: "sphere",
@@ -137,7 +137,7 @@ const world_objects = {
         _position: { x: 1.5, y:1, z:2 },
         _rotation: { x: 0, y: 0, z: 2 },
         castShadow: true,
-        onframe: `follow-landmark 8`
+        onframe: `follow-keypoint 8`
     },
     "boxy": {
         name: "boxy",
