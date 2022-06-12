@@ -36,7 +36,8 @@ async function main() {
 
 
     await spell_ai.run("load-app handpose")
-    spell_ai.run("handpose set-source name:webcam")
+    spell_ai.run("handpose set-source video-tag:spell-webcam")
+    
 
     await Spell3d.load_world(world)
 
