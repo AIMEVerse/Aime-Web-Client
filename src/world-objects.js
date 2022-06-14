@@ -14,7 +14,7 @@ const world_objects = {
             side: 2,
             // roughness: 0.5,
         },
-        _position: { x: 0, y: 0.3, z: 0 },
+        _position: { x: 0, y: 1.75, z: 0 },
         _rotation: { x: 0, y: 0, z: 0 },
         castShadow: true,
         onframe: `follow-joystick`

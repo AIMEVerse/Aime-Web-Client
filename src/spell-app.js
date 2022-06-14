@@ -35,7 +35,7 @@ async function main() {
     // console.log(hp)
 
 
-    await spell_ai.run("load-app handpose")
+    await spell_ai.run("load-detector handpose")
     spell_ai.run("handpose set-source video-tag:spell-webcam")
     
 
@@ -47,14 +47,14 @@ async function main() {
 
 
     // //load aime museum model
-    // //const sfile = "https://cdn.pai-net.org/pai-cdn/get-file?cdn-key=" + model_cdn_key  //load from cdn
+    const sfile = "https://cdn.pai-net.org/pai-cdn/get-file?cdn-key=" + model_cdn_key  //load from cdn
     // const sfile = "/public/models/spaceship/scene.gltf"  //load from public folder
 
 
 
     // Spell.execute({
     //     module: "spell3d",
-    //     op: "load-gltf",
+    //         op: "load-gltf",
     //     params: {
     //         file: sfile
     //     }
@@ -238,4 +238,4 @@ async function main() {
     }, false);
 }
 
-main()
+main().then()
