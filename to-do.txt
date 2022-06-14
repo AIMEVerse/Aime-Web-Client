@@ -2,6 +2,10 @@ aime to-do
 ------------------------------
 
 
+- spell3d-objct -> extends SpellObject
+- remove spell-engine from spellui + spell3d modules
+- key stroke handler manager
+
 - favorites
     - look & feel 
     - save at local storage
