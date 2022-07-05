@@ -73,6 +73,14 @@ export class FormField extends SpellUIObject {
 
 export class Login extends SpellUIObject {
 
+    
+
+
+    
+    
+
+    
+
     constructor(data) {
 
         const ids = SpellUtils.guid()
@@ -83,6 +91,19 @@ export class Login extends SpellUIObject {
             _base_display:"flex"
             // class: "d-flex flex-column login"
         }
+        const template = {
+            view:{
+                _attr:{_id:"my-view",class:"login"},
+                "form-field":{_attr:{_id:"userName",_text_data:"Enter Username"}},
+                "form-field":{_attr:{_id:"pwd",_field_type:"password",_text_data:"Enter Password"}},
+                button:{_attr:{_id:"btnLogin", text:"Login", class:"login-button"}},
+                button:{_attr:{_id:"btnRegister", text:"Register", class:"login-button"}},
+                link:{_attr:{_id:"linkForgot", text:"Forgot password?", class:"login-forgot-link"}},
+            }
+        }
+        const spl = SpellUI.create_from_template(template)
+        console.log(spl);
+       
         super(data, defaults);
        
         const userNameFF = new FormField({_id:"userName",_text_data:"Enter Username"})
@@ -95,11 +116,10 @@ export class Login extends SpellUIObject {
         this.append(btnLogin)
         this.append(btnRegiser)
         this.append(linkForgot)
+       
     }
 
-    async on_mount() {
-        super.on_mount()
-    }
+   
 
 }
 
@@ -108,7 +128,8 @@ export class Login extends SpellUIObject {
 export class LoginComponent {
     static get_objects() {
         return {
-            "login": Login
+            "login": Login,
+            "form-field":FormField
         }
     }
 }

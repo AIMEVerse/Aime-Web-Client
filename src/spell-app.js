@@ -3,8 +3,6 @@ import { LoginComponent } from './views/login.js'
 import "../lib/spell/style/spell.css"
 import "../public/style/space-hud.css"
 
-import world from "./spell-world.js"
-
 
 
 async function main() {
@@ -17,16 +15,12 @@ async function main() {
 
     
 
-    //load space-hud to spell-ui module
     spell_ui.engine.import_objects(LoginComponent)
 
 
     Spell.start()
 
-    // const hp = spell_ai.create({_type:"handpose"})
-
-    // console.log(hp)
-
+    
     const spell_app = {
         spell: {
             version: 1
@@ -53,7 +47,7 @@ async function main() {
 
     SpellUI.vm.show_view("login-view")
 
-
+    
 
 }
 
