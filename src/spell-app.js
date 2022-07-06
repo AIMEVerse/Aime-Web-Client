@@ -1,7 +1,8 @@
 import { Spell, Spell3d, Spell3dModule, SpellUI, SpellUIModule, SpellData, SpellEvents, SpellAIModule } from '/lib/spell/index.js'
 import { LoginComponent } from './views/login.js'
+import { DashboardComponent } from './views/dashboard.js'
 import "../lib/spell/style/spell.css"
-import "../public/style/space-hud.css"
+// import "../public/style/space-hud.css"
 
 
 
@@ -15,7 +16,8 @@ async function main() {
 
     
 
-    spell_ui.engine.import_objects(LoginComponent)
+    // spell_ui.engine.import_objects(LoginComponent)
+    spell_ui.engine.import_objects(DashboardComponent)
 
 
     Spell.start()
@@ -26,15 +28,19 @@ async function main() {
             version: 1
         },
         views: {
-            "login-view": {
-                _type: "login",
-                _id: "login-view",
+            // "login-view": {
+            //     _type: "login",
+            //     _id: "login-view",
+            //     animation: "fade",
+            // },
+            "side-panel-view": {
+                _type: "side-panel",
+                _id: "side-panel-view",
                 animation: "fade",
-              
             }
         },
         defaults: {
-            view: "login-view"
+            view: "side-panel-view"
         },
         player: {
             html_element: "spell-player"
@@ -45,7 +51,7 @@ async function main() {
 
     SpellUI.load_app(spell_app)
 
-    SpellUI.vm.show_view("login-view")
+    SpellUI.vm.show_view("side-panel-view")
 
     
 

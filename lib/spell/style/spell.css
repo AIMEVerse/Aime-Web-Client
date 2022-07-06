@@ -304,3 +304,61 @@ a  {
     border-radius: 100vmax;
     border: none;
 }
+
+/* Side panel */
+.flex{
+    display: flex;
+}
+
+.wrap{
+    flex-wrap: wrap;
+}
+
+.h-center{
+    justify-content: center;
+}
+
+.v-center{
+    align-content: center;
+}
+
+.panel{
+    width: 80px;
+    height: 100vh;
+    background-color: #4E2D64;
+}
+
+.topSection{
+    width: 80px;
+    height: 50%;
+    background-color: #fff3;
+}
+
+.bottomSection{
+    align-content: flex-end;
+    width: 80px;
+    height: 50%;
+    background-color: #f003;
+}
+
+.button{
+
+    width: 70px;
+    height: 70px;
+    background-color: #4e99;
+
+}
+
+/* .logo{
+
+}
+.analytics{
+
+}
+.words{
+
+} */
+
+.add{
+    color: white;
+}
