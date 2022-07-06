@@ -306,21 +306,6 @@ a  {
 }
 
 /* Side panel */
-.flex{
-    display: flex;
-}
-
-.wrap{
-    flex-wrap: wrap;
-}
-
-.h-center{
-    justify-content: center;
-}
-
-.v-center{
-    align-content: center;
-}
 
 .panel{
     width: 80px;
@@ -329,23 +314,31 @@ a  {
 }
 
 .topSection{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
     width: 80px;
     height: 50%;
     background-color: #fff3;
 }
 
 .bottomSection{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-content: flex-end;
+
     width: 80px;
     height: 50%;
     background-color: #f003;
 }
 
-.button{
-
+.side-panel-button{
     width: 70px;
     height: 70px;
-    background-color: #4e99;
+    /* background-color: #fff; */
+    background-position: center;
 
 }
 
@@ -360,5 +353,5 @@ a  {
 } */
 
 .add{
-    color: white;
+    /* color: white; */
 }

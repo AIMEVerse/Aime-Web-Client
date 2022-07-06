@@ -24,19 +24,23 @@ let template = /*html*/ `
         </div>
 
         <div _id="analytics" class="analytics">
-            <div class="button analytics-btn">A1</div>
-            <div class="button analytics-btn">A2</div>
+            <div class="side-panel-button analytics-btn">
+                <img src="/svg/side-button-selected.svg" alt="button-img"/>
+            </div>
+            <div class="side-panel-button analytics-btn">
+                <img src="/svg/side-button.svg" alt="button-img"/>
+            </div>
         </div>
 
         <div _id="words" class="worlds">
-            <div class="button worlds-btn">W1</div>
-            <div class="button worlds-btn">W2</div>
-            <div class="button worlds-btn">W3</div>
+            <div class="side-panel-button worlds-btn"></div>
+            <div class="side-panel-button worlds-btn"></div>
+            <div class="side-panel-button worlds-btn"></div>
         </div>
     </div>
 
     <div _id="bottom" class="flex wrap h-center bottomSection">
-        <div class="button add">Hello</div>
+        <div class="side-panel-button add">Hello</div>
     </div>
 </div>`
 
