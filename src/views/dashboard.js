@@ -15,15 +15,12 @@ let localCss = /*css*/ `
 
 
 let template = /*html*/ `
-<div _id="panel" class="panel">
-
-    <div _id="topSection" class="flex wrap h-center topSection">
-
-        <div _id="logo" class="logo">
+<div id="panel" class="panel">
+    <div id="topSection" class="flex wrap h-center topSection">
+        <div id="logo" class="logo">
             AIME LOGO
         </div>
-
-        <div _id="analytics" class="analytics">
+        <div id="analytics" class="analytics">
             <div class="side-panel-button analytics-btn">
                 <img src="/svg/side-button-selected.svg" alt="button-img"/>
             </div>
@@ -31,16 +28,15 @@ let template = /*html*/ `
                 <img src="/svg/side-button.svg" alt="button-img"/>
             </div>
         </div>
-
-        <div _id="words" class="worlds">
+        <div id="words" class="worlds">
             <div class="side-panel-button worlds-btn"></div>
             <div class="side-panel-button worlds-btn"></div>
             <div class="side-panel-button worlds-btn"></div>
         </div>
     </div>
-
-    <div _id="bottom" class="flex wrap h-center bottomSection">
-        <div class="side-panel-button add">Hello</div>
+    <div id="bottom" class="flex wrap h-center bottomSection">
+        <div class="side-panel-button add"><label id="high-fps-real-time-label" _data_source="sys-time" text="${Date.now()}"/></div>
+        <div class="side-panel-button add"><label id="fps" _data_source="fps" _format="FPS: $fps" text="${Date.now()}"/></div>
     </div>
 </div>`
 
@@ -86,11 +82,28 @@ export class SidePanel extends SpellUIObject {
         let xmlNode = domParser.parseFromString(template.replaceAll("\n",""), "text/xml").firstChild
         // console.log(xmlNode.normalize());
         const sj = Spell.parser.xml2spell(xmlNode);
-        console.log("sj",sj);
         const sjObj = SpellUI.create(sj)
+        console.log("sjo",sjObj);
         this.append(sjObj)
 
     }
+
+    /**
+     * on_frame implementation to update the data source for the time label in the template :)
+     * @param {Number} frame_number 
+     */
+    async on_frame(frame_number){
+        const d = new Date()
+        const zp = (num, places) => String(num).padStart(places, '0') //leading zero pad function 
+
+        //update SpellData to update the data source
+        SpellData.variables["sys-time"] = zp(d.getHours(),2) +":" + zp(d.getMinutes(),2) + ":" + zp(d.getSeconds(),2) 
+        
+        // call super on_frame to bubble the event to the child spells
+        super.on_frame(frame_number)
+    }
+
+
 
     // async on_mount() {
     //     //console.log(this)
