@@ -199,18 +199,18 @@ a  {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background-color: #2b2b2b;
+    background-color: #fff2;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
     transition: all 0.5s;
-    background-color: #5a5a6e;
+    background-color: #fff4;
     border-radius: 50vw;
 }
 
@@ -300,16 +300,24 @@ a  {
 .login-button{
     width: 100px;
     height: 35px;
-
+    
     border-radius: 100vmax;
     border: none;
 }
 
-/* Side panel */
+/* Dashboard @@@@@@@@@@@@@@@@@@@*/
+.dashboard-panel{
+    background-color: #141430;
+}
 
+/* Side panel @@@@@@@@@@@@@@@@*/
 .panel{
-    width: 80px;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100px;
     height: 100vh;
+    max-height: 100vh;
     background-color: #4E2D64;
 }
 
@@ -318,40 +326,73 @@ a  {
     flex-wrap: wrap;
     justify-content: center;
 
-    width: 80px;
-    height: 50%;
-    background-color: #fff3;
+    height: 30%;
+    background-color: #AC67A5;
 }
 
 .bottomSection{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: flex-end;
+    align-content: space-between;
+    height: 70%;
+    
+    background-color: #97418E;
 
-    width: 80px;
-    height: 50%;
-    background-color: #f003;
 }
 
 .side-panel-button{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 70px;
-    height: 70px;
-    /* background-color: #fff; */
+    
     background-position: center;
+    cursor: pointer;
+}
+.side-panel-button:hover{
+    transform: scale(1.1);
+}
+
+.logo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
 
 }
 
-/* .logo{
+.worlds{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    /* align-content: center; */
+    /* gap: 20px; */
 
+    max-height: 80%;
+    position: relative;
+    top: 5%;
+    overflow-y: auto;
 }
-.analytics{
-
+.worlds-btn{
+    margin: auto;
+    margin-top: 25px;
 }
-.words{
+.worlds-btn:first-child{
+    margin-top: 0px;
+}
 
-} */
 
-.add{
-    /* color: white; */
+.time-fps{
+    color: white;
+}
+
+/* Header @@@@@@@@@@@@@@@@@@@@*/
+.header{
+    background-color: #AC67A5;
+    position: absolute;
+    top: 20px;
+    left: 200px;
 }

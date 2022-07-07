@@ -33,14 +33,14 @@ async function main() {
             //     _id: "login-view",
             //     animation: "fade",
             // },
-            "side-panel-view": {
-                _type: "side-panel",
-                _id: "side-panel-view",
+            "dashboard-panel": {
+                _type: "dashboard-panel",
+                _id: "dashboard-panel-view",
                 animation: "fade",
             }
         },
         defaults: {
-            view: "side-panel-view"
+            view: "dashboard-panel"
         },
         player: {
             html_element: "spell-player"
@@ -51,7 +51,7 @@ async function main() {
 
     SpellUI.load_app(spell_app)
 
-    SpellUI.vm.show_view("side-panel-view")
+    SpellUI.vm.show_view("dashboard-panel")
 
     
 
