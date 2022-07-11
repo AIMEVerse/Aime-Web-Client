@@ -95,21 +95,21 @@ export class Login extends SpellUIObject {
         }
 
 
-        const xmlTemplate = /*xml*/ `<view _id="my-view" class="login">
-            <form-field _id="userName" _text_data="Enter Username"/>
-            <form-field _id="pwd" _text_data="Enter Password" _field_type="password"/>
-            <button _id="btnLogin" class="login-button">Login</button>
-            <button _id="btnRegister" class="login-button" text="Register"/>
-            <link _id="linkForgot" class="login-forgot-link">Forgot password?</link>
-        </view>`
+        // const xmlTemplate = /*xml*/ `<view _id="my-view" class="login">
+        //     <form-field _id="userName" _text_data="Enter Username"/>
+        //     <form-field _id="pwd" _text_data="Enter Password" _field_type="password"/>
+        //     <button _id="btnLogin" class="login-button">Login</button>
+        //     <button _id="btnRegister" class="login-button" text="Register"/>
+        //     <link _id="linkForgot" class="login-forgot-link">Forgot password?</link>
+        // </view>`
 
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlTemplate,"text/xml");
-        //xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+        // const parser = new DOMParser();
+        // const xmlDoc = parser.parseFromString(xmlTemplate,"text/xml");
+        // //xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
 
        
         
-        console.log(xml2spell(xmlDoc.childNodes[0]));
+        // console.log(xml2spell(xmlDoc.childNodes[0]));
         // const spl = SpellUI.create_from_template(template)
         // console.log(spl);
        

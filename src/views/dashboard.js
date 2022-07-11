@@ -71,7 +71,7 @@ let sidePanel = /*html*/ `
             
         <div class="time-fps">
             <div class="side-panel-button"><label id="high-fps-real-time-label" _data_source="sys-time" text="${Date.now()}"/></div>
-            <div class="side-panel-button"><label id="fps" _data_source="fps" _format="FPS: $fps" text="${Date.now()}"/></div>
+            <div class="side-panel-button"><label id="fps" _data_source="fps" _format="FPS: _$" text="${Date.now()}"/></div>
         </div>
     </div>
 </div>`
