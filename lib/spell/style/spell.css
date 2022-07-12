@@ -9,6 +9,12 @@
     --blue-color: blue;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html{
     height:100%;
 }
@@ -21,14 +27,14 @@ body {
     font-family: Raleway, sans-serif
 }
 
-a:hover {
-    color:#4E2D64;
-    text-decoration: underline;
-}
-
 a  {
     color:#4E2D64;
     text-decoration: none;
+}
+
+a:hover {
+    color:#4E2D64;
+    text-decoration: underline;
 }
 
 
@@ -307,14 +313,13 @@ a  {
 
 /* Dashboard @@@@@@@@@@@@@@@@@@@*/
 .dashboard-panel{
+    display: flex;
     background-color: #141430;
 }
 
 /* Side panel @@@@@@@@@@@@@@@@*/
 .panel{
-    position: relative;
-    top: 0;
-    left: 0;
+
     width: 100px;
     height: 100vh;
     max-height: 100vh;
@@ -391,8 +396,13 @@ a  {
 
 /* Header @@@@@@@@@@@@@@@@@@@@*/
 .header{
-    background-color: #AC67A5;
-    position: absolute;
+    /* position: relative;
     top: 20px;
-    left: 200px;
+    left: 200px; */
+    background-color: white;
+    width: 100%;
+}
+
+.right-dashboard{
+    position: relative;
 }

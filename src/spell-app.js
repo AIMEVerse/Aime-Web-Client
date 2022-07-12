@@ -16,7 +16,7 @@ async function main() {
 
     
 
-    // spell_ui.engine.import_objects(LoginComponent)
+    spell_ui.engine.import_objects(LoginComponent)
     spell_ui.engine.import_objects(DashboardComponent)
 
 
@@ -28,19 +28,28 @@ async function main() {
             version: 1
         },
         views: {
-            // "login-view": {
-            //     _type: "login",
-            //     _id: "login-view",
-            //     animation: "fade",
-            // },
-            "dashboard-panel": {
+            "login-view": {
+                _type: "login",
+                _id: "login-view",
+                animation: "fade",
+            },
+            "profile-view": {
+                _type: "profile-edit",
+                _id: "profile-view",
+                animation: "fade",
+            },
+            "dashboard-view": {
                 _type: "dashboard-panel",
                 _id: "dashboard-panel-view",
                 animation: "fade",
+            },
+            "superform-view": {
+                _type: "superform",
+                _id: "my-superform"
             }
         },
         defaults: {
-            view: "dashboard-panel"
+            view: "login-view"
         },
         player: {
             html_element: "spell-player"
@@ -51,7 +60,7 @@ async function main() {
 
     SpellUI.load_app(spell_app)
 
-    SpellUI.vm.show_view("dashboard-panel")
+    SpellUI.vm.show_view("superform-view")
 
     
 

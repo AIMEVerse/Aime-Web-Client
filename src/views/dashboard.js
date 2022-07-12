@@ -33,8 +33,8 @@ let sidePanel = /*html*/ `
         <div id="worlds" class="worlds">
             <div class="side-panel-button worlds-btn">
                 <img src="/images/dashboard/world.png" alt="world-img"/>
-            </div>
-            <div class="side-panel-button worlds-btn">
+                </div>
+                <div class="side-panel-button worlds-btn">
                 <img src="/images/dashboard/world2.png" alt="world-img"/>
             </div>
             <div class="side-panel-button worlds-btn">
@@ -99,7 +99,7 @@ export class SidePanel extends SpellUIObject {
         const sjObj = SpellUI.create(sj)
         console.log("sjo", sjObj);
         this.append(sjObj)
-
+        
     }
 
 
@@ -125,12 +125,26 @@ export class SidePanel extends SpellUIObject {
 
 let header = /*html*/ `
     <div class="header">
-        <div class="header-search">
-            search
+        <div class="header-panel-left">
+            <div class="header-search">
+                <input type="text" placeholder="Search"/>
+            </div>
         </div>
-        <div class="header-button">
-            button
+
+        <div class="header-panel-right">
+            <button id="store-button">Store</button>
+            <div id="notification-button">
+                <img src="/images/dashboard/mail.png" alt="settings-icon"/>
+            </div>
+            <div id="settings-button">
+                <img src="/images/dashboard/settings.png" alt="settings-icon"/>
+            </div>
+            <div id="user-button">
+                <h2>Hey user!</h2>
+            </div>
         </div>
+            
+        
     </div>
 `
 export class HeaderPanel extends SpellUIObject {
