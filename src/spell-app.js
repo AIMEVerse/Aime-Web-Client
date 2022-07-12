@@ -7,9 +7,48 @@ import "../lib/spell/style/spell.css"
 
 
 
+const dashboard_data = {
+    org:"aime",
+    spaces:[
+        {
+            _id:"aime-dcl-space",
+            platform:"dcl",
+            metadata:{
+                cords:[0,0]
+            },
+            users:{
+                online:[
+                    {
+                        user_id:"tamir",
+                        user_name:"unknown",
+                        avatar:{
+                            images:["/images/avatars/my_avatar.jpg"]
+                        }
+                    },
+                    {
+                        user_id:"liad",
+                        user_name:"unknown",
+                        avatar:{
+                            images:["/images/avatars/my_avatar.jpg"]
+                        }
+                    },
+                    {
+                        user_id:"hadar",
+                        user_name:"unknown",
+                        avatar:{
+                            images:["/images/avatars/my_avatar.jpg"]
+                        }
+                    }
+                ]
+            }
+
+        }
+    ]
+}
+
+
 async function main() {
 
-    console.log("sui")
     const spell_ui = new SpellUIModule()
 
 
@@ -60,7 +99,7 @@ async function main() {
 
     SpellUI.vm.show_view("room-data-view")
 
-    SpellData.variables["rd-room-data-view"] = 10
+    SpellData.variables["rd-room-data-view"] = dashboard_data.spaces[0].users.online.length
 
 }
 
