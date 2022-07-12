@@ -1,6 +1,7 @@
 import { Spell, Spell3d, Spell3dModule, SpellUI, SpellUIModule, SpellData, SpellEvents, SpellAIModule } from '/lib/spell/index.js'
 import { LoginComponent } from './views/login.js'
 import { DashboardComponent } from './views/dashboard.js'
+import { RoomComponent } from './views/room.js'
 import "../lib/spell/style/spell.css"
 // import "../public/style/space-hud.css"
 
@@ -16,8 +17,9 @@ async function main() {
 
     
 
-    spell_ui.engine.import_objects(LoginComponent)
-    spell_ui.engine.import_objects(DashboardComponent)
+    // spell_ui.engine.import_objects(LoginComponent)
+    // spell_ui.engine.import_objects(DashboardComponent)
+    spell_ui.engine.import_objects(RoomComponent)
 
 
     Spell.start()
@@ -28,19 +30,14 @@ async function main() {
             version: 1
         },
         views: {
-            "login-view": {
-                _type: "login",
-                _id: "login-view",
-                animation: "fade",
-            },
-            "profile-view": {
-                _type: "profile-edit",
-                _id: "profile-view",
-                animation: "fade",
-            },
-            "dashboard-view": {
-                _type: "dashboard-panel",
-                _id: "dashboard-panel-view",
+            // "login-view": {
+            //     _type: "login",
+            //     _id: "login-view",
+            //     animation: "fade",
+            // },
+            "room-data-view": {
+                _type: "room-data",
+                _id: "room-data-view",
                 animation: "fade",
             },
             "superform-view": {
@@ -49,7 +46,7 @@ async function main() {
             }
         },
         defaults: {
-            view: "login-view"
+            view: "room-data-view"
         },
         player: {
             html_element: "spell-player"
@@ -60,9 +57,9 @@ async function main() {
 
     SpellUI.load_app(spell_app)
 
-    SpellUI.vm.show_view("superform-view")
+    SpellUI.vm.show_view("room-data-view")
 
-    
+    SpellData.variables["rd-room-data-view"] = 10
 
 }
 

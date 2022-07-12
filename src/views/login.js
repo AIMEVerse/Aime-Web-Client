@@ -270,10 +270,10 @@ export class Login extends SpellUIObject {
 
         // const parser = new DOMParser();
         // const xmlDoc = parser.parseFromString(xmlTemplate,"text/xml");
-        //xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+        // //xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
 
-
-
+       
+        
         // console.log(xml2spell(xmlDoc.childNodes[0]));
         // const spl = SpellUI.create_from_template(template)
         // console.log(spl);
