@@ -40,6 +40,10 @@ async function main() {
                 _type: "room-data",
                 _id: "room-data-view",
                 animation: "fade",
+            },
+            "superform-view": {
+                _type: "superform",
+                _id: "my-superform"
             }
         },
         defaults: {
