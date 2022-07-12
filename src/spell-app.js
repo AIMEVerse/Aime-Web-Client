@@ -9,6 +9,7 @@ import "../lib/spell/style/spell.css"
 
 async function main() {
 
+    console.log("sui")
     const spell_ui = new SpellUIModule()
 
 
@@ -17,9 +18,9 @@ async function main() {
 
     
 
-    // spell_ui.engine.import_objects(LoginComponent)
-    // spell_ui.engine.import_objects(DashboardComponent)
-    spell_ui.engine.import_objects(RoomComponent)
+    // spell_ui.import_objects(LoginComponent)
+    // spell_ui.import_objects(DashboardComponent)
+    spell_ui.import_objects(RoomComponent)
 
 
     Spell.start()
@@ -50,7 +51,7 @@ async function main() {
 
     }
 
-
+    
     SpellUI.load_app(spell_app)
 
     SpellUI.vm.show_view("room-data-view")

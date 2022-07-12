@@ -25,7 +25,7 @@ async function main() {
 
 
     //load space-hud to spell-ui module
-    spell_ui.engine.import_objects(SpaceHudObjects)
+    spell_ui.import_objects(SpaceHudObjects)
 
 
     Spell.start()
@@ -122,7 +122,7 @@ async function main() {
     })
 
 
-    spell_ui.engine.load_control({
+    spell_ui.load_control({
         _type: "spell-dashboard",
         _parent_element: "spell-controls",
     })
@@ -203,7 +203,7 @@ async function main() {
         //Spell.get_module('spell3d').engine.raycast(event)
         // send_command2(`pointer position x:${event.detail.x} z:${event.detail.z}`)
         const vec = SpellData.objects["joystick-vector"];
-        spell_ui.engine.om.spell_objects["hud-4"].add_new_items({ title: "New item", data: { x: vec.x, y: vec.y, z: vec.z } });
+        spell_ui.om.spell_objects["hud-4"].add_new_items({ title: "New item", data: { x: vec.x, y: vec.y, z: vec.z } });
 
 
     }, false);

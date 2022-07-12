@@ -62,7 +62,7 @@
 
 
         let spell_ui_module = new SpellUIModule()
-        spell_ui_module.engine.import_objects(SpaceHudObjects)
+        spell_ui_module.import_objects(SpaceHudObjects)
 
         Spell.load_module(spell_ui_module)
         Spell.load_module(new Spell3dModule())
