@@ -143,7 +143,6 @@ async function main() {
             { title: "AIME's room", data: { x: -18.02, y: 1.75, z: 0.68 } },
             { title: "Special Room", data: { x: 1.81, y: 1.75, z: -1.442 } }
         ]
-        // _title: "PAI Favorites"
     };
 
     spell_ui.engine.load_control(fav_data)

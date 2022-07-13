@@ -3,7 +3,7 @@
  * @description spell-ui package for spell-dashboard 
  * @author Liad P
  * @since  03/03/2022
- * @copyright PAI-TECH 2020, all right reserved
+ * @copyright AIME Web3 Technologies, all right reserved
  *
  *      This program is free software; you can redistribute it and/or
  *		modify it under the terms of the GNU General Public License
@@ -15,12 +15,6 @@
 import { Spell, SpellUtils, SpellData, SpellUI, SpellUIObject, SpellEventManager } from "/lib/spell/index.js";
 
 
-//  import {
-//      SpellButton,
-//      SpellLabel,
-//      SpellView,
-//      SpellTextField
-//  } from "@pai-tech/spell/lib/ui/spell-core-objects.js"
 
 export class HudWindow extends SpellUIObject {
     constructor(data) {

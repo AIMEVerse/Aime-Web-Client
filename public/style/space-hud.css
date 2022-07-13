@@ -1,7 +1,7 @@
 :root {
-    --pai-purple: rgb(122, 5, 190);
-    --pai-yellow: rgb(255, 200, 0);
-    --pai-window-bg: white;
+    --spell-purple: rgb(122, 5, 190);
+    --spell-yellow: rgb(255, 200, 0);
+    --spell-window-bg: white;
     --text-color: #cfcfcf;
     --button-text-color: #2c2c2c;
 }
@@ -61,16 +61,16 @@ a {
     -moz-transition: 1s;
 }
 
-.pai-panel-item {
+.spell-panel-item {
     margin: 10px;
     padding: 5px;
 }
 
-.pai-grid-row {
+.spell-grid-row {
     margin-top: 20px;
 }
 
-/* .pai-button {
+.spell-button {
     border: 2px #4E2D64 solid;
     border-radius: 5px;
     background-color: transparent;
@@ -78,9 +78,9 @@ a {
     padding: 5px;
     min-width: 120px;
     color: #4E2D64;
-} */
+} 
 
-.pai-circle-button {
+.spell-circle-button {
     border: 2px #4E2D64 solid;
     border-radius: 50%;
     background-color: transparent;
@@ -91,14 +91,14 @@ a {
     color: #4E2D64;
 }
 
-#pai-desktop {
+#spell-desktop {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
 }
 
-#pai-footer {
+#spell-footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -171,7 +171,7 @@ a {
     align-items: center;
     border: white 1px solid;
     border-radius: 2vw;
-    background: var(--pai-window-bg);
+    background: var(--spell-window-bg);
     box-shadow: 0px 0px 16px #00000070;
 
 }
@@ -202,7 +202,6 @@ a {
     width: fit-content;
     height: fit-content;
     padding: 4px 8px;
-    /* background: linear-gradient(45deg, var(--pai-purple), var(--pai-yellow)); */
     background: white;
     border: none;
     border-radius: 50vw;
@@ -211,7 +210,7 @@ a {
     font-weight: 700;
     /* font-family: Arial, Helvetica, sans-serif, Tahoma, Geneva, Verdana, sans-serif; */
     /* box-shadow: -4px 0px 0px 0px #282828; */
-    box-shadow: -4px 0px 0px var(--pai-purple), 4px 0px 0px var(--pai-purple), 0px 0px 6px #0003;
+    box-shadow: -4px 0px 0px var(--spell-purple), 4px 0px 0px var(--spell-purple), 0px 0px 6px #0003;
 }
 
 

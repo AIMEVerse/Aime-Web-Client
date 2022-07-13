@@ -1,8 +1,8 @@
 {
-  "title": "PAI-Bot-JS-Module Template",
+  "title": "AIME Web Client",
   "source": {
-    "include": ["package.json", "readme.md","PAI.js","src/","LICENSE"],
-    "exclude": ["src/pai-module/public/","src/pai-module/packages"],
+    "include": ["package.json", "readme.md","inedx.js","src/","LICENSE"],
+    "exclude": [],
     "includePattern": ".js$",
     "excludePattern": "(node_modules/|docs)"
   },
