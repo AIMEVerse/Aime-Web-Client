@@ -1,6 +1,6 @@
 
 import { SpellButton, SpellLink } from "../../lib/spell/ui/spell-core-objects";
-import { Spell, SpellUtils, SpellData, SpellUI, SpellUIObject, SpellEventManager } from "/lib/spell/index.js";
+import { Spell, SpellUtils, SpellData, SpellUI, SpellUIObject, SpellEventManager } from "/lib/spell/index";
 
 
 
@@ -104,18 +104,18 @@ export class SidePanel extends SpellUIObject {
 
 
     /**
-     * on_frame implementation to update the data source for the time label in the template :)
+     * onFrame implementation to update the data source for the time label in the template :)
      * @param {Number} frame_number 
      */
-    async on_frame(frame_number) {
+    async onFrame(frame_number) {
         const d = new Date()
         const zp = (num, places) => String(num).padStart(places, '0') //leading zero pad function 
 
         //update SpellData to update the data source
         SpellData.variables["sys-time"] = zp(d.getHours(), 2) + ":" + zp(d.getMinutes(), 2) + ":" + zp(d.getSeconds(), 2)
 
-        // call super on_frame to bubble the event to the child spells
-        super.on_frame(frame_number)
+        // call super onFrame to bubble the event to the child spells
+        super.onFrame(frame_number)
     }
 
 

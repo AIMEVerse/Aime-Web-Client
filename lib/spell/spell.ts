@@ -13,17 +13,23 @@
  *
  */
 
-import SpellUtils from "./spell-utils.js"
-import SpellData from "./spell-data.js"
-import SpellParser from "./spell-parser.js"
-import SpellModule from "./spell-module.js"
-import {SpellEventManager,SpellEvents,SpellEvent} from  "./spell-event-manager.js"
+
+/** interface */
+import SpellCommand from "./spell-command"
+import SpellUtils from "./spell-utils"
+import SpellData from "./spell-data"
+import SpellParser from "./spell-parser"
+import SpellModule from "./spell-module"
+import {SpellEventManager,SpellEvents,SpellEvent} from  "./spell-event-manager"
 
 
 
 
 
 class SpellMainModule extends SpellModule {
+
+    
+
     constructor(data) {
         const defaults = {name:"spell"}
         super(data,defaults)
@@ -33,14 +39,24 @@ class SpellMainModule extends SpellModule {
         console.log("Spell Engine V:" + Spell.version)
     }
 
-    _load_module(scmd) {
+    _loadModule(scmd) {
         console.log(scmd.params["name"])
     }
 }
 
 class SpellEngine {
+
+    version : string
+    engine_id: string
+    frame_number: number
+    fps: number
+    fps_mavg: number
+    ts: number
+    parser: typeof SpellParser
+    modules: {}
+
     constructor() {
-        this.version = 1
+        this.version = "1.0.0"
         this.engine_id = SpellUtils.guid()
         this.frame_number = 0
         this.fps = 0
@@ -53,7 +69,7 @@ class SpellEngine {
     }
 
     
-    load_module(spell_module) {
+    loadModule(spell_module:SpellModule):void {
         //console.log(spell_module)
         if (this.modules.hasOwnProperty(spell_module.name)) {
             console.log("module " + spell_module.name + " already loaded")
@@ -63,15 +79,15 @@ class SpellEngine {
         }
     }
 
-    load_modules(spell_modules_array) {
+    loadModules(spell_modules_array:[]):void {
         const sthis = this
-        spell_modules_array.forEach(mod => sthis.load_module(mod))
+        spell_modules_array.forEach(mod => sthis.loadModule(mod))
     }
 
 
 
     load() {
-        this.load_module(new SpellMainModule())
+        this.loadModule(new SpellMainModule({}))
     }
 
     info(){
@@ -84,7 +100,7 @@ class SpellEngine {
      * @param {cmd} - text command
      */
 
-    run(str_cmd) {
+    run(str_cmd:string) {
         if(str_cmd?.length>2) {
             let scmd = SpellParser.parse(str_cmd)
             return this.execute(scmd)
@@ -97,7 +113,7 @@ class SpellEngine {
      * Execute Spell Command 
      * @param {SpellCommand} 
      */
-    execute(cmd) {
+    execute(cmd:SpellCommand):any {
         if(cmd && cmd.module && this.modules[cmd.module]) {
             return this.modules[cmd.module].execute(cmd)
         } else {
@@ -108,20 +124,20 @@ class SpellEngine {
 
 
     /**
-     * Main on_frame method
-     * calls all the sub-modules on_frame methods (if implemented)
+     * Main onFrame method
+     * calls all the sub-modules onFrame methods (if implemented)
      */
-    on_frame() {     
+     onFrame():void {     
         this.frame_number++
         Object.keys(this.modules).forEach(mod => {
-            if(this.modules[mod].on_frame && typeof this.modules[mod].on_frame === 'function') {
-                this.modules[mod].on_frame(this.frame_number)
+            if(this.modules[mod].onFrame && typeof this.modules[mod].onFrame === 'function') {
+                this.modules[mod].onFrame(this.frame_number)
             }
         })
         
         SpellData.variables["frame-number"] = this.frame_number
-        const now = performance.now();
-        const diff = now-this.ts
+        const now:number = performance.now();
+        const diff:number = now-this.ts
         this.ts = now
         
         this.fps_mavg = .9 * this.fps_mavg + .1 * diff //#stable FPS with moving avarage
@@ -130,17 +146,17 @@ class SpellEngine {
         
 
         SpellData.variables["fps"] = this.fps
-        requestAnimationFrame(() => {Spell.on_frame()})         
+        requestAnimationFrame(() => {Spell.onFrame()})         
     }
 
 
-    get_module(module_name){
+    getModule(module_name:string):SpellModule{
         return this.modules[module_name]
     }
 
     start() {
         console.log("Starting Spell")
-        this.on_frame()
+        this.onFrame()
     }
 
 }

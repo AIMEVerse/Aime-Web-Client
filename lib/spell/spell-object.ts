@@ -1,16 +1,19 @@
 
-import SpellUtils from "./spell-utils.js"
-import * as _SC from "./spell-consts.js"
+import SpellUtils from "./spell-utils"
+import * as _SC from "./spell-consts"
+import SpellCommand from "./spell-command";
+
 const reserved_words = {  }
 const spell_object_html_fields_mapping = { "_id": "id", "css-class": "class", "animation": "xyz", "input-type": "type" };
 
 export class SpellObject {
+    
+    _id: any
+    _ignore:{}
 
-    //#_id 
-
-    constructor(data, defaults) {
+    constructor(data:{} , defaults?:{} ) {
         if (defaults) {
-            SpellUtils.merge_defaults_with_data(data, defaults)
+            SpellUtils.mergeDefaultsWithData(data, defaults)
         }
         
         this._id = (data && data._id) ? data._id : "so-" + SpellUtils.guid();
@@ -23,7 +26,7 @@ export class SpellObject {
         if (data) {
             delete data._id
             if (data.hasOwnProperty("_ignore")) {
-                this._ignore = SpellUtils.create_ignore_list(data["_ignore"])
+                this._ignore = SpellUtils.createIgnoreList(data["_ignore"])
             }
             this.parse(data, this._ignore);
         }
@@ -57,7 +60,7 @@ export class SpellObject {
                 console.log(key + ":" + this[key]);
             }
         });
-        console.log(this.get_html());
+        console.log(this);
     }
 
 
@@ -74,16 +77,15 @@ export class SpellObject {
      * 
      * 
      */
-    async on_frame(frame_number){
+    async onFrame(frame_number:number){
         
         this[_SC.NODES.child_spells].forEach(child => {
-            if(child.on_frame && typeof child.on_frame === 'function') {
-                child.on_frame(frame_number)
+            if(child.onFrame && typeof child.onFrame === 'function') {
+                child.onFrame(frame_number)
             }})
     }
 
-    async execute(scmd) {
-        //console.log(scmd);
+    async execute(scmd:SpellCommand) {
     }
     
 }

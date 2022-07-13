@@ -4,6 +4,7 @@
 
 
 class SpellLogger {
+    debug: boolean;
 
     constructor() {
         this.debug = true

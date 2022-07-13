@@ -1,23 +1,28 @@
 
-import SpellUtils from "./spell-utils.js"
-import SpellParser from "./spell-parser.js"
-import SpellObjectManager from "./spell-object-manager.js";
-import * as _SC from "./spell-consts.js"
+import SpellUtils from "./spell-utils"
+import SpellParser from "./spell-parser"
+import SpellObjectManager from "./spell-object-manager";
+import * as _SC from "./spell-consts"
+import SpellObject from "./spell-object";
 /** Spell Module **/
 
 const SpellModuleOp = (op_name, function_name) => { return { op_name: function_name } }
 
 export default class SpellModule {
 
+    _id:string
+    name: string;
+
     //private object manager instance
     #om = new SpellObjectManager()
+    engine: any;  //deprecated remove after spell3d
 
     constructor(data, defaults = { name: "spell-module" }) {
         if (defaults) {
             if (!data) {
                 data = defaults
             } else {
-                SpellUtils.merge_defaults_with_data(data, defaults)
+                SpellUtils.mergeDefaultsWithData(data, defaults)
             }
         }
         if (data) {
@@ -45,11 +50,11 @@ export default class SpellModule {
 
         let spell_object;
         if (data.hasOwnProperty(_SC.NODES.type)) {
-            if (this.#om.has_object_class(data[_SC.NODES.type])) {
+            if (this.#om.hasObjectClass(data[_SC.NODES.type])) {
 
-                let spell_object_class = this.#om.get_object_class(data[_SC.NODES.type]);
+                let spell_object_class = this.#om.getObjectClass(data[_SC.NODES.type]);
                 if (spell_object_class.hasOwnProperty("defaults")) {
-                    SpellUtils.merge_defaults_with_data(data, spell_object_class.defaults);
+                    SpellUtils.mergeDefaultsWithData(data, spell_object_class.defaults);
                 }
                 spell_object = new spell_object_class(data);
             }
@@ -62,7 +67,7 @@ export default class SpellModule {
         }
 
         //await spell_object.init();
-        this.#om.add_object(spell_object)
+        this.#om.addObject(spell_object)
         if (data[_SC.NODES.child_spells]) {
             const sthis = this //strong "this" for anonymous function use
             data[_SC.NODES.child_spells].forEach(async (spell) => {
@@ -116,13 +121,13 @@ export default class SpellModule {
         else if (this.engine && this.engine.om) //direct spell injection to specific module -> deprecated rem
         {
             console.log("STILL RUNNING FROM ENGINE -- DEPRECATED");
-            const o = this.engine.om.get_object_by_name(spell_command.op)
+             const o = this.engine.om.getObjectByName(spell_command.op)
             if (o) { o.execute(spell_command) }
             else { throw "Spell Module cant find op:" + spell_command.op }
         }
         else if (this.#om) //direct spell injection to specific module
         {
-            const o = this.#om.get_object_by_name(spell_command.op)
+            const o = this.#om.getObjectByName(spell_command.op)
             //console.log(o);
             if (o) { o.execute(spell_command) }
             else { throw "Spell Module cant find op:" + spell_command.op }
@@ -134,11 +139,11 @@ export default class SpellModule {
 
     }
 
-    async on_frame(frame_number) {
+    async onFrame(frame_number) {
         Object.keys(this.#om.spell_objects).forEach(key=>{
             const so = this.#om.spell_objects[key]
-            if(so.on_frame && typeof so.on_frame === 'function') {
-                so.on_frame(frame_number)
+            if(so.onFrame && typeof so.onFrame === 'function') {
+                so.onFrame(frame_number)
             }
         })
     }
@@ -157,8 +162,8 @@ export default class SpellModule {
      * The object class should be like SpellObjects with static implementation of get_objects() method
      * @param {SpellObjects} objects_class 
      */
-    import_objects(objects_class) {
-        this.#om.register_objects(objects_class.get_objects())
+    importObjects(objects_class) {
+        this.#om.registerObjects(objects_class.get_objects())
     }
 
     

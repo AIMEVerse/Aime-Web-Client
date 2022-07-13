@@ -10,12 +10,15 @@
 
 
 class SpellDataSource {
+    objects: {}
+    variables: {}
     constructor(){
         this.objects = {}
         this.variables = {}
     }
 }
 
+//singletone
 const SpellData = new SpellDataSource()
 
 export default SpellData

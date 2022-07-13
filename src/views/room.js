@@ -1,5 +1,5 @@
 import { SpellButton, SpellLink } from "../../lib/spell/ui/spell-core-objects";
-import { Spell, SpellUtils, SpellData, SpellUI, SpellUIObject, SpellEventManager } from "/lib/spell/index.js";
+import { Spell, SpellUtils, SpellData, SpellUI, SpellUIObject, SpellEventManager } from "/lib/spell/index";
 
 
    
@@ -24,7 +24,7 @@ export class RoomData extends SpellUIObject {
             <view _id="${this._id}-ou-outer"><label _id="${this._id}-online-users" _data_source="rd-${this._id}" _format="online users: _$" text="online users: 0"/></view>
         </view>`
 
-        const iv = SpellUI.create(Spell.parser.xml_string2spell(xmlTemplate))
+        const iv = SpellUI.create(Spell.parser.xmlString2Spell(xmlTemplate))
         this.append(iv)
 
     }

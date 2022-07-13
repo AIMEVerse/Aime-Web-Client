@@ -1,4 +1,4 @@
-import { Spell, Spell3d, Spell3dModule, SpellUI, SpellUIModule, SpellData, SpellEvents, SpellAIModule } from '/lib/spell/index.js'
+import { Spell, Spell3d, Spell3dModule, SpellUI, SpellUIModule, SpellData, SpellEvents, SpellAIModule } from '/lib/spell/index'
 import { LoginComponent } from './views/login.js'
 import { DashboardComponent } from './views/dashboard.js'
 import { RoomComponent } from './views/room.js'
@@ -53,13 +53,13 @@ async function main() {
 
 
 
-    Spell.load_module(spell_ui)
+    Spell.loadModule(spell_ui)
 
     
 
-    // spell_ui.import_objects(LoginComponent)
-    // spell_ui.import_objects(DashboardComponent)
-    spell_ui.import_objects(RoomComponent)
+    // spell_ui.importObjects(LoginComponent)
+    // spell_ui.importObjects(DashboardComponent)
+    spell_ui.importObjects(RoomComponent)
 
 
     Spell.start()
@@ -97,7 +97,7 @@ async function main() {
     
     SpellUI.load_app(spell_app)
 
-    SpellUI.vm.show_view("room-data-view")
+    SpellUI.vm.showView("room-data-view")
 
     SpellData.variables["rd-room-data-view"] = dashboard_data.spaces[0].users.online.length
 

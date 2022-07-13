@@ -1,21 +1,25 @@
-import * as _SC from "./spell-consts.js"
+import SpellCommand from "./spell-command"
+import * as _SC from "./spell-consts"
 
+/**
+ * SpellParser
+ */
 
-
-class SpellParser {
+export class SpellParser {
 
 
     /**
      * convert text command to spell json command
      * @param {string} txt 
      */
-    static parse(txt) {        
-        const carr = txt.split(" ")
-        let rv = {
-            "module":carr[0],
-            "op": carr[1],
-            "params":{}
-        }
+    static parse(txt:string):SpellCommand {        
+        const carr:string[] = txt.split(" ")
+        let rv = new SpellCommand()
+        
+        rv["module"]= carr[0],
+        rv["op"] =  carr[1],
+        rv["params"] = {}
+        
         if(carr.length>1){
             for (let i=2;i<carr.length;++i){
                 const v = carr[i]
@@ -36,10 +40,10 @@ class SpellParser {
     }
 
 
-    static parse_spell(raw_spell) {
+    static parseSpell(raw_spell) {
         let code = raw_spell.trim();
 
-        let args = SpellParser.parse_arguments(code);
+        let args:Array<string> = SpellParser.parseArguments(code);
 
         let cmd = new SpellCommand();
         cmd.module = args[0];
@@ -49,13 +53,13 @@ class SpellParser {
 
         // start params from index 2
         for (let i = 2; i < args.length; i++) {
-            let paramStr = args[i];
+            let paramStr:string = args[i];
             let delimiterIdx = paramStr.indexOf(':');
             let quotesIdx = paramStr.indexOf('"');
             let finalDelimiter = (quotesIdx < delimiterIdx) ? -1 : delimiterIdx;
 
             let paramName = (finalDelimiter === -1) ? i.toString() : paramStr.substring(0, delimiterIdx);
-            let paramValue = SpellParser.fix_argument_value(paramStr.substring(finalDelimiter + 1));
+            let paramValue = SpellParser.fixArgumentValue(paramStr.substring(finalDelimiter + 1));
 
             if (paramName === "frame")
                 cmd.execute_on_frame = paramValue;
@@ -70,11 +74,11 @@ class SpellParser {
     }
 
 
-    static parse_arguments(code) {
-        let args = [];
+    static parseArguments(code:string) {
+        let args:Array<string> = [];
 
         while (code.length) {
-            let argIndex = SpellParser.get_next_argumentIndex(code);
+            let argIndex = SpellParser.getNextArgumentIndex(code);
             if (argIndex == -1) {
                 // error
                 console.error('error: ' + code);
@@ -86,7 +90,7 @@ class SpellParser {
                 let oldCode = code; // this variable is used to check if loop in endless
                 code = code.substring(argIndex).trim();
 
-                if (code.length == oldCode) {
+                if (code.length == oldCode.length) {
                     // error - while loop is in endless
                     console.error('error: while loop is in endless - leftovers: ' + code);
                     break;
@@ -101,7 +105,7 @@ class SpellParser {
 
     static spellify(spell2Json)  {
         const tkeys = Object.keys(spell2Json)
-        let output_spell = {[_SC.NODES.type]:tkeys[0]}
+        let output_spell:any = {[_SC.NODES.type]:tkeys[0]}
         output_spell[_SC.NODES.child_spells] = [] // child's spells
         const firstObject = spell2Json[tkeys[0]]
         const foKeys = Object.keys(firstObject)
@@ -119,7 +123,7 @@ class SpellParser {
     }
 
 
-    static xml_string2spell(xmlString) {
+    static xmlString2Spell(xmlString) {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlString,"text/xml");
         if(xmlDoc.childNodes.length>0) {
@@ -171,7 +175,7 @@ class SpellParser {
 
     }
 
-    static fix_argument_value(arg) {
+    static fixArgumentValue(arg) {
         let finalArg = "";
         let prevChar = "";
         for (var i = 0; i < arg.length; i++) {
@@ -198,7 +202,7 @@ class SpellParser {
      * @param {String} str
      * @return {number} indexOf the end of the argument
      */
-    static get_next_argumentIndex(str) {
+    static getNextArgumentIndex(str) {
         let idx = -1;
         let count = str.length;
         let zeroCount = count - 1;
@@ -246,4 +250,3 @@ class SpellParser {
 }
 
 export default SpellParser
-export {SpellParser}

@@ -12,7 +12,7 @@
  *
  */
 
-import { Spell, SpellUtils, SpellData, SpellUI, SpellUIObject, SpellEventManager } from "/lib/spell/index.js";
+import { Spell, SpellUtils, SpellData, SpellUI, SpellUIObject, SpellEventManager } from "/lib/spell/index";
 
 
 
@@ -55,7 +55,7 @@ export class HudWindow extends SpellUIObject {
 
     }
 
-    on_frame(frame_number) {
+    async onFrame(frame_number) {
         //console.log(SpellUI.om);
     }
 }
@@ -92,9 +92,7 @@ export class HudMenu extends SpellUIObject {
 
     }
 
-    on_frame(frame_number) {
-        //console.log(SpellUI.om);
-    }
+   
 }
 
 export class HudForm extends SpellUIObject {
@@ -135,9 +133,7 @@ export class HudForm extends SpellUIObject {
 
     }
 
-    on_frame(frame_number) {
-        //console.log(SpellUI.om);
-    }
+  
 }
 /*
 

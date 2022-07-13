@@ -1,6 +1,6 @@
 
 import { SpellButton, SpellLink } from "../../lib/spell/ui/spell-core-objects";
-import { Spell, SpellUtils, SpellData, SpellUI, SpellUIObject, SpellEventManager } from "/lib/spell/index.js";
+import { Spell, SpellUtils, SpellData, SpellUI, SpellUIObject, SpellEventManager } from "/lib/spell/index";
 
 
 export class AIMEForm extends SpellUIObject {

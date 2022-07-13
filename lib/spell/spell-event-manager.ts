@@ -11,12 +11,12 @@ class SpellEventManager {
     /**
      * creates and fire event
      */
-    static fire(type_arg, options){
+    static fire(type_arg, options?){
         const se = new SpellEvent(type_arg,options)
-        SpellEventManager.fire_spell_event(se)
+        SpellEventManager.fireSpellEvent(se)
     }
 
-    static fire_spell_event(spell_event) {
+    static fireSpellEvent(spell_event) {
         //console.log('fire',spell_event)
         document.dispatchEvent(spell_event)
     }
@@ -24,7 +24,7 @@ class SpellEventManager {
 
 class SpellEvent extends CustomEvent {
 
-    constructor(type_arg, options) {
+    constructor(type_arg, options?) {
         super(type_arg, options)
     }
 

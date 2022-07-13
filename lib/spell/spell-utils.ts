@@ -5,7 +5,7 @@ class SpellUtils {
      * create ignore list for parser to ignore spells words
      * @param list - list of reserved words (comma separated)
      */
-    static create_ignore_list(list) {
+    static createIgnoreList(list) {
         let words = list.split(",");
         let out_list = reserved_words;
         words.forEach(word => out_list[word] = "");
@@ -27,7 +27,7 @@ class SpellUtils {
         return uuid.join('');
     }
 
-    static merge_defaults_with_data(data, defaults) {
+    static mergeDefaultsWithData(data, defaults) {
         if (data) {
             if (!data._id && !data.id) {
                 defaults["_id"] = SpellUtils.guid();
@@ -45,16 +45,10 @@ class SpellUtils {
         }
     }
 
-    static async load_script(url) {
-        return new Promise(function (resolve, reject) {
-            jQuery.getScript(url).done(function (script) {
-                resolve(script);
-            });
-        });
-    }
+    
 
 
-    static check_overlaping_rects(rect1, rect2, inside = false) {
+    static checkOverlappingRects(rect1, rect2, inside = false) {
         if (!inside) {
             return !(rect1.top > rect2.bottom || rect1.right < rect2.left || rect1.bottom < rect2.top || rect1.left > rect2.right);
         }
@@ -68,7 +62,7 @@ class SpellUtils {
         }
     }
 
-    static degrees_to_radians(degrees) {
+    static deg2Rad(degrees) {
         const pi = Math.PI;
         return degrees * (pi / 180);
     }

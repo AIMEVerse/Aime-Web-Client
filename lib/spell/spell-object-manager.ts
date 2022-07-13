@@ -1,6 +1,10 @@
-import SpellEventManager from "./spell-event-manager.js"
+import SpellEventManager from "./spell-event-manager"
+import SpellObject from "./spell-object";
 
 class SpellObjectManager {
+    object_classes: {};
+    spell_objects: {};
+    names_index: {};
     constructor() {
         this.object_classes = {};
         this.spell_objects = {};
@@ -16,28 +20,28 @@ class SpellObjectManager {
      *
      * @param spell_objects - key value list -> {"view":SpellView,...}
      */
-    register_objects(spell_objects) {
+    registerObjects(spell_objects:{}):void {
         let names = Object.keys(spell_objects)
-        names.forEach(name => this.register_object(name, spell_objects[name]))
+        names.forEach(name => this.registerObject(name, spell_objects[name]))
     }
 
-    register_object(name, spell_object) {
+    registerObject(name:string, spell_object:SpellObject) {
         this.object_classes[name] = spell_object;
     }
 
-    has_object_class(name) {
+    hasObjectClass(name) {
         return this.object_classes.hasOwnProperty(name);
     }
 
-    get_object_class(name) {
+    getObjectClass(name) {
         return this.object_classes[name];
     }
 
-    get_all_classes() {
+    getAllClasses() {
         return this.object_classes;
     }
 
-    add_object(spell_object) {
+    addObject(spell_object) {
         if (spell_object && spell_object._id) {
             this.spell_objects[spell_object._id] = spell_object
             if (!spell_object.name || spell_object.name.length==0) {
@@ -56,15 +60,15 @@ class SpellObjectManager {
         this.spell_objects[spell_object_id] = null;
     }
 
-    get_object(spell_object_id) {
+    getObject(spell_object_id) {
         //console.log(this.spell_objects);
         return this.spell_objects[spell_object_id]
     }
 
 
-    get_object_by_name(object_name) {
+    getObjectByName(object_name) {
         if(this.names_index[object_name]) {
-            return this.get_object(this.names_index[object_name])
+            return this.getObject(this.names_index[object_name])
         } 
         return null
     }

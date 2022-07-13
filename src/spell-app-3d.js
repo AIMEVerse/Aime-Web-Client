@@ -1,4 +1,4 @@
-import { Spell, Spell3d, Spell3dModule, SpellUI, SpellUIModule, SpellData, SpellEvents, SpellAIModule } from '/lib/spell/index.js'
+import { Spell, Spell3d, Spell3dModule, SpellUI, SpellUIModule, SpellData, SpellEvents, SpellAIModule } from '/lib/spell/index'
 import { SpaceHudObjects, HudWindow } from './space-hud.js'
 import "../lib/spell/style/spell.css"
 import "../public/style/space-hud.css"
@@ -21,11 +21,11 @@ async function main() {
 
 
 
-    Spell.load_modules([spell_3d, spell_ui, spell_ai])
+    Spell.loadModules([spell_3d, spell_ui, spell_ai])
 
 
     //load space-hud to spell-ui module
-    spell_ui.import_objects(SpaceHudObjects)
+    spell_ui.importObjects(SpaceHudObjects)
 
 
     Spell.start()
@@ -39,7 +39,7 @@ async function main() {
     spell_ai.run("handpose set-source video-tag:spell-webcam")
     
 
-    await Spell3d.load_world(world)
+    await Spell3d.loadWorld(world)
 
 
   
@@ -61,46 +61,7 @@ async function main() {
     })
 
 
-    // setTimeout(() => {
-    //     Spell.get_module('spell3d').run("Huge_Sign spin y:0.01");
-    //     Spell.get_module('spell3d').run("Huge_Sign001 spin y:0.01");
-    //     Spell.get_module('spell3d').run("Huge_Sign002 spin y:0.02");
-    //     Spell.get_module('spell3d').run("AIMEModel003 hover axis:y dir:up radius:0.1 step:0.001");
-    // }, 10000);
-
-    //run 3d-engine  -> run animation loop
-
-    // const spell_app = {
-    //     spell: {
-    //         version: 1
-    //     },
-    //     views: {
-    //         "intro": {
-    //             _type: "view"
-    //         },
-    //         "main-view": {
-    //             _type: "view",
-    //             _id: "main-view",
-    //             style: "width:100%;margin: 0;padding:0;display:none",
-    //             "class": "container-fluid xyz-in ",
-    //             animation: "fade",
-    //             spells: []
-    //         }
-    //     },
-    //     defaults: {
-    //         view: "main-view"
-    //     },
-    //     player: {
-    //         html_element: "spell-player"
-    //     }
-
-    // }
-
-
-    // SpellUI.load_app(spell_app)
-
-    // SpellUI.vm.show_view("main-view")
-
+   
 
 
     spell_ui.engine.load_control({
@@ -170,22 +131,22 @@ async function main() {
         // }
 
         if (event.key == "j") {
-            //Spell.get_module('spell3d').engine.set_camera_path()
-            Spell.get_module('spell3d').engine.om.spell_objects["pointer"]["onframe"] = "follow-path"
+            
+            Spell.getModule('spell3d').engine.om.spell_objects["pointer"]["onframe"] = "follow-path"
             return;
         }
         else if (event.key == "u") {
-            Spell.get_module('spell3d').engine.set_camera_path()
-            //Spell.get_module('spell3d').engine.om.spell_objects["pointer"]["onframe"] = "follow-path"
+            Spell.getModule('spell3d').engine.set_camera_path()
+            
             return;
         }
         else if (event.key == "p") {
-            Spell.get_module('spell3d').engine.set_camera_path_point()
+            Spell.getModule('spell3d').engine.set_camera_path_point()
             return;
         }
         else if (event.key == "o") {
             const format = "png";
-            Spell.get_module('spell3d').engine.add_environment_map('/images/space2048/', [
+            Spell.getModule('spell3d').engine.add_environment_map('/images/space2048/', [
                 `px.${format}`,
                 `nx.${format}`,
                 `py.${format}`,
@@ -199,8 +160,6 @@ async function main() {
 
 
     document.addEventListener('fav-add-item', (event) => {
-        //Spell.get_module('spell3d').engine.raycast(event)
-        // send_command2(`pointer position x:${event.detail.x} z:${event.detail.z}`)
         const vec = SpellData.objects["joystick-vector"];
         spell_ui.om.spell_objects["hud-4"].add_new_items({ title: "New item", data: { x: vec.x, y: vec.y, z: vec.z } });
 
@@ -208,7 +167,6 @@ async function main() {
     }, false);
 
     document.addEventListener('fav-click', (event) => {
-        //Spell.get_module('spell3d').engine.raycast(event)
         send_command2(`pointer position x:${event.detail.x} z:${event.detail.z}`)
 
     }, false);
@@ -216,7 +174,7 @@ async function main() {
     document.addEventListener('mousedown', (event) => {
         //send_command2(`spell3d world_lock_controls`)
 
-        Spell.get_module('spell3d').engine.raycast(event)
+        Spell.getModule('spell3d').engine.raycast(event)
     }, false);
 
 
