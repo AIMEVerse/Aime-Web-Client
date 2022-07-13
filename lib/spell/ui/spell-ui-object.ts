@@ -8,8 +8,18 @@ const reserved_words = {  }
 const spell_object_html_fields_mapping = { "_id": "id", "css-class": "class", "animation": "xyz", "input-type": "type" };
 
 
-class SpellUIObject extends SpellObject {
 
+export class SpellUIObject extends SpellObject {
+    _html_tag: string
+    private _dom_object: HTMLElement | null
+    _type:string  //[_SC.NODES.type]
+    _html: string | undefined
+    animation: boolean
+    _base_display: string  = "block"
+    text: string
+    _data_source: string | null 
+    _on_frame_skip_data_source: any
+    _format: string | null
     
 
 
@@ -60,10 +70,10 @@ class SpellUIObject extends SpellObject {
                 console.log(key + ":" + this[key]);
             }
         });
-        console.log(this.get_html());
+        console.log(this.getHTML());
     }
 
-    get_dom_object() {
+    getDOMObject():HTMLElement | null {
         if (!this._dom_object) {
             //console.log("creating " + this._html_tag);
             let dom_object = document.createElement(this._html_tag);
@@ -85,19 +95,19 @@ class SpellUIObject extends SpellObject {
                 dom_object.innerText = this["text"];
             } else if (this[_SC.NODES.child_spells].length > 0) {
                 this[_SC.NODES.child_spells].forEach(child => {
-                    const coo = child.get_dom_object()
+                    const coo = child.getDOMObject()
                     dom_object.appendChild(coo);
                 })
             }
             this._dom_object = dom_object;
-            this.on_create()
+            this.onCreate()
         }
         return this._dom_object;
     }
 
-    get_html() {
-        //console.log("html for " + this._id)
-        this._html = this.get_dom_object().outerHTML;
+    getHTML() {
+        const dom = this.getDOMObject()
+        this._html = dom?.outerHTML;
         return this._html;
     }
 
@@ -105,53 +115,61 @@ class SpellUIObject extends SpellObject {
     
 
   
-
-    get dom_element() {
+    /**
+     * return the do
+     */
+    get DOMElementFromHTML() {
         return document.getElementById(this._id)
     }
 
     append(spell_object) {
         this[_SC.NODES.child_spells].push(spell_object);
         if (this._dom_object) {
-            this.dom_element.appendChild(spell_object.get_dom_object())
+            this.DOMElementFromHTML?.appendChild(spell_object.getDOMObject())
         }
     }
 
-    set_text(text)
+    setText(text)
     {
         this.text = text;
-        if(this.dom_element) {
-            this.dom_element.innerHTML = text
+        if(this.DOMElementFromHTML) {
+            this.DOMElementFromHTML.innerHTML = text
         }
     }
 
-    set_style(attr, val) {
-        this.dom_element.style[attr]= val
+    setStyle(attr, val) {
+        if(this._dom_object) {
+            this._dom_object.style[attr]= val
+        }
     }
 
     show() {
-        this.dom_element.style.display = this._base_display 
+        if(this._dom_object) {
+            this._dom_object.style.display = this._base_display 
+        }
     }
 
     hide() {
-        this._base_display = this.dom_element.style.display
-        this.dom_element.style.display = "none"
+        if(this._dom_object) {
+            this._base_display = this._dom_object.style.display
+            this._dom_object.style.display = "none"
+        }
     }
 
     /**
      * this method triggered after the HTML DOM object has been created and added to the parent element
      */
-    async on_create() {
-        this._spells.forEach(child => {
-            if(child.v && typeof child.on_create === 'function') {
-                child.on_create()
+    async onCreate() {
+        this[_SC.NODES.child_spells].forEach(child => {
+            if(child.onCreate && typeof child.onCreate === 'function') {
+                child.onCreate()
             }})
     }
 
-    async on_mount() {
+    async onMount() {
         this[_SC.NODES.child_spells].forEach(child => {
-            if(child.on_mount && typeof child.on_mount === 'function') {
-                child.on_mount()
+            if(child.onMount && typeof child.onMount === 'function') {
+                child.onMount()
             }})
     }
 
@@ -168,9 +186,9 @@ class SpellUIObject extends SpellObject {
             if(SpellData.variables[this._data_source]) {
                 const ph = "_$"
                 if(this._format && this._format.indexOf(ph)>0) {
-                    this.set_text(this._format.replace(ph,SpellData.variables[this._data_source]))
+                    this.setText(this._format.replace(ph,SpellData.variables[this._data_source]))
                 } else {
-                    this.set_text(SpellData.variables[this._data_source])
+                    this.setText(SpellData.variables[this._data_source])
                 }
             }
             else if(SpellData.objects[this._data_source]) {
@@ -190,9 +208,9 @@ class SpellUIObject extends SpellObject {
                         trimmed = replace_at_plus_one(trimmed,index,val)
                         start_index = index + 1 + val.length;
                     }
-                    this.set_text(trimmed)
+                    this.setText(trimmed)
                 } else {
-                    this.set_text(ob.toString())
+                    this.setText(ob.toString())
                 }
             }
         }

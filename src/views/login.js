@@ -109,7 +109,7 @@ export class FormField extends SpellUIObject {
         this.append(txt)
     }
 
-    async on_mount() {
+    async onMount() {
         //console.log(this)
         const txt_id = "txt-" + this._ids
         const obj = document.getElementById(txt_id)

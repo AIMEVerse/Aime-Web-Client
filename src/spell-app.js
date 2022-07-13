@@ -1,4 +1,4 @@
-import { Spell, Spell3d, Spell3dModule, SpellUI, SpellUIModule, SpellData, SpellEvents, SpellAIModule } from '/lib/spell/index'
+import { Spell,  SpellUI, SpellData } from '/lib/spell/index'
 import { LoginComponent } from './views/login.js'
 import { DashboardComponent } from './views/dashboard.js'
 import { RoomComponent } from './views/room.js'
@@ -49,17 +49,17 @@ const dashboard_data = {
 
 async function main() {
 
-    const spell_ui = new SpellUIModule()
+    //const spell_ui = new SpellUIModule()
 
 
 
-    Spell.loadModule(spell_ui)
+    Spell.loadModule(SpellUI)
 
     
 
     // spell_ui.importObjects(LoginComponent)
     // spell_ui.importObjects(DashboardComponent)
-    spell_ui.importObjects(RoomComponent)
+    SpellUI.importObjects(RoomComponent)
 
 
     Spell.start()

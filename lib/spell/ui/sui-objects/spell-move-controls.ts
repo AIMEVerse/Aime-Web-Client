@@ -26,6 +26,10 @@ import nipplejs from 'nipplejs' //NippleJS Joystick Controller
  */
 
 export class SpellJoyStick extends SpellUIObject {
+    private _joy_manager: any
+    private _joy_options: any
+    private _keyboard_down_listener: void
+    private _key_down: boolean
     constructor(data) {
 
         const ids = SpellUtils.guid()
@@ -54,12 +58,12 @@ export class SpellJoyStick extends SpellUIObject {
 
     }
 
-    on_create() {
-        const dom_object = super.get_dom_object() //create dom element for fist time 
+    async onCreate() {
+        const dom_object = super.getDOMObject() //create dom element for fist time 
         if (!this._joy_manager) {
             this._joy_options.zone = document.getElementById(this["_id"]) 
-            this.joy_manager = nipplejs.create(this._joy_options);
-            this.joy_manager['0'].on('move', function (evt, data) {
+            this._joy_manager = nipplejs.create(this._joy_options);
+            this._joy_manager['0'].on('move', function (evt, data) {
                 const forward = data.vector.y
                 const turn = data.vector.x
 
@@ -83,7 +87,7 @@ export class SpellJoyStick extends SpellUIObject {
                 SpellData.objects["joy-move"] = joy_move
             })
 
-            this.joy_manager['0'].on('end', function (evt) {
+            this._joy_manager['0'].on('end', function (evt) {
                 const joy_move = {forward: 0,backward: 0,left: 0,right: 0}
                 SpellData.objects["joy-move"] = joy_move
             })
@@ -108,7 +112,7 @@ export class SpellJoyStick extends SpellUIObject {
     
             }, false);
 
-            this._keyboard_up_listener = document.addEventListener('keyup', async (event) => {
+            this._keyboard_down_listener = document.addEventListener('keyup', async (event) => {
                 if(sthis._key_down) {
                     sthis._key_down = false
                     const joy_move = {forward: 0,backward: 0,left: 0,right: 0}
@@ -119,7 +123,8 @@ export class SpellJoyStick extends SpellUIObject {
 
 
         }
-        return dom_object
+        super.onCreate()
+        //return dom_object
     }
 
 

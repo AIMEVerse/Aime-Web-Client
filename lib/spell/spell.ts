@@ -68,7 +68,8 @@ class SpellEngine {
         this.load()
     }
 
-    
+  
+
     loadModule(spell_module:SpellModule):void {
         //console.log(spell_module)
         if (this.modules.hasOwnProperty(spell_module.name)) {

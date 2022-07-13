@@ -16,6 +16,8 @@ import Spell from "../spell"
 import SpellUtils from "../spell-utils";
 import * as _SC from "../spell-consts";
 import SpellUIObject from "./spell-ui-object";
+import SpellObjectManager from "../spell-object-manager"
+
 
 import {
     SpellButton,
@@ -24,9 +26,16 @@ import {
     SpellTextField,
     SpellWebcam
 } from "./spell-core-objects"
+import { iSpellObjectData } from "../spell-object";
 
 export class SpellObjectManagerList extends SpellUIObject {
-    constructor(data) {
+    _title: string;
+    _om: SpellObjectManager;
+    event_listener: void;
+
+
+
+    constructor(data:iSpellObjectData) {
 
         const ids = SpellUtils.guid()
         const defaults = {
@@ -43,7 +52,7 @@ export class SpellObjectManagerList extends SpellUIObject {
 
         const title = new SpellLabel({
             _id: "som-title-" + ids,
-            text: this.title,
+            text: this._title,
             class: "view-title"
         })
         this.append(title)
@@ -63,8 +72,8 @@ export class SpellObjectManagerList extends SpellUIObject {
             Object.keys(lst).forEach(key => {
                 const so = lst[key]
                 if (
-                    (this._show_cameras && so._is_camera) ||
-                    (this._show_lights && so._is_light) ||
+                    (this["_show_cameras"] && so._is_camera) ||
+                    (this["_show_lights"] && so._is_light) ||
                     (!so._is_light && !so._is_camera)) {
 
                     const sv = {
@@ -90,7 +99,9 @@ export class SpellObjectManagerList extends SpellUIObject {
 
 
 export class SpellObjectManagerInventory extends SpellUIObject {
-    constructor(data) {
+    private _title: string;
+    _om: SpellObjectManager;
+    constructor(data:iSpellObjectData) {
 
         const ids = SpellUtils.guid()
         const defaults = {
@@ -110,7 +121,7 @@ export class SpellObjectManagerInventory extends SpellUIObject {
 
         const title = new SpellLabel({
             _id: "som-title-" + ids,
-            text: this.title,
+            text: this._title,
             class: "view-title"
         })
         this.append(title)
@@ -124,8 +135,8 @@ export class SpellObjectManagerInventory extends SpellUIObject {
             Object.keys(lst).forEach(key => {
                 const so = lst[key]
                 if (
-                    (this._show_cameras && so._is_camera) ||
-                    (this._show_lights && so._is_light) ||
+                    (this["_show_cameras"] && so._is_camera) ||
+                    (this["_show_lights"] && so._is_light) ||
                     (!so._is_light && !so._is_camera)) {
                     const ssname = (so.descriptor().name) ? so.descriptor().name : so.name
                     const sv = {
@@ -148,6 +159,9 @@ export class SpellObjectManagerInventory extends SpellUIObject {
 
 
 export class SpellPropsPair extends SpellUIObject {
+    private _title: string;
+    private _value: string;
+    
     constructor(data) {
 
         const ids = SpellUtils.guid()
@@ -182,6 +196,10 @@ export class SpellPropsPair extends SpellUIObject {
 
 
 export class SpellDashboard extends SpellUIObject {
+    private _cam_buttom: SpellButton;
+    private _webcam: SpellWebcam;
+    private _is_active: boolean;
+    
     constructor(data) {
 
         const ids = SpellUtils.guid()
@@ -246,12 +264,12 @@ export class SpellDashboard extends SpellUIObject {
 
 
     toggle_camera() {
-        if (this._webcam.is_available()) {
-            const video_elem = this._webcam.dom_element
-            if (!this._webcam.is_playing) {
+        if (this._webcam.isAvailable()) {
+            const video_elem = this._webcam.DOMElementFromHTML
+            if (!this._webcam.isPlaying) {
                 //console.log(video_elem);
 
-                this._webcam.set_source(video_elem)
+                this._webcam.setSource(video_elem)
                 // Activate the webcam stream.
                 // navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
                 //     video_elem.srcObject = stream;
@@ -277,10 +295,10 @@ export class SpellDashboard extends SpellUIObject {
     /**
      * this method triggered after the HTML DOM object has been created and added to the parent element
      */
-    async on_create() {
+    async onCreate() {
         //console.log("dashboard created")
         const sthis = this //strong this
-        const player = $("#" + this._id)
+        const player = document.getElementById(this._id)
         document.addEventListener('keydown', async (event) => {
 
             if (event.key.toLocaleLowerCase() == "~" && event.shiftKey) {
@@ -288,32 +306,32 @@ export class SpellDashboard extends SpellUIObject {
                 event.stopPropagation()
                 sthis._is_active = true
 
-                player.toggle()
-                if (player.is(":visible")) {
-                    $("#spell-command").focus();
-                }
+                // player.toggle()
+                // if (player.is(":visible")) {
+                //     $("#spell-command").focus();
+                // }
                 return
 
             }
             else if ((event.key == "Enter") && sthis._is_active) {
                 event.preventDefault()
                 event.stopPropagation()
-                sthis._is_active = false
-                const cmnd_line = $("#spell-command")
-                const scmd = cmnd_line.val()
-                if (scmd && scmd.length > 1) {
-                    let res = Spell.getModule('spell3d').run(scmd)   //run from module directly
-                }
+                // sthis._is_active = false
+                // const cmnd_line = document.getElementById("spell-command")
+                // const scmd = cmnd_line.val()
+                // if (scmd && scmd.length > 1) {
+                //     let res = Spell.getModule('spell3d').run(scmd)   //run from module directly
+                // }
                 return;
             }
         }
 
         )
-        const cam_button = this._cam_buttom.dom_element //document.getElementById("cam-button")
+        const cam_button = this._cam_buttom.DOMElementFromHTML //document.getElementById("cam-button")
 
 
 
-        cam_button.addEventListener('click', (event) => { sthis.toggle_camera() })
+        cam_button?.addEventListener('click', (event) => { sthis.toggle_camera() })
 
 
     }

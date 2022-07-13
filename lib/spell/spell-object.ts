@@ -6,12 +6,23 @@ import SpellCommand from "./spell-command";
 const reserved_words = {  }
 const spell_object_html_fields_mapping = { "_id": "id", "css-class": "class", "animation": "xyz", "input-type": "type" };
 
+export interface iSpellObjectData{
+    _id?:string | null
+    id?:string | null
+    name?:string
+    _type?:string
+    _spells
+    
+}
+
 export class SpellObject {
     
-    _id: any
+    _id: string
+    id: string | null
+    name:string | null
     _ignore:{}
 
-    constructor(data:{} , defaults?:{} ) {
+    constructor(data:iSpellObjectData , defaults?:{} ) {
         if (defaults) {
             SpellUtils.mergeDefaultsWithData(data, defaults)
         }
@@ -67,7 +78,7 @@ export class SpellObject {
     // /**
     //  * this method triggered after the HTML DOM object has been created and added to the parent element
     //  */
-    // async on_create() {
+    // async onCreate() {
     // }
 
 

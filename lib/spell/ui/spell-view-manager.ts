@@ -5,23 +5,29 @@
  * @description manage views activities
  * */
 
-import * as SE from "../spell-event-manager"
+import * as _SE from "../spell-event-manager"
 import Spell from "../spell"
 import * as _SC from "../spell-consts"
+import SpellUI from "./spell-ui"
+import SpellUtils from "../spell-utils"
+import SpellView  from "./spell-core-objects"
+
+
+
 
 class SpellViewManager {
+    raw_views: Record<string,string> ={}
+    views:Record<string,SpellView>= {}
+    active_view: string | null
+    active_modal: string |null
+    spell_html_elem: string = "spell-player" 
 
     /**
      * Spell View Manager constructor
      * @member raw_views This object contains the textual JSON representation of views (these are not SpellView objects, uses for caching views before loading)
      * @member views SpellView objects that are ready to use (show, hide...)
      */
-    constructor() {
-        this.raw_views = {};
-        this.views = {};
-        this.active_view = null;
-        this.active_modal = null;
-        this.spell_html_elem = "spell-player" 
+    constructor() { 
         
         this.init();
     }
@@ -29,7 +35,7 @@ class SpellViewManager {
     init() {
         //handle back functionality for browser
         window.addEventListener('hashchange', this.hashchange)
-        SE.SpellEventManager.fire(SE.SpellEvents.vm_loaded)
+        _SE.SpellEventManager.fire(_SE.SpellEvents.vm_loaded)
     }
 
     /**
@@ -41,10 +47,10 @@ class SpellViewManager {
      */
     createView(view_data, auto_add = true) {
 
-        let new_view = Spell.getModule("spell-ui").create(view_data);
+        let new_view = SpellUI.create(view_data);
         if (auto_add && view_data.hasOwnProperty("name")) {
-            document.querySelector("#" + this.spell_html_element).append(new_view.get_dom_object());
-            new_view.on_mount()
+            document.querySelector("#" + this.spell_html_elem)?.append(new_view.getDOMObject());
+            new_view.onMount()
             this.addView(new_view, view_data.name)
         }
         return new_view;
@@ -55,24 +61,24 @@ class SpellViewManager {
         this.views[view_name] = view;
     }
 
-    getView(view_name) {
+    getView(view_name):SpellView {
         return this.views[view_name];
     }
 
-    hasView(view_name) {
+    hasView(view_name):boolean {
         return this.views.hasOwnProperty(view_name)
     }
 
-    addRawViews(vuz) {
+    addRawViews(vuz):void {
         let rvuz = Object.keys(vuz);
         rvuz.forEach((vu) => this.raw_views[vu] = vuz[vu]);
     }
 
-    addRawView(view_name, view_data) {
+    addRawView(view_name, view_data):void {
         this.raw_views[view_name] = view_data
     }
 
-    loadPage(default_view_name) {
+    loadPage(default_view_name):void {
         let anc = window.location.hash
         if (anc && anc.length > 1) {
             this.active_view = anc.substring(1);
@@ -84,14 +90,14 @@ class SpellViewManager {
 
 
     /**
-     * handle the hashchange browser event, used to support Back funcionality.
+     * handle the hashchange browser event, used to support Back functionality.
      */
-    hashchange() {
+    hashchange():void {
         let anc = window.location.hash
         if (anc && anc.length > 1) {
             let v_name = anc.substring(1);
             if (this.active_view != v_name) {
-                Spell.getModule("spell-ui").vm.showPage(v_name)
+                SpellUI.vm.showPage(v_name)
             }
         }
     }
@@ -102,14 +108,14 @@ class SpellViewManager {
      * Show view on screen
      * @param {*} view_name 
      */
-    showView(view_name){
-        let vu = "", new_view;
+    showView(view_name:string):void {
+        let new_view;
         let oncreate = false;
         if (this.hasView(view_name)) {
             new_view = this.getView(view_name);
         }
         else {
-            vu = this.raw_views[view_name];
+            let vu = this.raw_views[view_name];
             vu.name = view_name;
             new_view = this.createView(vu) 
             oncreate = true;
@@ -122,7 +128,7 @@ class SpellViewManager {
      * Show view as page (set as active view and dismiss former active)
      * @param {*} view_name 
      */
-    showPage(view_name) {
+    showPage(view_name):void {
         let vu = "", new_view;
         let oncreate = false;
         if (this.hasView(view_name)) {
@@ -147,7 +153,7 @@ class SpellViewManager {
             //temporary should be replaced with spell command
             //eval(new_view.oncreate);
         }
-        Spell.getModule("spell-ui").open_url("#" + this.active_view);
+        SpellUI.open_url("#" + this.active_view);
     }
 
 
@@ -164,13 +170,13 @@ class SpellViewManager {
         dialog.show()
     }
 
-    hide_dialog(dialog_id) {
-        if (!dialog_id) {
-            dialog_id = this.active_modal;
-        }
-        $("#" + dialog_id).modal('hide')
-        this.active_modal = null;
-    }
+    // hide_dialog(dialog_id) {
+    //     if (!dialog_id) {
+    //         dialog_id = this.active_modal;
+    //     }
+    //     ("#" + dialog_id).modal('hide')
+    //     this.active_modal = null;
+    // }
 
 }
 

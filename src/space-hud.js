@@ -249,7 +249,7 @@ export class HudFavorites extends SpellUIObject {
        }
    }
 
-    on_create(){
+   async onCreate(){
 
         // Add a new favorite item
         document.getElementById(this.add_to_fav._id).onclick = () => {

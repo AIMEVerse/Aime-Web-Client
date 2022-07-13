@@ -24,17 +24,19 @@ import SpellParser  from "../spell-parser";
 
 
 export class SpellUIModule extends SpellModule {
+    vm: SpellViewManager
+
     constructor(data) {
         const defaults = {name:"spell-ui"}
         super(data,defaults)
         //this.engine = SpellUI
-        this.vm = new SpellViewManager(this)
+        this.vm = new SpellViewManager()
         //register default objects
         this.importObjects(SpellObjects)
         //this.importObjects(SpellDashboardObjects)
         //this.importObjects(SpellMoveControls)
 
-        SpellEventManager.fire(SpellEvents.engine_init)
+        SpellEventManager.fire("spell-ui-loaded")
 
     }
 
@@ -44,7 +46,7 @@ export class SpellUIModule extends SpellModule {
    
     load_app(spell_app) {
         if(spell_app.player && spell_app.player.html_element) {
-            this.vm.spell_html_element = spell_app.player.html_element
+            this.vm["spell_html_element"] = spell_app.player.html_element
         }
         this.vm.addRawViews(spell_app.views);
         SpellEventManager.fire(SpellEvents.app_loaded)
@@ -77,11 +79,11 @@ export class SpellUIModule extends SpellModule {
     load_control(data) {
         const spell_obj = this.create(data)
         
-        const ctrl = spell_obj.get_dom_object()
-        const pe = (spell_obj._parent_element) ? spell_obj._parent_element : this.vm.spell_html_element;
-        document.querySelector("#" + pe).append(ctrl)
-        if(spell_obj.on_create && typeof spell_obj.on_create === 'function') {
-            spell_obj.on_create()
+        const ctrl = spell_obj.getDOMObject()
+        const pe = (spell_obj._parent_element) ? spell_obj._parent_element : this.vm["spell_html_element"];
+        document.querySelector("#" + pe)?.append(ctrl)
+        if(spell_obj.onCreate && typeof spell_obj.onCreate === 'function') {
+            spell_obj.onCreate()
         }
         
         
@@ -98,7 +100,7 @@ export class SpellUIModule extends SpellModule {
     }
 }
 
-export const SpellUI = new SpellUIModule()
+export const SpellUI = new SpellUIModule({})
 
 export default SpellUI
 export {
@@ -106,5 +108,4 @@ export {
     SpellObjects,
     SpellDashboardObjects,
     SpellMoveControls
-    //SpellUIEngine as SpellEngine
 }

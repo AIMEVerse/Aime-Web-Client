@@ -107,11 +107,7 @@ async function main() {
     };
 
     spell_ui.engine.load_control(fav_data)
-    //Spell.info()
-    //document.getElementById("info-layer").style.display="none"
-    //  let v = new SpellView({"text":"HI"})
-    //  document.querySelector("#spell-player").innerHTML = v.get_html()
-
+    
 
 
     document.addEventListener('keydown', async (event) => {
