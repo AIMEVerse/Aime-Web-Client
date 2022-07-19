@@ -3,7 +3,7 @@ import { LoginComponent } from './views/login.js'
 import { DashboardComponent } from './views/dashboard.js'
 import { RoomComponent } from './views/room.js'
 import "../lib/spell/style/spell.css"
-// import "../public/style/space-hud.css"
+import "../public/style/aime.css"
 
 
 
@@ -49,7 +49,7 @@ const dashboard_data = {
 
 async function main() {
 
-    //const spell_ui = new SpellUIModule()
+    
 
 
 
@@ -57,8 +57,8 @@ async function main() {
 
     
 
-    // spell_ui.importObjects(LoginComponent)
-    // spell_ui.importObjects(DashboardComponent)
+    // SpellUI.importObjects(LoginComponent)
+    SpellUI.importObjects(DashboardComponent)
     SpellUI.importObjects(RoomComponent)
 
 
@@ -70,11 +70,16 @@ async function main() {
             version: 1
         },
         views: {
-            // "login-view": {
-            //     _type: "login",
-            //     _id: "login-view",
-            //     animation: "fade",
-            // },
+            "login-view": {
+                _type: "login",
+                _id: "login-view",
+                animation: "fade",
+            },
+            "dashboard-panel": {
+                _type: "dashboard-panel",
+                _id: "dashboard-panel",
+                animation: "fade",
+            },
             "room-data-view": {
                 _type: "room-data",
                 _id: "room-data-view",
@@ -86,7 +91,7 @@ async function main() {
             }
         },
         defaults: {
-            view: "room-data-view"
+            view: "dashboard-panel"
         },
         player: {
             html_element: "spell-player"
@@ -94,10 +99,14 @@ async function main() {
 
     }
 
+
+
+
+
     
     SpellUI.load_app(spell_app)
 
-    SpellUI.vm.showView("room-data-view")
+    SpellUI.vm.showView("dashboard-panel")
 
     SpellData.variables["rd-room-data-view"] = dashboard_data.spaces[0].users.online.length
 
