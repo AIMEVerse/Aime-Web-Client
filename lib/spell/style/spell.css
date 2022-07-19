@@ -394,15 +394,3 @@ a:hover {
     color: white;
 }
 
-/* Header @@@@@@@@@@@@@@@@@@@@*/
-.header{
-    /* position: relative;
-    top: 20px;
-    left: 200px; */
-    background-color: white;
-    width: 100%;
-}
-
-.right-dashboard{
-    position: relative;
-}
