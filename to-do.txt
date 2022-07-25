@@ -1,29 +1,21 @@
-aime to-do
-------------------------------
+Dashboard
+___________________________________________________
+----------------- User Events -----------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+- traction - change server / realm
+- online status - connected/disconnected
+- enter scene / leave scene
+- camera mode
+- expression animation
+- click on another player
 
+- ray tracing - Objects penetrated by the click ray
 
-- spell3d-objct -> extends SpellObject
-- remove spell-engine from spellui + spell3d modules
-- key stroke handler manager
+- User location x,y,z
 
-- favorites
-    - look & feel 
-    - save at local storage
-
-- island - design amie open island/museum - for virtual presentation
-
-
-
-- utils
-    - aime-setting
-    - aime-log
-
-- database
-- entites
-    - admins
-    - users
-    - worlds
-        - lights
-        - cameras
-        - models
-        - controllers
+___________________________________________________
+----------------- conversations -----------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+- who sent the most of messages
+- total number of messages sent
+- number of messages for each user

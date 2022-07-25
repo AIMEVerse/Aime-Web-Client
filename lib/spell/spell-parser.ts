@@ -126,6 +126,8 @@ export class SpellParser {
     static xmlString2Spell(xmlString) {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlString,"text/xml");
+        console.log(xmlDoc);
+        
         if(xmlDoc.childNodes.length>0) {
             return SpellParser.xml2spell(xmlDoc.childNodes[0])
         }
