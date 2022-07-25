@@ -38,7 +38,7 @@ export class SpellUIObject extends SpellObject {
 
         if (data) {
             if (data.hasOwnProperty("_ignore")) {
-                this._ignore = SpellUtils.createIgnoreList(data["_ignore"])
+                this._ignore = SpellUtils.createIgnoreList(data["_ignore"],reserved_words)
             }
             this.parse(data, this._ignore);
         }

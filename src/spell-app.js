@@ -5,6 +5,7 @@ import { RoomComponent } from './views/room.js'
 import "../lib/spell/style/spell.css"
 import "../public/style/aime.css"
 
+import XPell from 'xpell/XPellLib'
 
 
 const dashboard_data = {
@@ -51,6 +52,7 @@ async function main() {
 
     
 
+    console.log (XPell.version)
 
 
     Spell.loadModule(SpellUI)

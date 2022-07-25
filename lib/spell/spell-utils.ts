@@ -5,7 +5,7 @@ class SpellUtils {
      * create ignore list for parser to ignore spells words
      * @param list - list of reserved words (comma separated)
      */
-    static createIgnoreList(list) {
+    static createIgnoreList(list,reserved_words) {
         let words = list.split(",");
         let out_list = reserved_words;
         words.forEach(word => out_list[word] = "");
@@ -15,7 +15,7 @@ class SpellUtils {
 
     static guid() {
         let chars = '0123456789abcdef'.split('');
-        let uuid = [], rnd = Math.random, r;
+        let uuid:string[] = [], rnd = Math.random, r;
         uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
         uuid[14] = '4'; // version 4
         for (let i = 0; i < 36; i++) {
