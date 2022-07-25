@@ -1,7 +1,8 @@
 import "../public/style/aime.css"
 
-import {XPell as _X, XUI} from 'xpell/XPellLib'
+import {XPell as _X, XUI,XData as _XD} from 'xpell'
 
+import { DashboardComponent } from './views/dashboard.js'
 
 
 
@@ -13,6 +14,7 @@ async function main() {
     console.log (_X.version)
 
     _X.loadModule(XUI)
+    XUI.importObjects(DashboardComponent)
 
 
     
@@ -34,6 +36,11 @@ async function main() {
                 _type: "view",
                 _id: "login-view",
                 animation: "fade",
+            },
+            "dashboard-panel": {
+                _type: "card-pack",
+                _id: "dashboard-panel",
+                animation: "fade",
             }
         },
         defaults: {
@@ -49,10 +56,41 @@ async function main() {
 
 
 
+
+const playersDataSource = [
+    {
+    id:1,
+    name:"Tamir",
+    image:"/images/avatars/girl.png",
+    online:true,
+    favorite:true
+},
+{
+    id:2,
+    name:"Liad",
+    image:"/images/avatars/girl.png",
+    online:true,
+    favorite:true
+},
+{
+    id:3,
+    name:"Keren",
+    image:"/images/avatars/girl.png",
+    online:true,
+    favorite:true
+}
+]
+
+
+
+//update XData object 
+
+_XD.objects["players-list"] = playersDataSource
+
     
     XUI.loadApp(xapp)
 
-    XUI.vm.showView("login-view")
+    XUI.vm.showView("dashboard-panel")
 
     
 

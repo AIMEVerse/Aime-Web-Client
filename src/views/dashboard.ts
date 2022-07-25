@@ -1,6 +1,8 @@
 
-import { SpellButton, SpellLink, SpellView } from "../../lib/spell/ui/spell-core-objects";
-import { Spell, SpellUtils, SpellData, SpellUI, SpellUIObject, SpellEventManager } from "/lib/spell/index";
+import { XPell, XUtils, XData, XUI, XEventManager as XEM ,XUIObject} from 'xpell'
+
+
+
 
 
 
@@ -17,10 +19,10 @@ let localCss = /*css*/ `
 
 
 
-export class SidePanel extends SpellUIObject {
+export class SidePanel extends XUIObject {
     constructor(data) {
 
-        const ids = SpellUtils.guid()
+        const ids = XUtils.guid()
         const defaults = {
             _ids: ids,
             _type: "side-panel",
@@ -93,8 +95,8 @@ export class SidePanel extends SpellUIObject {
         // domParser.parseFromString(template, "text/html")
         let xmlNode = domParser.parseFromString(sidePanel.replaceAll("\n", ""), "text/xml").firstChild
         // console.log(xmlNode.normalize());
-        const sj = Spell.parser.xml2spell(xmlNode);
-        const sjObj = SpellUI.create(sj)
+        const sj = XPell.parser.xml2XPell(xmlNode);
+        const sjObj = XUI.create(sj)
         console.log("sjo", sjObj);
         this.append(sjObj)
 
@@ -110,7 +112,7 @@ export class SidePanel extends SpellUIObject {
         const zp = (num, places) => String(num).padStart(places, '0') //leading zero pad function 
 
         //update SpellData to update the data source
-        SpellData.variables["sys-time"] = zp(d.getHours(), 2) + ":" + zp(d.getMinutes(), 2) + ":" + zp(d.getSeconds(), 2)
+        XData.variables["sys-time"] = zp(d.getHours(), 2) + ":" + zp(d.getMinutes(), 2) + ":" + zp(d.getSeconds(), 2)
 
         // call super onFrame to bubble the event to the child spells
         super.onFrame(frame_number)
@@ -122,10 +124,10 @@ export class SidePanel extends SpellUIObject {
 
 
 
-export class HeaderPanel extends SpellUIObject {
+export class HeaderPanel extends XUIObject {
     constructor(data) {
 
-        const ids = SpellUtils.guid()
+        const ids = XUtils.guid()
         const defaults = {
             _ids: ids,
             _type: "header-panel",
@@ -171,17 +173,17 @@ export class HeaderPanel extends SpellUIObject {
         // domParser.parseFromString(template, "text/html")
         // let xmlNode = domParser.parseFromString(header.replaceAll("\n", ""), "text/xml").firstChild
         // console.log(xmlNode.normalize());
-        const sj = Spell.parser.xmlString2Spell(header);
-        const sjObj = SpellUI.create(sj)
+        const sj = XPell.parser.xmlString2XPell(header);
+        const sjObj = XUI.create(sj)
         this.append(sjObj)
 
     }
 }
 
-export class UserCard extends SpellUIObject {
+export class UserCard extends XUIObject {
     constructor(data) {
 
-        const ids = SpellUtils.guid()
+        const ids = XUtils.guid()
         const defaults = {
             _ids: ids,
             _type: "dashboard-widget",
@@ -198,7 +200,7 @@ export class UserCard extends SpellUIObject {
 
         super(data, defaults);
 
-        let widget = /*html*/ `
+        let widget = /*xml*/ `
         <view _id="user-small-card" class="user-card-registered">
             <view _id="user-small-card-inner" class="user-card-inner">
                 <view class="favourite-icon"><image _id="widget-img" src="/images/avatars/favStar2.svg"/></view>
@@ -214,18 +216,90 @@ export class UserCard extends SpellUIObject {
             </view >
         </view >`
 
-        const sj = Spell.parser.xmlString2Spell(widget);
-        const sjObj = SpellUI.create(sj)
+        const sj = XPell.parser.xmlString2XPell(widget);
+        const sjObj = XUI.create(sj)
         console.log("sj ",sj);
         console.log("sjObj ",sjObj);
         this.append(sjObj)
     }
 }
 
-export class DashboardWidget extends SpellUIObject {
+
+
+class CardPack extends XUIObject  {
+    private _cards: Array<UserCard>
+    constructor(data) {
+        
+        const defaults = {
+            _type:"card-pack",
+            _cards:[],
+            _players:{},
+            class:"carp-pack"
+        }
+        super(data,defaults)
+        this._cards.forEach(crd => {
+            const crdObj = XUI.create(crd)
+            this.append(crdObj)
+        })
+    }
+
+    async onFrame(frameNumber: number): Promise<void> {
+        const pa = XData.objects["players-list"]
+        pa.forEach(player => {
+            if(!this["_players"][player.id]) {
+                let iplayer = JSON.parse(JSON.stringify(player))
+                
+                iplayer["lastSeen"] = frameNumber
+                this["_players"][player.id] = iplayer
+                
+                console.log("adding player " + iplayer.id);
+                const crd = {
+                            _type:"card",
+                            _id:"crd-" + player.id,
+                            _user_data:{
+                                name: iplayer.name,
+                                online: iplayer.online,
+                                favourite: iplayer.favourite,
+                                image: iplayer.image
+                            }
+                        }
+                this.append(XUI.create(crd))
+            } else {
+                this["_players"][player.id].lastSeen = frameNumber
+            } 
+        })
+
+
+        const playersArray = Object.keys(this["_players"])
+        if(this["_players"]) {
+
+            
+            playersArray.forEach(player => {
+                const p1 = this["_players"][player]
+                //console.log(p1["name"],p1["lastSeen"]);
+                
+                if(p1["lastSeen"] != frameNumber) {
+                    // console.log("anomaly ", p1["lastSeen"]);
+                    const domCard = document.getElementById("crd-" + p1["id"]) 
+                    
+                    if(domCard)
+                    document.getElementById(this._id)?.removeChild(domCard)
+                    
+                }
+            })
+        }
+
+        super.onFrame(frameNumber)
+
+
+    }
+}
+
+
+export class DashboardWidget extends XUIObject {
     constructor(data) {
 
-        const ids = SpellUtils.guid()
+        const ids = XUtils.guid()
         const defaults = {
             _ids: ids,
             _type: "dashboard-widget",
@@ -250,10 +324,10 @@ export class DashboardWidget extends SpellUIObject {
 
 }
 
-export class DashboardBody extends SpellUIObject {
+export class DashboardBody extends XUIObject {
     constructor(data) {
 
-        const ids = SpellUtils.guid()
+        const ids = XUtils.guid()
         const defaults = {
             _ids: ids,
             _type: "dashboard-body",
@@ -267,10 +341,10 @@ export class DashboardBody extends SpellUIObject {
     }
 }
 
-export class DashboardPanel extends SpellUIObject {
+export class DashboardPanel extends XUIObject {
     constructor(data) {
 
-        const ids = SpellUtils.guid()
+        const ids = XUtils.guid()
         const defaults = {
             _ids: ids,
             _type: "dashboard-panel",
@@ -281,7 +355,7 @@ export class DashboardPanel extends SpellUIObject {
         super(data, defaults);
 
 
-        const widgets = SpellUI.create({ "_type": "view", "_id": "widgets" + ids, "class": "widgets" })
+        const widgets = XUI.create({ "_type": "view", "_id": "widgets" + ids, "class": "widgets" })
 
         // const sidePanel = new SidePanel({ _id: "sidePanel" })
         const headerPanel = new HeaderPanel({ _id: "headerPanel" })
@@ -304,14 +378,16 @@ export class DashboardPanel extends SpellUIObject {
 }
 
 
-export class DashboardComponent {
-    static get_objects() {
+export class DashboardComponent  {
+    static getObjects() {
         return {
             "side-panel": SidePanel,
             "header-panel": HeaderPanel,
             "dashboard-panel": DashboardPanel,
             "dashboard-body": DashboardBody,
             "dashboard-widget": DashboardWidget,
+            "card":UserCard,
+            "card-pack":CardPack
         }
     }
 }
