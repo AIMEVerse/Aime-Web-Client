@@ -13,6 +13,12 @@ html {
     font-size: max(1rem, min(24px, 3vmin));
 
 }
+
+#xplayer{
+    margin: 0;
+    padding: 0;
+}
+
 .dashboard-body {
     display: flex;
     /* grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) ); */

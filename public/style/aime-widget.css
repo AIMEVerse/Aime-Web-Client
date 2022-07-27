@@ -140,10 +140,9 @@
     display: flex;
     justify-content: center;
     /* align-items: center; */
+    gap:20px;
     flex-wrap: wrap;
-    min-width: 300px;
-    width: 500px;
-    border: 2px green solid;
+    width: 100%;
     font-size: 3rem;
 }
 

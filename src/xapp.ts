@@ -2,7 +2,7 @@ import "../public/style/aime.css"
 
 import {XPell as _X, XUI,XData as _XD} from 'xpell'
 
-import { DashboardComponent } from './views/dashboard.js'
+import { DashboardComponent } from './XComponents/dashboard.js'
 
 
 
@@ -38,7 +38,7 @@ async function main() {
                 animation: "fade",
             },
             "dashboard-panel": {
-                _type: "card-pack",
+                _type: "dashboard-panel",
                 _id: "dashboard-panel",
                 animation: "fade",
             }

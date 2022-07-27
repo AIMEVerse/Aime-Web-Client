@@ -1,5 +1,5 @@
 
-import { XPell, XUtils, XData, XUI, XEventManager as XEM ,XUIObject} from 'xpell'
+import { XPell, XUtils, XData, XUI, XEventManager as XEM ,XUIObject, XObjectPack} from 'xpell'
 
 
 
@@ -7,13 +7,13 @@ import { XPell, XUtils, XData, XUI, XEventManager as XEM ,XUIObject} from 'xpell
 
 
 
-let localCss = /*css*/ `
-.login-form {
-    width:"120px";
-    background-color: #fff;
+// let localCss = /*css*/ `
+// .login-form {
+//     width:"120px";
+//     background-color: #fff;
     
-}
-`
+// }
+// `
 
 
 
@@ -234,7 +234,7 @@ class CardPack extends XUIObject  {
             _type:"card-pack",
             _cards:[],
             _players:{},
-            class:"carp-pack"
+            class:"card-pack"
         }
         super(data,defaults)
         this._cards.forEach(crd => {
@@ -361,7 +361,7 @@ export class DashboardPanel extends XUIObject {
         const headerPanel = new HeaderPanel({ _id: "headerPanel" })
         const dashboardBody = new DashboardBody({ _id: "dashboard-body" })
         const dashboardWidget = new DashboardWidget({ _id: "dashboard-users" })
-        const userCard = new UserCard({ _id: "user1" })
+        const cardPack = new CardPack({ _id: "cp" })
         // const userCard2 = new UserCard({ _id: "user2" })
 
         this.append(headerPanel)
@@ -370,7 +370,7 @@ export class DashboardPanel extends XUIObject {
         dashboardBody.append(widgets)
 
         widgets.append(dashboardWidget)
-        dashboardWidget.append(userCard)
+        dashboardWidget.append(cardPack)
         // dashboardWidget.append(userCard2)
 
     }
@@ -378,7 +378,7 @@ export class DashboardPanel extends XUIObject {
 }
 
 
-export class DashboardComponent  {
+export class DashboardComponent extends XObjectPack  {
     static getObjects() {
         return {
             "side-panel": SidePanel,
