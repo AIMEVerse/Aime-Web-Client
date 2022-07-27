@@ -57,41 +57,25 @@ async function main() {
 
 
 
-const playersDataSource = [
-    {
-    id:1,
-    name:"Tamir",
-    image:"/images/avatars/girl.png",
-    online:true,
-    favorite:true
-},
-{
-    id:2,
-    name:"Liad",
-    image:"/images/avatars/girl.png",
-    online:true,
-    favorite:true
-},
-{
-    id:3,
-    name:"Keren",
-    image:"/images/avatars/girl.png",
-    online:true,
-    favorite:true
-}
-]
+let  playersDataSource = {}
 
 
 
 //update XData object 
 
-_XD.objects["players-list"] = playersDataSource
+    _XD.objects["players-list"] = playersDataSource
 
     
     XUI.loadApp(xapp)
 
     XUI.vm.showView("dashboard-panel")
 
+    const callUrl = "http://127.0.0.1:8080/users/online"
+    fetch(callUrl) .then((response) => response.json())
+    .then((responseJSON) => {
+        _XD.objects["players-list"] = responseJSON
+       
+    });
     
 
 }

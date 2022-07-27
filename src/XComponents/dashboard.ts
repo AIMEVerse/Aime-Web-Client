@@ -218,8 +218,8 @@ export class UserCard extends XUIObject {
 
         const sj = XPell.parser.xmlString2XPell(widget);
         const sjObj = XUI.create(sj)
-        console.log("sj ",sj);
-        console.log("sjObj ",sjObj);
+        // console.log("sj ",sj);
+        // console.log("sjObj ",sjObj);
         this.append(sjObj)
     }
 }
@@ -245,7 +245,9 @@ class CardPack extends XUIObject  {
 
     async onFrame(frameNumber: number): Promise<void> {
         const pa = XData.objects["players-list"]
-        pa.forEach(player => {
+        const keys = Object.keys(pa)
+       keys.forEach(key => {
+            const player = pa[key]
             if(!this["_players"][player.id]) {
                 let iplayer = JSON.parse(JSON.stringify(player))
                 
@@ -267,7 +269,8 @@ class CardPack extends XUIObject  {
             } else {
                 this["_players"][player.id].lastSeen = frameNumber
             } 
-        })
+       })
+       
 
 
         const playersArray = Object.keys(this["_players"])
