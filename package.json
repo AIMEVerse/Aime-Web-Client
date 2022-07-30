@@ -29,6 +29,10 @@
     "nipplejs": "^0.9.1",
     "three": "^0.140.2",
     "vite": "^2.9.10",
+    "ws": "^8.8.1",
     "xpell": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.3"
   }
 }

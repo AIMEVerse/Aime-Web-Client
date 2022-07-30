@@ -3,6 +3,7 @@ import "../public/style/aime.css"
 import {XPell as _X, XUI,XData as _XD} from 'xpell'
 
 import { DashboardComponent } from './XComponents/dashboard.js'
+import Wormholes from "./wormholes"
 
 
 
@@ -70,12 +71,32 @@ let  playersDataSource = {}
 
     XUI.vm.showView("dashboard-panel")
 
-    const callUrl = "http://127.0.0.1:8080/users/online"
-    fetch(callUrl) .then((response) => response.json())
-    .then((responseJSON) => {
-        _XD.objects["players-list"] = responseJSON
+    // const callUrl = "http://127.0.0.1:8080/users/online"
+    // fetch(callUrl) .then((response) => response.json())
+    // .then((responseJSON) => {
+    //     _XD.objects["players-list"] = responseJSON
        
-    });
+    // });
+
+    
+    const wormholeUrl = "ws://127.0.0.1:8080/"
+    const whMsg = {
+        module:"dashboard",
+        op:"get-online",
+        params: {
+            spaceId:"dcl"
+        }
+    }
+    Wormholes.open(wormholeUrl)
+
+    document.addEventListener("wormhole-open",(e) => {
+
+        Wormholes.send(whMsg,(data)=> {
+            console.log("data",data);
+            
+        })
+    })
+
     
 
 }
