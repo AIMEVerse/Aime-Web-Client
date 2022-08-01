@@ -1,4 +1,4 @@
-import "../public/style/aime.css"
+import "../public/style/aime2.css"
 
 import {XPell as _X, XUI,XData as _XD} from 'xpell'
 
