@@ -64,21 +64,13 @@ html {
 
 body {
     width: 100vw;
-    height: 100vw;
+    /* height: 100vw; */
     font-family: "Assistant", sans-serif;
     font-size: 0.88rem;
     background: var(--color-background);
     color: var(--color-dark);
     overflow-x: hidden;
     user-select: none;
-}
-
-#dashboard-panel {
-    display: grid;
-    width: 96%;
-    margin: 0 auto;
-    gap: 1.8rem;
-    grid-template-columns: 14rem auto 23rem;
 }
 
 .container {
@@ -360,6 +352,7 @@ main .insights .expenses svg circle {
     stroke-dashoffset: 80;
 }
 
+
 main .insights .income svg circle {
     stroke-dasharray: 226;
     stroke-dashoffset: 100;
@@ -380,7 +373,6 @@ main .insights small {
     display: block;
     margin-top: 1.3rem;
 }
-
 /* ============= Log ============= */
 
 main .recent-activities {

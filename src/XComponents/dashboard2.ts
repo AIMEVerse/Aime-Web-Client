@@ -13,14 +13,14 @@ export class DashboardLeft extends XUIObject {
         const defaults = {
             _ids: ids,
             _type: "dashboard-left",
-            _html_tag: "aside",
-            class: "aside"
+            _html_tag: "div",
+            class: "dashboard-left"
 
         }
         super(data, defaults);
 
         let dashboardLeft = /* html */`
-        <div _html_tag="aside">
+        <aside>
             <div id="result"></div>
             <div class="top">
                 <div class="logo">
@@ -33,23 +33,23 @@ export class DashboardLeft extends XUIObject {
             </div>
             <div class="sidebar">
                 <a href="#" class="active">
-                    <span _html_tag="span" class="material-icons material-symbols-sharp">person_outline</span>
-                    <h2>Customers</h2>
+                    <span class="material-icons material-symbols-sharp">person_outline</span>
+                    <h3>Customers</h3>
                 </a>
                 <a href="#" class="">
-                    <span _html_tag="span" class="material-icons material-symbols-sharp">insights</span>
-                    <h2>Analytics</h2>
+                    <span class="material-icons material-symbols-sharp">insights</span>
+                    <h3>Analytics</h3>
                 </a>
                 <a href="#" class="">
-                    <span _html_tag="span" class="material-icons material-symbols-sharp">settings</span>
-                    <h2>Settings</h2>
+                    <span class="material-icons material-symbols-sharp">settings</span>
+                    <h3>Settings</h3>
                 </a>
                 <a href="#" class="">
-                    <span _html_tag="span" class="material-icons material-symbols-sharp">logout</span>
-                    <h2>Logout</h2>
+                    <span class="material-icons material-symbols-sharp">logout</span>
+                    <h3>Logout</h3>
                 </a>
             </div>
-        </div>`
+        </aside>`
 
 
         const sj = Xpell.parser.xmlString2Xpell(dashboardLeft);
@@ -57,6 +57,21 @@ export class DashboardLeft extends XUIObject {
         this.append(sjObj)
     }
 
+    async onMount() {
+        const sideMenu = document.querySelector("aside");
+        const menuBtn = document.querySelector("#menu-btn");
+        const closeBtn = document.querySelector("#close-btn");
+        
+        menuBtn.addEventListener('click', () => {
+            sideMenu.style.display = 'block';
+        })
+        
+        closeBtn.addEventListener('click', () => {
+            sideMenu.style.display = 'none';
+        })
+    }
+
+    
 }
 
 export class DashboardMain extends XUIObject {
@@ -74,7 +89,7 @@ export class DashboardMain extends XUIObject {
 
         let dashboardMain = /* html */`
         <div>
-            <h2>AIME Dashboard</h2>
+            <h1>AIME Dashboard</h1>
 
             <div class="date">
                 <input type="date"/>
@@ -84,21 +99,12 @@ export class DashboardMain extends XUIObject {
             <div class="insights">
       
                 <div class="sales">
-                    <span _html_tag="span" class="material-icons material-symbols-sharp">analytics</span>
+                    <span class="material-icons material-symbols-sharp">analytics</span>
                     <div class="middle">
                         <div class="left">
-                            <h2>Online Users</h2>
-                            <h2>37</h2>
+                            <h3>Online Users</h3>
+                            <h1>37</h1>
                         </div>
-
-                        <div class="progress">
-                            <svg _html_tag="svg">
-                                <circle  _html_tag="circle" cx="40" cy="40" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p>74%</p>
-                            </div>
-                        </div> 
 
                     </div>
                     <small class="text-muted">Last 24 hours</small>
@@ -108,12 +114,14 @@ export class DashboardMain extends XUIObject {
                     <span _html_tag="span" class="material-icons material-symbols-sharp">bar_chart</span>
                     <div class="middle">
                         <div class="left">
-                            <h2>Total Expenses</h2>
-                            <h2>$1,487</h2>
+                            <h3>Total Expenses</h3>
+                            <h1>$1,487</h1>
                         </div>
 
                         <div class="progress">
-
+                            <svg>
+                                <circle cx="40" cy="40" r="36"></circle>
+                            </svg>
                             <div class="number">
                                 <p>65%</p>
                             </div>
@@ -127,12 +135,14 @@ export class DashboardMain extends XUIObject {
                     <span _html_tag="span" class="material-icons material-symbols-sharp">stacked_line_chart</span>
                     <div class="middle">
                         <div class="left">
-                            <h2>Total Income</h2>
-                            <h2>$13,476</h2>
+                            <h3>Total Income</h3>
+                            <h1>$13,476</h1>
                         </div>
 
                         <div class="progress">
-
+                            <svg>
+                                <circle cx="40" cy="40" r="36"></circle>
+                            </svg>
                             <div class="number">
                                 <p>87%</p>
                             </div>
@@ -195,11 +205,12 @@ export class DashboardMain extends XUIObject {
             </div>
         </div>`
 
+        
         const sj = Xpell.parser.xmlString2Xpell(dashboardMain);
         const sjObj = XUI.create(sj)
         this.append(sjObj)
     }
-
+    
 }
 
 export class DashboardRight extends XUIObject {
@@ -210,62 +221,63 @@ export class DashboardRight extends XUIObject {
             _ids: ids,
             _type: "dashboard-right",
             _html_tag: "div",
-            class: "right"
+            class: "right-wrapper"
 
         }
         super(data, defaults);
         let dashboardRight = /* html */`
+        <div class="right">
         <div class="top">
-        <button id="menu-btn">
-            <span class="material-icons material-symbols-sharp">menu</span>
-        </button>
-        <div class="theme-toggler">
-            <span class="material-icons material-symbols-sharp active">light_mode</span>
-            <span class="material-icons material-symbols-sharp">dark_mode</span>
-        </div>
-        <div class="profile">
-            <div class="info">
-                <p>Hey, <b>Pikachu01</b></p>
-                <small class="text-muted">Admin</small>
+            <button id="menu-btn">
+                <span class="material-icons material-symbols-sharp">menu</span>
+            </button>
+            <div class="theme-toggler">
+                <span class="material-icons material-symbols-sharp active">light_mode</span>
+                <span class="material-icons material-symbols-sharp">dark_mode</span>
             </div>
-            <div class="profile-photo">
-                <img src="/images/pikachu.jpg" alt="Pikachu01">
+            <div class="profile">
+                <div class="info">
+                    <p><span>hey,</span><b>Pikachu01</b> </p>
+                    <small class="text-muted">Admin</small>
+                </div>
+                <div class="profile-photo">
+                    <img src="/images/pikachu.jpg" alt="Pikachu01"/>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="recent-updates">
-        <h2>Recent Updates</h2>
-        <div class="updates">
-            <div class="update">
-                <div class="profile-photo">
-                    <img src="/images/pikachu2.jpg" alt="Pikachu02">
+        <div class="recent-updates">
+            <h2>Recent Updates</h2>
+            <div class="updates">
+                <div class="update">
+                    <div class="profile-photo">
+                        <img src="/images/pikachu2.jpg" alt="Pikachu02"/>
+                    </div>
+                    <div class="message">
+                        <p><b>Pikachu 02</b><p>received 350 Mana Coins</p></p>
+                        <small class="text-muted">2 Minutes Ago</small>
+                    </div>
                 </div>
-                <div class="message">
-                    <p><b>Pikachu 02</b> received 350 Mana Coins</p>
-                    <small class="text-muted">2 Minutes Ago</small>
+                <div class="update">
+                    <div class="profile-photo">
+                        <img src="/images/pikachu3.jpg" alt="Pikachu03"/>
+                    </div>
+                    <div class="message">
+                        <p><b>Pikachu 03</b> <p>received 170 Mana Coins</p></p>
+                        <small class="text-muted">2 Minutes Ago</small>
+                    </div>
                 </div>
-            </div>
-            <div class="update">
-                <div class="profile-photo">
-                    <img src="/images/pikachu3.jpg" alt="Pikachu03">
-                </div>
-                <div class="message">
-                    <p><b>Pikachu 03</b> received 170 Mana Coins</p>
-                    <small class="text-muted">2 Minutes Ago</small>
-                </div>
-            </div>
-            <div class="update">
-                <div class="profile-photo">
-                    <img src="/images/pikachu4.jpg" alt="Pikachu04">
-                </div>
-                <div class="message">
-                    <p><b>Pikachu 04</b> received 230 Mana Coins</p>
-                    <small class="text-muted">2 Minutes Ago</small>
+                <div class="update">
+                    <div class="profile-photo">
+                        <img src="/images/pikachu4.jpg" alt="Pikachu04"/>
+                    </div>
+                    <div class="message">
+                        <p><b>Pikachu 04</b> <p>received 230 Mana Coins</p></p>
+                        <small class="text-muted">2 Minutes Ago</small>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <div class="sales-analytics">
         <h2>Sales Analytics</h2>
@@ -314,13 +326,27 @@ export class DashboardRight extends XUIObject {
                 <h3>Add Product</h3>
             </div>
         </div>
+    </div>
     </div>`
 
-    const sj = Xpell.parser.xmlString2Xpell(dashboardRight);
-    const sjObj = XUI.create(sj)
-    this.append(sjObj)
+
+        const sj = Xpell.parser.xmlString2Xpell(dashboardRight);
+        const sjObj = XUI.create(sj)
+        this.append(sjObj)
+
     }
 
+    async onMount() {
+        const themeToggler = document.querySelector(".theme-toggler");
+
+        // Change theme
+        themeToggler?.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme-variables');
+
+            themeToggler?.querySelector('span:nth-child(1)')?.classList.toggle('active');
+            themeToggler?.querySelector('span:nth-child(2)')?.classList.toggle('active');
+        })
+    }
 }
 
 // export class DashboardLoader extends XUIObject {
