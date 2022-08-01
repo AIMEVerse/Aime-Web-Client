@@ -37,6 +37,9 @@ async function main() {
                 _type: "view",
                 _id: "login-view",
                 animation: "fade",
+                _children:[{
+                    _type:"svg"
+                }]
             },
             "dashboard-panel": {
                 _type: "dashboard-panel",
@@ -69,7 +72,7 @@ let  playersDataSource = {}
     
     XUI.loadApp(xapp)
 
-    XUI.vm.showView("dashboard-panel")
+    XUI.vm.showView("login-view")
 
     // const callUrl = "http://127.0.0.1:8080/users/online"
     // fetch(callUrl) .then((response) => response.json())
@@ -80,7 +83,7 @@ let  playersDataSource = {}
 
     
     const wormholeUrl = "ws://127.0.0.1:8080/"
-    const whMsg = {
+    const xMessage = {
         module:"dashboard",
         op:"get-online",
         params: {
@@ -91,7 +94,7 @@ let  playersDataSource = {}
 
     document.addEventListener("wormhole-open",(e) => {
 
-        Wormholes.send(whMsg,(data)=> {
+        Wormholes.send(xMessage,(data)=> {
             console.log("data",data);
             
         })
