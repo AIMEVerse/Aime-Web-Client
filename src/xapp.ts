@@ -2,7 +2,7 @@ import "../public/style/aime.css"
 
 import {XPell as _X, XUI,XData as _XD} from 'xpell'
 
-import { DashboardComponent } from './XComponents/dashboard.js'
+import { DashboardComponent } from './XComponents/dashboard2'
 import Wormholes from "./wormholes"
 
 
@@ -72,7 +72,7 @@ let  playersDataSource = {}
     
     XUI.loadApp(xapp)
 
-    XUI.vm.showView("login-view")
+    XUI.vm.showView("dashboard-panel")
 
     // const callUrl = "http://127.0.0.1:8080/users/online"
     // fetch(callUrl) .then((response) => response.json())

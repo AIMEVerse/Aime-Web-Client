@@ -24,15 +24,12 @@
   },
   "homepage": "https://github.com/AIMEVerse/AIME-Server#readme",
   "dependencies": {
-    "@tensorflow-models/handpose": "^0.0.7",
-    "@tensorflow/tfjs": "^3.18.0",
-    "nipplejs": "^0.9.1",
-    "three": "^0.140.2",
     "vite": "^2.9.10",
     "ws": "^8.8.1",
-    "xpell": "^1.0.1"
+    "xpell": "^1.0.9"
   },
   "devDependencies": {
+    "@types/node": "^18.6.3",
     "@types/ws": "^8.5.3"
   }
 }
