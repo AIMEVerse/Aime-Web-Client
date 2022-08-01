@@ -1,5 +1,5 @@
 
-import { XPell, XUtils, XData, XUI, XEventManager as XEM ,XUIObject, XObjectPack} from 'xpell'
+import { Xpell, XUtils, XData, XUI, XEventManager as XEM ,XUIObject, XObjectPack} from 'xpell'
 
 
 
@@ -95,7 +95,7 @@ export class SidePanel extends XUIObject {
         // domParser.parseFromString(template, "text/html")
         let xmlNode = domParser.parseFromString(sidePanel.replaceAll("\n", ""), "text/xml").firstChild
         // console.log(xmlNode.normalize());
-        const sj = XPell.parser.xml2XPell(xmlNode);
+        const sj = Xpell.parser.xml2Xpell(xmlNode);
         const sjObj = XUI.create(sj)
         console.log("sjo", sjObj);
         this.append(sjObj)
@@ -173,7 +173,7 @@ export class HeaderPanel extends XUIObject {
         // domParser.parseFromString(template, "text/html")
         // let xmlNode = domParser.parseFromString(header.replaceAll("\n", ""), "text/xml").firstChild
         // console.log(xmlNode.normalize());
-        const sj = XPell.parser.xmlString2XPell(header);
+        const sj = Xpell.parser.xmlString2Xpell(header);
         const sjObj = XUI.create(sj)
         this.append(sjObj)
 
@@ -216,7 +216,7 @@ export class UserCard extends XUIObject {
             </view >
         </view >`
 
-        const sj = XPell.parser.xmlString2XPell(widget);
+        const sj = Xpell.parser.xmlString2Xpell(widget);
         const sjObj = XUI.create(sj)
         // console.log("sj ",sj);
         // console.log("sjObj ",sjObj);

@@ -1,5 +1,5 @@
 
-import { XPell, XUtils, XData, XUI, XEventManager as XEM, XUIObject, XObjectPack } from 'xpell'
+import { Xpell, XUtils, XData, XUI, XEventManager as XEM, XUIObject, XObjectPack } from 'xpell'
 
 
 
@@ -14,7 +14,7 @@ export class DashboardLeft extends XUIObject {
             _ids: ids,
             _type: "dashboard-left",
             _html_tag: "aside",
-            class: "dashboard-left"
+            class: "aside"
 
         }
         super(data, defaults);
@@ -52,7 +52,7 @@ export class DashboardLeft extends XUIObject {
         </div>`
 
 
-        const sj = XPell.parser.xmlString2XPell(dashboardLeft);
+        const sj = Xpell.parser.xmlString2Xpell(dashboardLeft);
         const sjObj = XUI.create(sj)
         this.append(sjObj)
     }
@@ -66,8 +66,8 @@ export class DashboardMain extends XUIObject {
         const defaults = {
             _ids: ids,
             _type: "dashboard-main",
-            _html_tag: "div",
-            class: "dashboard-main"
+            _html_tag: "main",
+            class: "main"
 
         }
         super(data, defaults);
@@ -195,7 +195,7 @@ export class DashboardMain extends XUIObject {
             </div>
         </div>`
 
-        const sj = XPell.parser.xmlString2XPell(dashboardMain);
+        const sj = Xpell.parser.xmlString2Xpell(dashboardMain);
         const sjObj = XUI.create(sj)
         this.append(sjObj)
     }
@@ -210,11 +210,115 @@ export class DashboardRight extends XUIObject {
             _ids: ids,
             _type: "dashboard-right",
             _html_tag: "div",
-            class: "dashboard-right"
+            class: "right"
 
         }
         super(data, defaults);
+        let dashboardRight = /* html */`
+        <div class="top">
+        <button id="menu-btn">
+            <span class="material-icons material-symbols-sharp">menu</span>
+        </button>
+        <div class="theme-toggler">
+            <span class="material-icons material-symbols-sharp active">light_mode</span>
+            <span class="material-icons material-symbols-sharp">dark_mode</span>
+        </div>
+        <div class="profile">
+            <div class="info">
+                <p>Hey, <b>Pikachu01</b></p>
+                <small class="text-muted">Admin</small>
+            </div>
+            <div class="profile-photo">
+                <img src="/images/pikachu.jpg" alt="Pikachu01">
+            </div>
+        </div>
+    </div>
 
+    <div class="recent-updates">
+        <h2>Recent Updates</h2>
+        <div class="updates">
+            <div class="update">
+                <div class="profile-photo">
+                    <img src="/images/pikachu2.jpg" alt="Pikachu02">
+                </div>
+                <div class="message">
+                    <p><b>Pikachu 02</b> received 350 Mana Coins</p>
+                    <small class="text-muted">2 Minutes Ago</small>
+                </div>
+            </div>
+            <div class="update">
+                <div class="profile-photo">
+                    <img src="/images/pikachu3.jpg" alt="Pikachu03">
+                </div>
+                <div class="message">
+                    <p><b>Pikachu 03</b> received 170 Mana Coins</p>
+                    <small class="text-muted">2 Minutes Ago</small>
+                </div>
+            </div>
+            <div class="update">
+                <div class="profile-photo">
+                    <img src="/images/pikachu4.jpg" alt="Pikachu04">
+                </div>
+                <div class="message">
+                    <p><b>Pikachu 04</b> received 230 Mana Coins</p>
+                    <small class="text-muted">2 Minutes Ago</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sales-analytics">
+        <h2>Sales Analytics</h2>
+        <div class="item online">
+            <div class="icon">
+                <span class="material-icons material-symbols-sharp">shopping_cart</span>
+            </div>
+            <div class="right">
+                <div class="info">
+                    <h3>ONLINE SALES</h3>
+                    <small class="text-muted">Last 24 Hours</small>
+                </div>
+                <h5 class="success">+41%</h5>
+                <h5>3268</h5>
+            </div>
+        </div>
+        <div class="item offline">
+            <div class="icon">
+                <span class="material-icons material-symbols-sharp">monetization_on</span>
+            </div>
+            <div class="right">
+                <div class="info">
+                    <h3>ADS VIEWD</h3>
+                    <small class="text-muted">Last 24 Hours</small>
+                </div>
+                <h5 class="danger">-13%</h5>
+                <h5>482</h5>
+            </div>
+        </div>
+        <div class="item customer">
+            <div class="icon">
+                <span class="material-icons material-symbols-sharp">person</span>
+            </div>
+            <div class="right">
+                <div class="info">
+                    <h3>NEW USERS</h3>
+                    <small class="text-muted">Last 24 Hours</small>
+                </div>
+                <h5 class="success">+27%</h5>
+                <h5>23</h5>
+            </div>
+        </div>
+        <div class="item add-product">
+            <div>
+                <span class="material-icons material-symbols-sharp">add</span>
+                <h3>Add Product</h3>
+            </div>
+        </div>
+    </div>`
+
+    const sj = Xpell.parser.xmlString2Xpell(dashboardRight);
+    const sjObj = XUI.create(sj)
+    this.append(sjObj)
     }
 
 }
@@ -258,6 +362,7 @@ export class DashboardPanel extends XUIObject {
 
         const dashboardLeft = new DashboardLeft({ _id: "dashboard-left" })
         const dashboardMain = new DashboardMain({ _id: "dashboard-main" })
+        const dashboardRight = new DashboardRight({ _id: "dashboard-right" })
         // const aimeLoader = new DashboardLoader({ _id: "aime-dashboard-loader" })
 
 
@@ -270,6 +375,7 @@ export class DashboardPanel extends XUIObject {
 
         this.append(dashboardLeft)
         this.append(dashboardMain)
+        this.append(dashboardRight)
         // this.append(headerPanel)
         // this.append(dashboardBody)
         // dashboardBody.append(sidePanel)

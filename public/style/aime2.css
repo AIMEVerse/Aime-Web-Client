@@ -20,7 +20,7 @@
     --color-dark-variant: #677483;
     --color-background: #f6f6f9;
 
-    --card-border-radius: 0.3rem;
+    --card-border-radius: 1.2rem;
     --border-radius-1: 0.4rem;
     --border-radius-2: 0.8rem;
     --border-radius-3: 1.2rem;
@@ -36,7 +36,7 @@
 }
 
 /* Dark theme */
-.dark-theme-variables{
+.dark-theme-variables {
     --color-background: #181a1e;
     --color-white: #202528;
     --color-dark: #edeffd;
@@ -73,7 +73,7 @@ body {
     user-select: none;
 }
 
-#dashboard-panel{
+#dashboard-panel {
     display: grid;
     width: 96%;
     margin: 0 auto;
@@ -261,12 +261,12 @@ aside .sidebar a:hover span {
 }
 
 
-/* ============= Main ============= */
-.dashboard-main {
+/* ============= main ============= */
+main {
     margin-top: 1.4rem;
 }
 
-.dashboard-main .date {
+main .date {
     display: inline-block;
     background: var(--color-light);
     border-radius: var(--border-radius-1);
@@ -274,12 +274,12 @@ aside .sidebar a:hover span {
     padding: 0.5rem 1.6rem;
 }
 
-.dashboard-main .date input[type="date"] {
+main .date input[type="date"] {
     background: transparent;
     color: var(--color-dark);
 }
 
-.dashboard-main .insights {
+main .insights {
     display: grid;
     /* testing grid responsiveness */
     /* grid-template-columns: repeat(auto-fill, minmax(min(300px,100%), 1fr)); */
@@ -287,7 +287,7 @@ aside .sidebar a:hover span {
     gap: 1.6rem;
 }
 
-.dashboard-main .insights>div {
+main .insights>div {
     background: var(--color-white);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
@@ -296,11 +296,11 @@ aside .sidebar a:hover span {
     transition: all 300ms ease;
 }
 
-.dashboard-main .insights>div:hover {
+main .insights>div:hover {
     box-shadow: none;
 }
 
-.dashboard-main .insights>div span {
+main .insights>div span {
     background: var(--color-primary);
     padding: 0.5rem;
     border-radius: 50%;
@@ -308,38 +308,38 @@ aside .sidebar a:hover span {
     font-size: 2rem;
 }
 
-.dashboard-main .insights>div.expenses span {
+main .insights>div.expenses span {
     background: var(--color-danger);
 }
 
-.dashboard-main .insights>div.income span {
+main .insights>div.income span {
     background: var(--color-success);
 }
 
-.dashboard-main .insights>div .middle {
+main .insights>div .middle {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.dashboard-main .insights h3 {
+main .insights h3 {
     margin: 1rem 0 0.6rem;
     font-size: 1rem;
 }
 
-.dashboard-main .insights .progress {
+main .insights .progress {
     position: relative;
     width: 92px;
     height: 92px;
     border-radius: 50%;
 }
 
-.dashboard-main .insights svg {
+main .insights svg {
     width: 7rem;
     height: 7rem;
 }
 
-.dashboard-main .insights svg circle {
+main .insights svg circle {
     fill: none;
     stroke: var(--color-primary);
     stroke-width: 14;
@@ -588,17 +588,17 @@ main .recent-activities a {
         width: 5.6rem;
     }
 
-    aside .sidebar a:last-child{
+    aside .sidebar a:last-child {
         position: relative;
         margin-top: 1.8rem;
     }
 
-    main .insights{
+    main .insights {
         grid-template-columns: 1fr;
         gap: 0;
     }
 
-    main .recent-activities{
+    main .recent-activities {
         width: 94%;
         position: absolute;
         left: 50%;
@@ -606,17 +606,17 @@ main .recent-activities a {
         margin: 2rem 0 0 8rem;
     }
 
-    main .recent-activities table{
+    main .recent-activities table {
         width: 83vw;
     }
 
     main table thead tr th:last-child,
-    main table thead tr th:first-child{
+    main table thead tr th:first-child {
         display: none;
     }
 
     main table tbody tr td:last-child,
-    main table tbody tr td:first-child{
+    main table tbody tr td:first-child {
         display: none;
     }
 }
@@ -629,7 +629,7 @@ main .recent-activities a {
         grid-template-columns: 1fr;
     }
 
-    aside{
+    aside {
         position: fixed;
         left: -100%;
         width: 18rem;
@@ -643,93 +643,93 @@ main .recent-activities a {
     }
 
     @keyframes showMenu {
-        to{
+        to {
             left: 0;
         }
     }
 
-    aside .logo{
+    aside .logo {
         margin-left: 1rem;
     }
 
-    aside .logo h2{
+    aside .logo h2 {
         display: inline;
     }
 
-    aside .sidebar h3{
+    aside .sidebar h3 {
         display: inline;
     }
 
-    aside .sidebar a{
+    aside .sidebar a {
         width: 100%;
         height: 3.4rem;
     }
-    
-    aside .sidebar a:last-child{
+
+    aside .sidebar a:last-child {
         position: absolute;
         bottom: 5rem;
     }
 
-        aside .close{
-            display: inline-block;
-            cursor: pointer;
-        }
+    aside .close {
+        display: inline-block;
+        cursor: pointer;
+    }
 
-        main {
-            margin-top: 8rem;
-            padding: 0 1rem;
-        }
+    main {
+        margin-top: 8rem;
+        padding: 0 1rem;
+    }
 
-        main .recent-activities{
-            position: relative;
-            margin: 3rem 0 0 0;
-            width: 100%;
-        }
+    main .recent-activities {
+        position: relative;
+        margin: 3rem 0 0 0;
+        width: 100%;
+    }
 
-        main .recent-activities table{
-            width: 100%;
-            margin: 0;
-        }
+    main .recent-activities table {
+        width: 100%;
+        margin: 0;
+    }
 
-        .right{
-            width: 94%;
-            margin: 0 auto 4rem;
-        }
+    .right {
+        width: 94%;
+        margin: 0 auto 4rem;
+    }
 
-        .right .top{
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4.6rem;
-            width: 100%;
-            margin: 0;
-            padding: 0 0.8rem;
-            align-items: center;
-            background: var(--color-white);
-            box-shadow: 0 1rem 1rem var(--color-light);
-            z-index: 2;
-        }
+    .right .top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4.6rem;
+        width: 100%;
+        margin: 0;
+        padding: 0 0.8rem;
+        align-items: center;
+        background: var(--color-white);
+        box-shadow: 0 1rem 1rem var(--color-light);
+        z-index: 2;
+    }
 
-        .right .top .theme-toggler{
-            width: 4.4rem;
-            position: absolute;
-            left: 66%;
-        }
+    .right .top .theme-toggler {
+        width: 4.4rem;
+        position: absolute;
+        left: 66%;
+    }
 
-        .right .profile .info{
-            display: none;
-        }
+    .right .profile .info {
+        display: none;
+    }
 
-        .right .top button{
-            display: inline-block;
-            position: absolute;
-            left: 1rem;
-            color: var(--color-dark);
-            background: transparent;
-            cursor: pointer;
-        }
+    .right .top button {
+        display: inline-block;
+        position: absolute;
+        left: 1rem;
+        color: var(--color-dark);
+        background: transparent;
+        cursor: pointer;
+    }
 
-        .right .top button span{
-            font-size: 2rem;
-        }
+    .right .top button span {
+        font-size: 2rem;
+    }
 }

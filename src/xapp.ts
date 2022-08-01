@@ -1,6 +1,6 @@
 import "../public/style/aime2.css"
 
-import {XPell as _X, XUI,XData as _XD} from 'xpell'
+import {Xpell as _X, XUI,XData as _XD} from 'xpell'
 
 import { DashboardComponent } from './XComponents/dashboard2'
 import Wormholes from "./wormholes"
