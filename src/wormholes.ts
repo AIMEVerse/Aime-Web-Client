@@ -86,7 +86,7 @@
  
          this.listener = document.addEventListener(WormholeEvents.ResponseDataArrived, (e:any) => {
              const edata = JSON.parse(e.detail)
-             sthis.dataWaiters[edata["waiterID"]]?.(edata.data)
+             sthis.dataWaiters[edata.data["eid"]]?.(edata.data)
          })
  
          this.ws.onopen = function () {
@@ -94,35 +94,24 @@
              console.log("Wormhole has been created");
              let event = new CustomEvent("wormhole-open")
              document.dispatchEvent(event)
-             // // Web Socket is connected, send data using send()
-             // const pai_code_command = {
-             //     "op":"subscribe-client",
-             //     "params": {
-             //         "event":"air-data"
-             //     }
-             // }
- 
-             // wss.send(JSON.stringify(whmsg(pai_code_command)));
-             // console.log("Message is sent...");
-         };
+          
+         }
  
          this.ws.onmessage = function (evt) {
              try {
-                 //console.log("wormhole message",evt)
                  let msg = JSON.parse(evt.data.toString())
                  let ddata = msg.data
                  try {
                      ddata = JSON.parse(msg.data)
                  } catch (e) { }
                  const sed = {
-                     "waiterID": msg["waiterID"],
+                     "waiterID": msg["eid"],
                      data: ddata
                  }
  
-                 if (msg.id && msg.id == "xpell-event") {
-                     let event = new CustomEvent(msg.name,{ detail: JSON.stringify(sed) })
-                     document.dispatchEvent(event)
-                 }
+                let event = new CustomEvent(WormholeEvents.ResponseDataArrived,{ detail: JSON.stringify(sed) })
+                document.dispatchEvent(event)
+
              } catch (e) {
                  console.error(e);
              }
@@ -151,11 +140,12 @@
                  }
              }
              this.dataWaiters[wormholeMessage.id] = cb
+             
              this.ws.send(JSON.stringify(wormholeMessage))
          }
      }
  
-     private stringify(obj:object, esc = true):string {
+     private stringify(obj:object, esc = false):string {
          let no = JSON.stringify(obj)
          if (esc) { no = no.replace(/\"/g, "\\\"") }
          return no

@@ -84,10 +84,11 @@ let  playersDataSource = {}
     
     const wormholeUrl = "ws://127.0.0.1:8080/"
     const xMessage = {
-        module:"dashboard",
-        op:"get-online",
+        module:"user-manager",
+        op:"login",
         params: {
-            spaceId:"dcl"
+            userName:"liadp",
+            password:"12345"
         }
     }
     Wormholes.open(wormholeUrl)
