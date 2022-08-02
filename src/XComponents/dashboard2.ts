@@ -61,17 +61,17 @@ export class DashboardLeft extends XUIObject {
         const sideMenu = document.querySelector("aside");
         const menuBtn = document.querySelector("#menu-btn");
         const closeBtn = document.querySelector("#close-btn");
-        
+
         menuBtn.addEventListener('click', () => {
             sideMenu.style.display = 'block';
         })
-        
+
         closeBtn.addEventListener('click', () => {
             sideMenu.style.display = 'none';
         })
     }
 
-    
+
 }
 
 export class DashboardMain extends XUIObject {
@@ -151,66 +151,122 @@ export class DashboardMain extends XUIObject {
                     </div>
                     <small class="text-muted">Last 24 hours</small>
                 </div>
-            </div>
-    
 
-            <div class="recent-activities">
-                <h2>Recent Activities</h2>
-<table>
-                    <thead>
-                        <tr>
-                            <th>User</th>
-                            <th>Activity</th>
-                            <th>Server</th>
-                            <th>Parcel</th>
-                            <th>Position</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Jacob</td>
-                            <td>Clicked on player</td>
-                            <td>Atlas</td>
-                            <td>13,4</td>
-                            <td>14.6,2.2,16.81</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Jacob</td>
-                            <td>Expression: Hand wave</td>
-                            <td>Atlas</td>
-                            <td>13,4</td>
-                            <td>14.6,2.2,16.81</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Guest #5733</td>
-                            <td class="danger">Disconnected</td>
-                            <td>Atlas</td>
-                            <td>4,17</td>
-                            <td>14.6,2.2,16.81</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Olly02</td>
-                            <td>Bought an item</td>
-                            <td>Atlas</td>
-                            <td>11,5</td>
-                            <td>14.6,2.2,16.81</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a href="#">Show All</a>
-            </div>
+
+                </div>
+                <div class="players-section">
+                    <h2>Online Users</h2>
+                    <div class="players-grid">
+                    
+                        <div class="player">
+                            <div class="player-attributes">
+                                <div class="player-fav"></div>
+                                <div class="player-time"></div>
+                            </div>
+                            <div class="player-image">
+                                <img src="/images/pikachu3.jpg" alt="Pikachu03"/>
+                            </div>
+                            <div class="player-tag">
+                            <span class="player-online-status"></span>
+                                <p class="player-name">Aime User#136</p>
+                            </div>
+                        </div>
+    
+                        <div class="player">
+                            <div class="player-attributes">
+                                <div class="player-fav"></div>
+                                <div class="player-time"></div>
+                            </div>
+                            <div class="player-image">
+                                <img src="/images/pikachu2.jpg" alt="Pikachu03"/>
+                            </div>
+                            <div class="player-tag">
+                            <span class="player-online-status"></span>
+                                <p class="player-name">Aime Bombaba#423</p>
+                            </div>
+                        </div>
+    
+                        <div class="player">
+                            <div class="player-attributes">
+                                <div class="player-fav"></div>
+                                <div class="player-time"></div>
+                            </div>
+                            <div class="player-image">
+                                <img src="/images/pikachu.jpg" alt="Pikachu03"/>
+                            </div>
+                            <div class="player-tag">
+                            <span class="player-online-status"></span>
+                                <p class="player-name">Aime User#379</p>
+                            </div>
+                        </div>
+    
+                        <div class="player">
+                            <div class="player-attributes">
+                                <div class="player-fav"></div>
+                                <div class="player-time"></div>
+                            </div>
+                            <div class="player-image">
+                                <img src="/images/pikachu.jpg" alt="Pikachu03"/>
+                            </div>
+                            <div class="player-tag">
+                            <span class="player-online-status"></span>
+                                <p class="player-name">Aime User#379</p>
+                            </div>
+                        </div>
+    
+                        <div class="player">
+                            <div class="player-attributes">
+                                <div class="player-fav"></div>
+                                <div class="player-time"></div>
+                            </div>
+                            <div class="player-image">
+                                <img src="/images/pikachu.jpg" alt="Pikachu03"/>
+                            </div>
+                            <div class="player-tag">
+                            <span class="player-online-status"></span>
+                                <p class="player-name">Aime User#379</p>
+                            </div>
+                        </div>
+    
+                        <div class="player">
+                            <div class="player-attributes">
+                                <div class="player-fav"></div>
+                                <div class="player-time"></div>
+                            </div>
+                            <div class="player-image">
+                                <img src="/images/pikachu.jpg" alt="Pikachu03"/>
+                            </div>
+                            <div class="player-tag">
+                            <span class="player-online-status"></span>
+                                <p class="player-name">Aime User#379</p>
+                            </div>
+                        </div>
+    
+                        <div class="player">
+                            <div class="player-attributes">
+                                <div class="player-fav"></div>
+                                <div class="player-time"></div>
+                            </div>
+                            <div class="player-image">
+                                <img src="/images/pikachu.jpg" alt="Pikachu03"/>
+                            </div>
+                            <div class="player-tag">
+                            <span class="player-online-status"></span>
+                                <p class="player-name">Aime User#379</p>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+
         </div>`
 
-        
+
         const sj = Xpell.parser.xmlString2Xpell(dashboardMain);
         const sjObj = XUI.create(sj)
         this.append(sjObj)
     }
-    
+
 }
 
 export class DashboardRight extends XUIObject {
@@ -349,27 +405,51 @@ export class DashboardRight extends XUIObject {
     }
 }
 
-// export class DashboardLoader extends XUIObject {
-//     constructor(data) {
+export class DashboardLoader extends XUIObject {
+    constructor(data) {
 
-//         const ids = XUtils.guid()
-//         const defaults = {
-//             _ids: ids,
-//             _type: "dashboard-loader",
-//             _html_tag: "div",
-//             class: "dashboard-loader"
+        const ids = XUtils.guid()
+        const defaults = {
+            _ids: ids,
+            _type: "dashboard-loader",
+            _html_tag: "div",
+            class: "dashboard-loader"
 
-//         }
-//         super(data, defaults);
+        }
+        super(data, defaults);
 
-//         const loaderContainer = XUI.create({ "_type": "view", "_id": "loaderContainer" + ids, "class": "loader-container" })
-//         const aimeLoader = XUI.create({ "_type": "view", "_id": "aimeLoader" + ids, "class": "loader" })
+        const loaderContainer = XUI.create({ "_type": "view", "_id": "loaderContainer" + ids, "class": "loader-container" })
+        const aimeLoader = XUI.create({ "_type": "view", "_id": "aimeLoader" + ids, "class": "loader" })
 
-//         loaderContainer.append(aimeLoader)
 
-//     }
+        loaderContainer.append(aimeLoader)
 
-// }
+        this.append(loaderContainer)
+
+    }
+
+    async onMount() {
+        const loader = document.querySelector(".loader-container");
+        const oStep = 0.1;
+
+        if (!loader.style.opacity) {
+            loader.style.opacity = 1
+        }
+ 
+            setTimeout(() => {
+                const opacity = setInterval(() => {
+                    loader.style.opacity -= oStep;
+                    if (loader.style.opacity == 0) {
+                        clearInterval(opacity);
+                        loader.style.display = "none";
+                    }
+                }, 50)
+
+            }, 1500)
+
+    }
+
+}
 
 export class DashboardPanel extends XUIObject {
     constructor(data) {
@@ -386,10 +466,10 @@ export class DashboardPanel extends XUIObject {
         super(data, defaults);
 
 
+        const dashboardLoader = new DashboardLoader({ _id: "dashboard-loader" })
         const dashboardLeft = new DashboardLeft({ _id: "dashboard-left" })
         const dashboardMain = new DashboardMain({ _id: "dashboard-main" })
         const dashboardRight = new DashboardRight({ _id: "dashboard-right" })
-        // const aimeLoader = new DashboardLoader({ _id: "aime-dashboard-loader" })
 
 
 
@@ -402,16 +482,7 @@ export class DashboardPanel extends XUIObject {
         this.append(dashboardLeft)
         this.append(dashboardMain)
         this.append(dashboardRight)
-        // this.append(headerPanel)
-        // this.append(dashboardBody)
-        // dashboardBody.append(sidePanel)
-        // dashboardBody.append(widgets)
-
-        // aimeLoader.append(loaderContainer)
-
-        // widgets.append(dashboardWidget)
-        // dashboardWidget.append(cardPack)
-        // dashboardWidget.append(userCard2)
+        this.append(dashboardLoader)
 
     }
 
@@ -425,7 +496,7 @@ export class DashboardComponent extends XObjectPack {
             "dashboard-left": DashboardLeft,
             "dashboard-main": DashboardMain,
             "dashboard-right": DashboardRight,
-            // "dashboard-loader": DashboardLoader
+            "dashboard-loader": DashboardLoader
             // "card": UserCard,
             // "card-pack": CardPack
         }
