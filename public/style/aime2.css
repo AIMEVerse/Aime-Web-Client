@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-/* @import 'loader.css'; */
+@import 'loader.css';
 
 :root {
     --aime-color-1: #994EBB;
@@ -32,7 +32,6 @@
 
     /* loader */
     --loader-roundness: 100vmax;
-
 }
 
 /* Dark theme */
@@ -73,6 +72,21 @@ body {
     user-select: none;
 }
 
+/* ============= Scroll bar ============= */
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: var(--color-info-light);
+    border-radius: 100px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--aime-color-1);
+    border-radius: 100px;
+}
+
 .container {
     display: grid;
     width: 96%;
@@ -88,6 +102,7 @@ a {
 img {
     display: block;
     width: 100%;
+    transform: scale(1.1);
 }
 
 h1 {
@@ -99,9 +114,6 @@ h2 {
     font-size: 1.6rem;
 }
 
-/* h3 {
-    font-size: 0.87rem;
-} */
 h3 {
     font-size: 1.2rem;
 }
@@ -258,6 +270,57 @@ main {
     margin-top: 1.4rem;
 }
 
+main .header {
+    display: flex;
+    justify-content: space-between;
+}
+
+main .header .right .parcel-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+
+    width: 40vmin;
+    padding: 0.5rem;
+    border-radius: var(--border-radius-1);
+    /* background: var(--color-white); */
+    color: var(--color-dark);
+}
+
+main .header .right .parcel-details .bottom{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+main .header .right .parcel-details .bottom button {
+    width: 30%;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: var(--border-radius-3);
+    background: var(--color-danger);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+main .header .right .parcel-details .parcel-position {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: fit-content;
+    padding: 3px 4px;
+    border-radius: var(--border-radius-1);
+    outline: 1px solid black;
+    text-align: center;
+}
+
+main .header .right .parcel-details span {
+    font-size: 1.2rem;
+}
+
 main .date {
     display: inline-block;
     background: var(--color-light);
@@ -373,6 +436,7 @@ main .insights small {
     display: block;
     margin-top: 1.3rem;
 }
+
 /* ============= Log ============= */
 
 main .recent-activities {
@@ -413,6 +477,92 @@ main .recent-activities a {
     margin: 1rem auto;
     color: var(--color-primary);
     text-align: center;
+}
+
+/* ============= User Card ============= */
+main .players-section {
+    margin-top: 1rem;
+}
+
+.players-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: center;
+
+    max-height: 20rem;
+
+    overflow-y: auto;
+    /* display: grid; */
+    /* grid-template-columns: repeat(4, 1fr); */
+    /* grid-template-columns: repeat(auto-fill, minmax(min(12vmax,100vmin), 1fr)); */
+
+    gap: 1rem;
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    background: var(--color-white);
+    transition: all 300ms ease;
+}
+
+main .players-grid:hover {
+    box-shadow: none;
+}
+
+.player {
+    flex: 1 0 6rem;
+    position: relative;
+    aspect-ratio: 1;
+    /* width: 110px; */
+    max-width: 110px;
+    border-radius: var(--card-border-radius);
+    /* background: var(--color-white); */
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.player .player-image img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    filter: blur(6px);
+    opacity: 0.5;
+    transition: all 200ms ease;
+}
+
+.player .player-image img:hover {
+    filter: blur(0);
+    opacity: 1;
+}
+
+.player-tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    bottom: 0rem;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: var(--color-white);
+    /* z-index: 9999; */
+
+}
+
+.player-tag .player-name {
+    width: 75%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.player-online-status {
+    aspect-ratio: 1;
+    width: 10px;
+    border-radius: 100vmax;
+    background: var(--color-success);
 }
 
 /* ============= RIGHT ============= */
@@ -560,6 +710,7 @@ main .recent-activities a {
     font-weight: 600;
 }
 
+
 /* ============= MEDIA QUERIES Tablets ============= */
 
 @media screen and (max-width: 1200px) {
@@ -591,15 +742,15 @@ main .recent-activities a {
     }
 
     main .recent-activities {
-        width: 94%;
         position: absolute;
         left: 50%;
+        width: 94%;
         transform: translateX(-50%);
-        margin: 2rem 0 0 8rem;
+        margin: 2rem 0 0 8.8rem;
     }
 
     main .recent-activities table {
-        width: 83vw;
+        width: 80vw;
     }
 
     main table thead tr th:last-child,
@@ -611,6 +762,17 @@ main .recent-activities a {
     main table tbody tr td:first-child {
         display: none;
     }
+
+    main .header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    main .header .right {
+        display: flex;
+        justify-content: center;
+    }
+
 }
 
 /* ============= MEDIA QUERIES Small Screens ============= */
@@ -672,13 +834,15 @@ main .recent-activities a {
         padding: 0 1rem;
     }
 
-    main .recent-activities {
+    main .recent-activities,
+    main .players-section {
         position: relative;
         margin: 3rem 0 0 0;
         width: 100%;
     }
 
-    main .recent-activities table {
+    main .recent-activities table,
+    main .players-grid {
         width: 100%;
         margin: 0;
     }

@@ -19,3 +19,7 @@ ___________________________________________________
 - who sent the most of messages
 - total number of messages sent
 - number of messages for each user
+
+to fix---
+SVG
+text must be wrapped in a tag if it has childrens
