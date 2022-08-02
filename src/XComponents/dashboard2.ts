@@ -89,12 +89,157 @@ export class DashboardMain extends XUIObject {
 
         let dashboardMain = /* html */`
         <div>
-            <h1>AIME Dashboard</h1>
 
-            <div class="date">
-                <input type="date"/>
+        <div class="header">
+            <div class="left">
+                <h1>AIME Dashboard</h1>
+                <div class="date">
+                    <input type="date"/>
+                </div>
             </div>
-  
+            <div class="right">
+                <div class="parcel-details">
+                    <h3>Parcel Name</h3>
+                    <h4>Acquired at August 2nd, 2022</h4>
+                    <h4>-42, 144</h4>
+                    <button>Edit</button>
+                </div>
+            </div>
+
+        </div>
+
+            <div class="players-section">
+            <h2>Online Players</h2>
+            <div class="players-grid">
+            
+                <div class="player">
+                    <div class="player-attributes">
+                        <div class="player-fav"></div>
+                        <div class="player-time"></div>
+                    </div>
+                    <div class="player-image">
+                        <img src="/images/pikachu3.jpg" alt="Pikachu03"/>
+                    </div>
+                    <div class="player-tag">
+                    <span class="player-online-status"></span>
+                        <p class="player-name">Aime User#136</p>
+                    </div>
+                </div>
+
+                <div class="player">
+                    <div class="player-attributes">
+                        <div class="player-fav"></div>
+                        <div class="player-time"></div>
+                    </div>
+                    <div class="player-image">
+                        <img src="/images/pikachu2.jpg" alt="Pikachu03"/>
+                    </div>
+                    <div class="player-tag">
+                    <span class="player-online-status"></span>
+                        <p class="player-name">Aime Bombaba#423</p>
+                    </div>
+                </div>
+
+                <div class="player">
+                    <div class="player-attributes">
+                        <div class="player-fav"></div>
+                        <div class="player-time"></div>
+                    </div>
+                    <div class="player-image">
+                        <img src="/images/pikachu.jpg" alt="Pikachu03"/>
+                    </div>
+                    <div class="player-tag">
+                    <span class="player-online-status"></span>
+                        <p class="player-name">Aime User#379</p>
+                    </div>
+                </div>
+
+                <div class="player">
+                    <div class="player-attributes">
+                        <div class="player-fav"></div>
+                        <div class="player-time"></div>
+                    </div>
+                    <div class="player-image">
+                        <img src="/images/pikachu.jpg" alt="Pikachu03"/>
+                    </div>
+                    <div class="player-tag">
+                    <span class="player-online-status"></span>
+                        <p class="player-name">Aime User#379</p>
+                    </div>
+                </div>
+
+                <div class="player">
+                    <div class="player-attributes">
+                        <div class="player-fav"></div>
+                        <div class="player-time"></div>
+                    </div>
+                    <div class="player-image">
+                        <img src="/images/pikachu2.jpg" alt="Pikachu03"/>
+                    </div>
+                    <div class="player-tag">
+                    <span class="player-online-status"></span>
+                        <p class="player-name">Aime User#379</p>
+                    </div>
+                </div>
+
+                <div class="player">
+                    <div class="player-attributes">
+                        <div class="player-fav"></div>
+                        <div class="player-time"></div>
+                    </div>
+                    <div class="player-image">
+                        <img src="/images/pikachu.jpg" alt="Pikachu03"/>
+                    </div>
+                    <div class="player-tag">
+                    <span class="player-online-status"></span>
+                        <p class="player-name">Aime User#379</p>
+                    </div>
+                </div>
+
+                <div class="player">
+                    <div class="player-attributes">
+                        <div class="player-fav"></div>
+                        <div class="player-time"></div>
+                    </div>
+                    <div class="player-image">
+                        <img src="/images/pikachu.jpg" alt="Pikachu03"/>
+                    </div>
+                    <div class="player-tag">
+                    <span class="player-online-status"></span>
+                        <p class="player-name">Aime User#379</p>
+                    </div>
+                </div>
+
+                <div class="player">
+                    <div class="player-attributes">
+                        <div class="player-fav"></div>
+                        <div class="player-time"></div>
+                    </div>
+                    <div class="player-image">
+                        <img src="/images/pikachu2.jpg" alt="Pikachu03"/>
+                    </div>
+                    <div class="player-tag">
+                    <span class="player-online-status"></span>
+                        <p class="player-name">Aime User#379</p>
+                    </div>
+                </div>
+
+                <div class="player">
+                    <div class="player-attributes">
+                        <div class="player-fav"></div>
+                        <div class="player-time"></div>
+                    </div>
+                    <div class="player-image">
+                        <img src="/images/pikachu3.jpg" alt="Pikachu03"/>
+                    </div>
+                    <div class="player-tag">
+                    <span class="player-online-status"></span>
+                        <p class="player-name">Aime User#379</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
             <div class="insights">
       
@@ -154,110 +299,7 @@ export class DashboardMain extends XUIObject {
 
 
                 </div>
-                <div class="players-section">
-                    <h2>Online Users</h2>
-                    <div class="players-grid">
-                    
-                        <div class="player">
-                            <div class="player-attributes">
-                                <div class="player-fav"></div>
-                                <div class="player-time"></div>
-                            </div>
-                            <div class="player-image">
-                                <img src="/images/pikachu3.jpg" alt="Pikachu03"/>
-                            </div>
-                            <div class="player-tag">
-                            <span class="player-online-status"></span>
-                                <p class="player-name">Aime User#136</p>
-                            </div>
-                        </div>
-    
-                        <div class="player">
-                            <div class="player-attributes">
-                                <div class="player-fav"></div>
-                                <div class="player-time"></div>
-                            </div>
-                            <div class="player-image">
-                                <img src="/images/pikachu2.jpg" alt="Pikachu03"/>
-                            </div>
-                            <div class="player-tag">
-                            <span class="player-online-status"></span>
-                                <p class="player-name">Aime Bombaba#423</p>
-                            </div>
-                        </div>
-    
-                        <div class="player">
-                            <div class="player-attributes">
-                                <div class="player-fav"></div>
-                                <div class="player-time"></div>
-                            </div>
-                            <div class="player-image">
-                                <img src="/images/pikachu.jpg" alt="Pikachu03"/>
-                            </div>
-                            <div class="player-tag">
-                            <span class="player-online-status"></span>
-                                <p class="player-name">Aime User#379</p>
-                            </div>
-                        </div>
-    
-                        <div class="player">
-                            <div class="player-attributes">
-                                <div class="player-fav"></div>
-                                <div class="player-time"></div>
-                            </div>
-                            <div class="player-image">
-                                <img src="/images/pikachu.jpg" alt="Pikachu03"/>
-                            </div>
-                            <div class="player-tag">
-                            <span class="player-online-status"></span>
-                                <p class="player-name">Aime User#379</p>
-                            </div>
-                        </div>
-    
-                        <div class="player">
-                            <div class="player-attributes">
-                                <div class="player-fav"></div>
-                                <div class="player-time"></div>
-                            </div>
-                            <div class="player-image">
-                                <img src="/images/pikachu.jpg" alt="Pikachu03"/>
-                            </div>
-                            <div class="player-tag">
-                            <span class="player-online-status"></span>
-                                <p class="player-name">Aime User#379</p>
-                            </div>
-                        </div>
-    
-                        <div class="player">
-                            <div class="player-attributes">
-                                <div class="player-fav"></div>
-                                <div class="player-time"></div>
-                            </div>
-                            <div class="player-image">
-                                <img src="/images/pikachu.jpg" alt="Pikachu03"/>
-                            </div>
-                            <div class="player-tag">
-                            <span class="player-online-status"></span>
-                                <p class="player-name">Aime User#379</p>
-                            </div>
-                        </div>
-    
-                        <div class="player">
-                            <div class="player-attributes">
-                                <div class="player-fav"></div>
-                                <div class="player-time"></div>
-                            </div>
-                            <div class="player-image">
-                                <img src="/images/pikachu.jpg" alt="Pikachu03"/>
-                            </div>
-                            <div class="player-tag">
-                            <span class="player-online-status"></span>
-                                <p class="player-name">Aime User#379</p>
-                            </div>
-                        </div>
-    
-                    </div>
-                </div>
+                
 
         </div>`
 
@@ -293,7 +335,7 @@ export class DashboardRight extends XUIObject {
             </div>
             <div class="profile">
                 <div class="info">
-                    <p><span>hey,</span><b>Pikachu01</b> </p>
+                    <p><span>hey, </span><b>Pikachu01</b> </p>
                     <small class="text-muted">Admin</small>
                 </div>
                 <div class="profile-photo">
