@@ -528,6 +528,12 @@ main .players-grid:hover {
     transform: translate(-50%, 0);
     filter: blur(6px);
     opacity: 0.5;
+    transition: all 200ms ease;
+}
+
+.player .player-image img:hover {
+    filter: blur(0);
+    opacity: 1;
 }
 
 .player-tag {
