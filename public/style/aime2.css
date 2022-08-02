@@ -282,13 +282,19 @@ main .header .right .parcel-details {
     gap: 10px;
 
     width: 40vmin;
-    padding: 1rem;
+    padding: 0.5rem;
     border-radius: var(--border-radius-1);
-    background: var(--color-white);
+    /* background: var(--color-white); */
     color: var(--color-dark);
 }
 
-main .header .right .parcel-details button {
+main .header .right .parcel-details .bottom{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+main .header .right .parcel-details .bottom button {
     width: 30%;
     margin: 0 auto;
     padding: 5px;
@@ -299,12 +305,20 @@ main .header .right .parcel-details button {
     cursor: pointer;
 }
 
-main .header .right .parcel-details h4:nth-child(3) {
-    width: 60px;
-    padding: 5px;
+main .header .right .parcel-details .parcel-position {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: fit-content;
+    padding: 3px 4px;
     border-radius: var(--border-radius-1);
     outline: 1px solid black;
     text-align: center;
+}
+
+main .header .right .parcel-details span {
+    font-size: 1.2rem;
 }
 
 main .date {
@@ -741,6 +755,16 @@ main .players-grid:hover {
     main table tbody tr td:last-child,
     main table tbody tr td:first-child {
         display: none;
+    }
+
+    main .header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    main .header .right {
+        display: flex;
+        justify-content: center;
     }
 
 }

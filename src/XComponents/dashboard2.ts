@@ -101,8 +101,12 @@ export class DashboardMain extends XUIObject {
                 <div class="parcel-details">
                     <h3>Parcel Name</h3>
                     <h4>Acquired at August 2nd, 2022</h4>
-                    <h4>-42, 144</h4>
-                    <button>Edit</button>
+                    <div class="bottom">
+                        <div class="parcel-position">
+                            <span class="material-icons material-symbols-sharp">location_on</span><h4>-42, 144</h4>
+                        </div>
+                            <button>Edit</button>
+                    </div>
                 </div>
             </div>
 
@@ -477,17 +481,17 @@ export class DashboardLoader extends XUIObject {
         if (!loader.style.opacity) {
             loader.style.opacity = 1
         }
- 
-            setTimeout(() => {
-                const opacity = setInterval(() => {
-                    loader.style.opacity -= oStep;
-                    if (loader.style.opacity == 0) {
-                        clearInterval(opacity);
-                        loader.style.display = "none";
-                    }
-                }, 50)
 
-            }, 1500)
+        setTimeout(() => {
+            const opacity = setInterval(() => {
+                loader.style.opacity -= oStep;
+                if (loader.style.opacity == 0) {
+                    clearInterval(opacity);
+                    loader.style.display = "none";
+                }
+            }, 50)
+
+        }, 1500)
 
     }
 
