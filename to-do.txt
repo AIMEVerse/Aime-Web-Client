@@ -22,4 +22,28 @@ ___________________________________________________
 
 to fix---
 SVG
-text must be wrapped in a tag if it has childrens
+text must be wrapped in a tag if it has children
+
+
+
+
+screens to do:
+
+- users
+    - login
+    - manage user profile (update user profile)
+    - change password
+- space
+    - list of all user spaces
+        - add new
+        - delete 
+        - update space data 
+    - space analytics (dashboard)
+        - general info (total visits, bounce rate)
+        - players list
+- organization
+    - list of user organizations
+    - add new / delete
+    - organization update
+    - add/remove users to organization
+
