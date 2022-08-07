@@ -47,3 +47,6 @@ screens to do:
     - organization update
     - add/remove users to organization
 
+text must be wrapped in a tag if it has childrens
+
+fix overflow

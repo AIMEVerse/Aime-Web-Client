@@ -3,6 +3,7 @@ import "../public/style/aime2.css"
 import {Xpell as _X, XUI,XData as _XD} from 'xpell'
 
 import { DashboardComponent } from './XComponents/dashboard2'
+import { LoginComponent } from './XComponents/login'
 import Wormholes from "./wormholes"
 
 
@@ -16,6 +17,7 @@ async function main() {
 
     _X.loadModule(XUI)
     XUI.importObjects(DashboardComponent)
+    XUI.importObjects(LoginComponent)
 
 
     
@@ -33,22 +35,27 @@ async function main() {
             version: 1
         },
         views: {
-            "login-view": {
-                _type: "view",
-                _id: "login-view",
-                animation: "fade",
-                _children:[{
-                    _type:"svg"
-                }]
-            },
+            // "login-view": {
+            //     _type: "view",
+            //     _id: "login-view",
+            //     animation: "fade",
+            //     _children:[{
+            //         _type:"svg"
+            //     }]
+            // },
             "dashboard-panel": {
                 _type: "dashboard-panel",
                 _id: "dashboard-panel",
                 animation: "fade",
+            },
+            "dashboard-login": {
+                _type: "dashboard-login",
+                _id: "dashboard-login",
+                animation: "fade",
             }
         },
         defaults: {
-            view: "login-view"
+            view: "dashboard-login"
         },
         player: {
             html_element: "xplayer"
@@ -72,7 +79,7 @@ let  playersDataSource = {}
     
     XUI.loadApp(xapp)
 
-    XUI.vm.showView("dashboard-panel")
+    XUI.vm.showView("dashboard-login")
 
     // const callUrl = "http://127.0.0.1:8080/users/online"
     // fetch(callUrl) .then((response) => response.json())
