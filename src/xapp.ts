@@ -88,20 +88,45 @@ let  playersDataSource = {}
        
     // });
 
+    type AIMEUser = {
+        _id?:string  //db object-id
+        userName:string,
+        firstName:string,
+        lastName:string,
+        password:string
+    }
     
+    const user:AIMEUser = {
+        userName : "tamirf",
+        firstName: "Tamir",
+        lastName: "Fridman",
+        password:"1234"
+    }
+
+
     const wormholeUrl = "ws://127.0.0.1:8080/"
     const xMessage = {
-        module:"dashboard",
-        op:"get-online",
+        module:"user-manager",
+        op:"addNewUser",
         params: {
-            spaceId:"dcl"
+            user:user
         }
     }
+
+    const xMessage2 = {
+        module:"user-manager",
+        op:"login",
+        params: {
+            userName:"tamirf",
+            password:"1234"
+        }
+    }
+
     Wormholes.open(wormholeUrl)
 
     document.addEventListener("wormhole-open",(e) => {
 
-        Wormholes.send(xMessage,(data)=> {
+        Wormholes.send(xMessage2,(data)=> {
             console.log("data",data);
             
         })
