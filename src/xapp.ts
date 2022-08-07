@@ -108,10 +108,9 @@ let  playersDataSource = {}
 
     const xMessage2 = {
         module:"user-manager",
-        op:"login",
+        op:"checkName",
         params: {
-            userName:"tamirf",
-            password:"1234"
+            userName:"tamirf"
         }
     }
 
