@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* @import url("https://fonts.googleapis.com/css2?family=Caudex&display=swap"); */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/svg-with-js.min.css");
+
 @import 'loader.css';
+@import 'login.css';
 
 :root {
     --aime-color-1: #994EBB;
@@ -270,58 +275,41 @@ main {
     margin-top: 1.4rem;
 }
 
-main .header {
-    display: flex;
-    justify-content: space-between;
-}
-
-main .header .right .parcel-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    gap: 10px;
-
-    width: 40vmin;
-    padding: 0.5rem;
-    border-radius: var(--border-radius-1);
-    /* background: var(--color-white); */
-    color: var(--color-dark);
-}
-
-main .header .right .parcel-details .bottom{
+main .header{
     display: flex;
     justify-content: center;
-    gap: 10px;
-}
-
-main .header .right .parcel-details .bottom button {
-    width: 30%;
-    margin: 0 auto;
-    padding: 5px;
-    border-radius: var(--border-radius-3);
-    background: var(--color-danger);
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-main .header .right .parcel-details .parcel-position {
-    display: flex;
-    justify-content: space-around;
     align-items: center;
+    flex-direction: column;
+    gap: 5px;
 
-    width: fit-content;
-    padding: 3px 4px;
+}
+
+main .header button{
+    width: 5rem;
     border-radius: var(--border-radius-1);
-    outline: 1px solid black;
-    text-align: center;
+    color: white;
+    font-weight: 400;
+    background: var(--color-danger);
 }
 
-main .header .right .parcel-details span {
-    font-size: 1.2rem;
+main .parcel-position{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    outline: 2px solid black;
+    padding: 5px;
+    width: 80px;
 }
 
-main .date {
+/* main .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+} */
+
+/* main .date {
     display: inline-block;
     background: var(--color-light);
     border-radius: var(--border-radius-1);
@@ -332,7 +320,7 @@ main .date {
 main .date input[type="date"] {
     background: transparent;
     color: var(--color-dark);
-}
+} */
 
 main .insights {
     display: grid;
@@ -777,7 +765,7 @@ main .players-grid:hover {
 
 /* ============= MEDIA QUERIES Small Screens ============= */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 796px) {
     .container {
         width: 100%;
         grid-template-columns: 1fr;

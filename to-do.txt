@@ -21,5 +21,6 @@ ___________________________________________________
 - number of messages for each user
 
 to fix---
-SVG
 text must be wrapped in a tag if it has childrens
+
+fix overflow
