@@ -30,8 +30,8 @@ text must be wrapped in a tag if it has children
 screens to do:
 
 - users
-    - login
-    - manage user profile (update user profile)
+    - login - |Done|
+    - manage user profile (update user profile) - |In progress|
     - change password
 - space
     - list of all user spaces
@@ -47,6 +47,3 @@ screens to do:
     - organization update
     - add/remove users to organization
 
-text must be wrapped in a tag if it has childrens
-
-fix overflow

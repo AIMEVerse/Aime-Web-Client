@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 
 /* @import url("https://fonts.googleapis.com/css2?family=Caudex&display=swap"); */
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/svg-with-js.min.css");
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/svg-with-js.min.css"); */
 
 @import 'loader.css';
 @import 'login.css';
+@import 'profile.css';
 
 :root {
     --aime-color-1: #994EBB;
@@ -23,7 +25,7 @@
     --color-light: rgba(132, 139, 200, 0.18);
     --color-primary-variant: #111e88;
     --color-dark-variant: #677483;
-    --color-background: #f6f6f9;
+    --color-background: #f6f6f6;
 
     --card-border-radius: 1.2rem;
     --border-radius-1: 0.4rem;
@@ -51,7 +53,9 @@
 }
 
 
-* {
+*,
+*::before,
+*::after{
     margin: 0;
     padding: 0;
     outline: 0;
@@ -68,7 +72,7 @@ html {
 
 body {
     width: 100vw;
-    /* height: 100vw; */
+    /* height: 100vh; */
     font-family: "Assistant", sans-serif;
     font-size: 0.88rem;
     background: var(--color-background);
@@ -148,7 +152,7 @@ small {
 }
 
 p {
-    color: var(--color-dark-variant);
+    /* color: var(--color-dark-variant); Unmark at the end! */
 }
 
 b {
@@ -169,6 +173,11 @@ b {
 
 .warning {
     color: var(--color-warning);
+}
+
+/* style for all cards/widgets */
+.widget{
+    transition: all 300ms ease;
 }
 
 aside {
@@ -400,13 +409,13 @@ and then multiply again by PI */
 
 main .insights .expenses svg circle {
     stroke-dasharray: 226;
-    stroke-dashoffset: 80;
+    stroke-dashoffset: 79;
 }
 
 
 main .insights .income svg circle {
     stroke-dasharray: 226;
-    stroke-dashoffset: 100;
+    stroke-dashoffset: 30;
 }
 
 main .insights .progress .number {
@@ -514,8 +523,8 @@ main .players-grid:hover {
     top: 0;
     left: 50%;
     transform: translate(-50%, 0);
-    filter: blur(6px);
-    opacity: 0.5;
+    /* filter: blur(6px); */
+    /* opacity: 0.5; */
     transition: all 200ms ease;
 }
 

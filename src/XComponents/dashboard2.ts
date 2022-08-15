@@ -1,6 +1,6 @@
 
 import { Xpell, XUtils, XData, XUI, XEventManager as XEM, XUIObject, XObjectPack } from 'xpell'
-
+import { AimeProfileCard } from './profileUserCard'
 
 
 
@@ -105,7 +105,7 @@ export class DashboardMain extends XUIObject {
 
             <div class="players-section">
             <h2>Online Players</h2>
-            <div class="players-grid">
+            <div class="players-grid widget">
             
                 <div class="player">
                     <div class="player-attributes">
@@ -113,7 +113,7 @@ export class DashboardMain extends XUIObject {
                         <div class="player-time"></div>
                     </div>
                     <div class="player-image">
-                        <img src="/images/pikachu4.jpg" alt="Pikachu03"/>
+                        <img src="/images/pikachu4.png" alt="Pikachu04"/>
                     </div>
                     <div class="player-tag">
                     <span class="player-online-status"></span>
@@ -127,7 +127,7 @@ export class DashboardMain extends XUIObject {
                         <div class="player-time"></div>
                     </div>
                     <div class="player-image">
-                        <img src="/images/pikachu3.jpg" alt="Pikachu03"/>
+                        <img src="/images/pikachu3.png" alt="Pikachu03"/>
                     </div>
                     <div class="player-tag">
                     <span class="player-online-status"></span>
@@ -141,7 +141,7 @@ export class DashboardMain extends XUIObject {
                         <div class="player-time"></div>
                     </div>
                     <div class="player-image">
-                        <img src="/images/pikachu2.jpg" alt="Pikachu03"/>
+                        <img src="/images/pikachu2.png" alt="Pikachu02"/>
                     </div>
                     <div class="player-tag">
                     <span class="player-online-status"></span>
@@ -155,7 +155,7 @@ export class DashboardMain extends XUIObject {
                         <div class="player-time"></div>
                     </div>
                     <div class="player-image">
-                        <img src="/images/pikachu4.jpg" alt="Pikachu03"/>
+                        <img src="/images/pikachu4.png" alt="Pikachu04"/>
                     </div>
                     <div class="player-tag">
                     <span class="player-online-status"></span>
@@ -169,7 +169,7 @@ export class DashboardMain extends XUIObject {
                         <div class="player-time"></div>
                     </div>
                     <div class="player-image">
-                        <img src="/images/pikachu2.jpg" alt="Pikachu03"/>
+                        <img src="/images/pikachu2.png" alt="Pikachu02"/>
                     </div>
                     <div class="player-tag">
                     <span class="player-online-status"></span>
@@ -183,7 +183,7 @@ export class DashboardMain extends XUIObject {
                         <div class="player-time"></div>
                     </div>
                     <div class="player-image">
-                        <img src="/images/pikachu3.jpg" alt="Pikachu03"/>
+                        <img src="/images/pikachu3.png" alt="Pikachu03"/>
                     </div>
                     <div class="player-tag">
                     <span class="player-online-status"></span>
@@ -197,7 +197,7 @@ export class DashboardMain extends XUIObject {
                         <div class="player-time"></div>
                     </div>
                     <div class="player-image">
-                        <img src="/images/pikachu2.jpg" alt="Pikachu03"/>
+                        <img src="/images/pikachu2.png" alt="Pikachu02"/>
                     </div>
                     <div class="player-tag">
                     <span class="player-online-status"></span>
@@ -211,7 +211,7 @@ export class DashboardMain extends XUIObject {
                         <div class="player-time"></div>
                     </div>
                     <div class="player-image">
-                        <img src="/images/pikachu4.jpg" alt="Pikachu03"/>
+                        <img src="/images/pikachu4.png" alt="Pikachu04"/>
                     </div>
                     <div class="player-tag">
                     <span class="player-online-status"></span>
@@ -225,7 +225,7 @@ export class DashboardMain extends XUIObject {
                         <div class="player-time"></div>
                     </div>
                     <div class="player-image">
-                        <img src="/images/pikachu3.jpg" alt="Pikachu03"/>
+                        <img src="/images/pikachu3.png" alt="Pikachu03"/>
                     </div>
                     <div class="player-tag">
                     <span class="player-online-status"></span>
@@ -238,7 +238,7 @@ export class DashboardMain extends XUIObject {
 
             <div class="insights">
       
-                <div class="sales">
+                <div class="sales widget">
                     <span class="material-icons material-symbols-sharp">analytics</span>
                     <div class="middle">
                         <div class="left">
@@ -250,7 +250,7 @@ export class DashboardMain extends XUIObject {
                     <small class="text-muted">Last 24 hours</small>
                 </div>
 
-                <div class="expenses">
+                <div class="expenses widget">
                     <span _html_tag="span" class="material-icons material-symbols-sharp">bar_chart</span>
                     <div class="middle">
                         <div class="left">
@@ -271,7 +271,7 @@ export class DashboardMain extends XUIObject {
                     <small class="text-muted">Last 24 hours</small>
                 </div>
   
-                <div class="income">
+                <div class="income widget">
                     <span _html_tag="span" class="material-icons material-symbols-sharp">stacked_line_chart</span>
                     <div class="middle">
                         <div class="left">
@@ -334,17 +334,17 @@ export class DashboardRight extends XUIObject {
                     <small class="text-muted">Admin</small>
                 </div>
                 <div class="profile-photo">
-                    <img src="/images/pikachu2.jpg" alt="Pikachu01"/>
+                    <img src="/images/pikachu2.png" alt="Pikachu01"/>
                 </div>
             </div>
         </div>
 
         <div class="recent-updates">
             <h2>Recent Updates</h2>
-            <div class="updates">
+            <div class="updates widget">
                 <div class="update">
                     <div class="profile-photo">
-                        <img src="/images/pikachu2.jpg" alt="Pikachu02"/>
+                        <img src="/images/pikachu2.png" alt="Pikachu02"/>
                     </div>
                     <div class="message">
                         <p><b>Pikachu 02</b><p>received 350 Mana Coins</p></p>
@@ -353,7 +353,7 @@ export class DashboardRight extends XUIObject {
                 </div>
                 <div class="update">
                     <div class="profile-photo">
-                        <img src="/images/pikachu3.jpg" alt="Pikachu03"/>
+                        <img src="/images/pikachu3.png" alt="Pikachu03"/>
                     </div>
                     <div class="message">
                         <p><b>Pikachu 03</b> <p>received 170 Mana Coins</p></p>
@@ -362,7 +362,7 @@ export class DashboardRight extends XUIObject {
                 </div>
                 <div class="update">
                     <div class="profile-photo">
-                        <img src="/images/pikachu4.jpg" alt="Pikachu04"/>
+                        <img src="/images/pikachu4.png" alt="Pikachu04"/>
                     </div>
                     <div class="message">
                         <p><b>Pikachu 04</b> <p>received 230 Mana Coins</p></p>
@@ -374,7 +374,7 @@ export class DashboardRight extends XUIObject {
 
     <div class="sales-analytics">
         <h2>Sales Analytics</h2>
-        <div class="item online">
+        <div class="item online widget">
             <div class="icon">
                 <span class="material-icons material-symbols-sharp">shopping_cart</span>
             </div>
@@ -387,7 +387,7 @@ export class DashboardRight extends XUIObject {
                 <h5>3268</h5>
             </div>
         </div>
-        <div class="item offline">
+        <div class="item offline widget">
             <div class="icon">
                 <span class="material-icons material-symbols-sharp">monetization_on</span>
             </div>
@@ -400,7 +400,7 @@ export class DashboardRight extends XUIObject {
                 <h5>482</h5>
             </div>
         </div>
-        <div class="item customer">
+        <div class="item customer widget">
             <div class="icon">
                 <span class="material-icons material-symbols-sharp">person</span>
             </div>
@@ -465,8 +465,12 @@ export class DashboardLoader extends XUIObject {
 
     }
 
-    async onMount() {
-        const loader = document.querySelector(".loader-container");
+    show() {
+        
+        // const loader = document.querySelector(".loader-container")
+        const loader = this.getDomObject()
+        console.log(loader);
+        
         const oStep = 0.1;
 
         if (!loader.style.opacity) {
@@ -483,7 +487,14 @@ export class DashboardLoader extends XUIObject {
             }, 50)
 
         }, 1500)
+    }
 
+    hide() {
+
+    }
+
+    async onCreate() {
+      this.show()
     }
 
 }
@@ -503,9 +514,10 @@ export class DashboardPanel extends XUIObject {
         super(data, defaults);
 
 
-        const dashboardLoader = new DashboardLoader({ _id: "dashboard-loader" })
+        // const dashboardLoader = new DashboardLoader({ _id: "dashboard-loader" })
         const dashboardLeft = new DashboardLeft({ _id: "dashboard-left" })
         const dashboardMain = new DashboardMain({ _id: "dashboard-main" })
+        // const profileCard = new AimeProfileCard({ _id: "aime-profile-card" })
         const dashboardRight = new DashboardRight({ _id: "dashboard-right" })
 
 
@@ -518,8 +530,9 @@ export class DashboardPanel extends XUIObject {
 
         this.append(dashboardLeft)
         this.append(dashboardMain)
+        // this.append(profileCard)
         this.append(dashboardRight)
-        this.append(dashboardLoader)
+        // this.append(dashboardLoader)
 
     }
 
