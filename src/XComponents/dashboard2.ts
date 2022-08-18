@@ -154,13 +154,20 @@ export class DashboardMain extends XUIObject {
         //     </div>
         // </div>
 
-        // <canvas _html_tag="canvas" id="myChart" width="400" height="400" ></canvas>
         let dashboardMain = /* html */`
         <div>
 
             <div class="header">
                 <h1>World Name</h1>
             </div>
+                
+            <ul class="breadcrumb x2">
+                <li><a href="#"><img src="/images/aime-logo.svg" alt="AIME logo"/></a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Dashboards</a></li>
+                <li><a href="#">My world</a></li>
+
+            </ul>
 
             <div class="players-section">
             <h2>Online Players</h2>

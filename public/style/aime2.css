@@ -109,6 +109,7 @@ a {
     color: var(--color-dark);
 }
 
+
 img {
     display: block;
     width: 100%;
@@ -182,6 +183,77 @@ b {
     border-radius: var(--card-border-radius);
     transition: all 300ms ease;
 }
+
+/* ============= Bread Crumbs ============= */
+
+.breadcrumb {
+    font: .75em sans-serif;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.breadcrumb.x2 {
+    font-size: 1em;
+}
+
+.breadcrumb.x3 {
+    font-size: 1.25em;
+}
+
+.breadcrumb li {
+    /* display: inline-block; */
+    margin-left: .5rem;
+    margin-bottom: .2em;
+}
+
+.breadcrumb li a {
+    background: var(--color-info-dark);
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    /* max-height: 2em; */
+    padding: .5em 1em;
+    position: relative;
+    text-decoration: none;
+    transition: .25s;
+    border-radius: 4px var(--border-radius-3) var(--border-radius-3) 4px;
+
+
+}
+
+.breadcrumb li:first-child a {
+    display: flex;
+    justify-content: center;
+
+    background: transparent;
+}
+
+.breadcrumb li a img {
+
+    width: auto;
+    height: 30px;
+}
+
+.breadcrumb li:first-child a:hover {
+    background: transparent;
+    transform: scale(1.5);
+}
+
+.breadcrumb li a:hover {
+    background: var(--color-dark-variant);
+}
+
+
+.breadcrumb li:last-child a {
+    background: var(--aime-color-1);
+    pointer-events: none;
+}
+
+/* ============= Bread Crumbs End ============= */
+
 
 /* ============= chart ============= */
 
