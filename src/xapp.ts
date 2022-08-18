@@ -24,13 +24,6 @@ async function main() {
     XUI.importObjects(DatingComponent)
 
 
-
-
-    // SpellUI.importObjects(LoginComponent)
-    // SpellUI.importObjects(DashboardComponent)
-    // SpellUI.importObjects(RoomComponent)
-
-
     _X.start()
 
 
@@ -93,20 +86,16 @@ async function main() {
 
     }
 
-
-
     let playersDataSource = {}
 
 
-
     //update XData object 
-
     _XD.objects["players-list"] = playersDataSource
 
 
     XUI.loadApp(xapp)
 
-    XUI.vm.showPage(xapp.views.defaults.view)
+    XUI.vm.showPage("dashboard-panel")
 
 
     // const callUrl = "http://127.0.0.1:8080/users/online"

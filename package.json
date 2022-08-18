@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/AIMEVerse/AIME-Server#readme",
   "dependencies": {
+    "chart.js": "^3.9.1",
     "vite": "^2.9.10",
     "ws": "^8.8.1",
     "xpell": "^1.0.9"

@@ -35,7 +35,8 @@
     --card-padding: 1.8rem;
     --padding: 1.2rem;
 
-    --box-shadow: 0 2rem 3rem var(--color-light);
+    --box-shadow: 0 0.5rem 1rem var(--color-light);
+    --box-shadow-small: 0 0 0.5rem var(--color-light);
 
     /* loader */
     --loader-roundness: 100vmax;
@@ -55,7 +56,7 @@
 
 *,
 *::before,
-*::after{
+*::after {
     margin: 0;
     padding: 0;
     outline: 0;
@@ -176,10 +177,87 @@ b {
 }
 
 /* style for all cards/widgets */
-.widget{
+.widget {
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
     transition: all 300ms ease;
 }
 
+/* ============= chart ============= */
+
+.dashboard-chart.widget {
+    /* display: flex; */
+    width: 100%;
+    margin-top: 1rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    transition: all 300ms ease;
+}
+
+.dashboard-chart.widget canvas {
+    width: 100% !important;
+}
+
+/* ============= Header ============= */
+
+
+.dashboard-header .top {
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+
+    height: 4.6rem;
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--color-white);
+    box-shadow: 0 1rem 1rem var(--color-light);
+
+}
+
+.dashboard-header .logo {
+    display: flex;
+}
+
+.dashboard-header .top button {
+    display: none;
+}
+
+.dashboard-header .theme-toggler {
+    background: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 4.2rem;
+    height: 1.6rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.dashboard-header .theme-toggler span {
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-header .theme-toggler span.active {
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-1);
+}
+
+.dashboard-header .top .profile {
+    display: flex;
+    gap: 2rem;
+    text-align: right;
+}
+
+
+
+
+/* ============= Sidebar ============= */
 aside {
     height: 100vh;
     z-index: 999999999;
@@ -214,7 +292,6 @@ aside .close {
     display: none
 }
 
-/* ============= Sidebar ============= */
 aside .sidebar {
     display: flex;
     flex-direction: column;
@@ -284,7 +361,7 @@ main {
     margin-top: 1.4rem;
 }
 
-main .header{
+main .header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -293,7 +370,7 @@ main .header{
 
 }
 
-main .header button{
+main .header button {
     width: 5rem;
     border-radius: var(--border-radius-1);
     color: white;
@@ -301,7 +378,7 @@ main .header button{
     background: var(--color-danger);
 }
 
-main .parcel-position{
+main .parcel-position {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -481,11 +558,11 @@ main .players-section {
     margin-top: 1rem;
 }
 
-.players-grid {
+main .players-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    justify-content: center;
+    gap: 1rem;
 
     max-height: 20rem;
 
@@ -494,7 +571,6 @@ main .players-section {
     /* grid-template-columns: repeat(4, 1fr); */
     /* grid-template-columns: repeat(auto-fill, minmax(min(12vmax,100vmin), 1fr)); */
 
-    gap: 1rem;
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
     box-shadow: var(--box-shadow);
@@ -514,7 +590,7 @@ main .players-grid:hover {
     max-width: 110px;
     border-radius: var(--card-border-radius);
     /* background: var(--color-white); */
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-small);
     overflow: hidden;
 }
 
@@ -565,48 +641,6 @@ main .players-grid:hover {
 /* ============= RIGHT ============= */
 .right {
     margin-top: 1.4rem;
-}
-
-.right .top {
-    display: flex;
-    justify-content: end;
-    gap: 2rem;
-}
-
-.right .top button {
-    display: none;
-}
-
-.right .theme-toggler {
-    background: var(--color-light);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 4.2rem;
-    height: 1.6rem;
-    cursor: pointer;
-    border-radius: var(--border-radius-1);
-}
-
-.right .theme-toggler span {
-    font-size: 1.2rem;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.right .theme-toggler span.active {
-    background: var(--color-primary);
-    color: white;
-    border-radius: var(--border-radius-1);
-}
-
-.right .top .profile {
-    display: flex;
-    gap: 2rem;
-    text-align: right;
 }
 
 /* ============= Recent Updates ============= */
@@ -782,6 +816,7 @@ main .players-grid:hover {
 
     aside {
         position: fixed;
+        top: 0;
         left: -100%;
         width: 18rem;
         height: 100vh;
@@ -849,7 +884,7 @@ main .players-grid:hover {
         margin: 0 auto 4rem;
     }
 
-    .right .top {
+    .dashboard-header .top {
         position: fixed;
         top: 0;
         left: 0;
@@ -863,17 +898,17 @@ main .players-grid:hover {
         z-index: 2;
     }
 
-    .right .top .theme-toggler {
+    .dashboard-header .top .theme-toggler {
         width: 4.4rem;
-        position: absolute;
-        left: 66%;
+        /* position: absolute; */
+        /* left: 66%; */
     }
 
-    .right .profile .info {
+    .dashboard-header .profile .info {
         display: none;
     }
 
-    .right .top button {
+    .dashboard-header .top button {
         display: inline-block;
         position: absolute;
         left: 1rem;
@@ -882,7 +917,12 @@ main .players-grid:hover {
         cursor: pointer;
     }
 
-    .right .top button span {
+    .dashboard-header .top button span {
         font-size: 2rem;
+    }
+
+    .dashboard-header .logo {
+        display: flex;
+        width: 1rem;
     }
 }

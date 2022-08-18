@@ -2,10 +2,58 @@
 import { Xpell, XUtils, XData, XUI, XEventManager as XEM, XUIObject, XObjectPack } from 'xpell'
 import { AimeProfileCard } from './profileUserCard'
 
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
+
+export class DashboardHeader extends XUIObject {
+    constructor(data) {
+
+        const ids = XUtils.guid()
+        const defaults = {
+            _ids: ids,
+            _type: "dashboard-header",
+            _html_tag: "div",
+            class: "dashboard-header"
+
+        }
+        super(data, defaults);
+
+        // <span class="material-icons material-symbols-sharp">menu</span>
+        let dashboardHeader = /* html */`
+        <div class="top">
+            <button id="menu-btn">
+                <div class="logo">
+                    <img src="/images/aime-logo.svg" alt="AIME logo"/>
+                </div>
+            </button>
+            
+            <div class="theme-toggler">
+                <span class="material-icons material-symbols-sharp active">light_mode</span>
+                <span class="material-icons material-symbols-sharp">dark_mode</span>
+            </div>
+            <div class="profile">
+                <div class="info">
+                    <p><span>hey, </span><b>Pikachu01</b> </p>
+                    <small class="text-muted">Admin</small>
+                </div>
+                <div class="profile-photo">
+                    <img src="/images/pikachu2.png" alt="Pikachu01"/>
+                </div>
+            </div>
+        </div>`
 
 
+        const sj = Xpell.parser.xmlString2Xpell(dashboardHeader);
+        const sjObj = XUI.create(sj)
+        this.append(sjObj)
+    }
+
+    async onMount() {
+
+    }
 
 
+}
 export class DashboardLeft extends XUIObject {
     constructor(data) {
 
@@ -90,18 +138,29 @@ export class DashboardMain extends XUIObject {
         // <div class="date">
         //     <input type="date"/>
         // </div>
+
+        // <div class="parcel-position" >
+        //     <span class="material-icons material-symbols-sharp" > location_on < /span>
+        //         < h4 > -42, 144 < /h4>
+        //         < /div>
+        //         < h4 > Acquired at August 2nd, 2022 < /h4>
+        //             < button > Edit < /button>
+
+        // <span class="material-icons material-symbols-sharp">analytics</span>
+        // <div class="middle">
+        //     <div class="left">
+        //         <h3>Online Users</h3>
+        //         <h1>37</h1>
+        //     </div>
+        // </div>
+
+        // <canvas _html_tag="canvas" id="myChart" width="400" height="400" ></canvas>
         let dashboardMain = /* html */`
         <div>
 
-        <div class="header">
+            <div class="header">
                 <h1>World Name</h1>
-                <div class="parcel-position">
-                    <span class="material-icons material-symbols-sharp">location_on</span>
-                    <h4>-42, 144</h4>
-                </div>
-                <h4>Acquired at August 2nd, 2022</h4>
-                <button>Edit</button>
-        </div>
+            </div>
 
             <div class="players-section">
             <h2>Online Players</h2>
@@ -239,14 +298,13 @@ export class DashboardMain extends XUIObject {
             <div class="insights">
       
                 <div class="sales widget">
-                    <span class="material-icons material-symbols-sharp">analytics</span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Online Users</h3>
-                            <h1>37</h1>
-                        </div>
-
+                <span class="material-icons material-symbols-sharp">analytics</span>
+                <div class="middle">
+                    <div class="left">
+                        <h3>Online Users</h3>
+                        <h1>37</h1>
                     </div>
+                </div>
                     <small class="text-muted">Last 24 hours</small>
                 </div>
 
@@ -297,14 +355,93 @@ export class DashboardMain extends XUIObject {
                 
 
         </div>`
+        // ================= Chart config =================
+        const labels =
+            ['Jan', 'Feb', 'Mar',
+                'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sept',
+                'Oct', 'Nov', 'Dec'];
+        const data1 = [5, 19, 16, 16, 22, 15, 20, 31, 4, 9, 2, 64];
+        const data2 = [2, 13, 7, 6, 16, 8, 16, 23, 0, 3, 0, 21];
+        const borderWidth = 2;
+        const chartType = 'line';
 
+        const chartConfig = {
+            type: chartType,
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Max Online Users',
+                    data: data1,
+                    fill: true,
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: borderWidth
+                }, {
+                    label: 'Total sales',
+                    data: data2,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: borderWidth
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+        // ================= Chart config End =================
+        const dashboardChart = new DashboardChart({ _id: "dashboard-chart", _chart_config: chartConfig })
 
         const sj = Xpell.parser.xmlString2Xpell(dashboardMain);
         const sjObj = XUI.create(sj)
         this.append(sjObj)
+        this.append(dashboardChart)
+    }
+
+
+
+    async onMount() {
+
+        super.onMount()
     }
 
 }
+
+
 
 export class DashboardRight extends XUIObject {
     constructor(data) {
@@ -320,24 +457,7 @@ export class DashboardRight extends XUIObject {
         super(data, defaults);
         let dashboardRight = /* html */`
         <div class="right">
-        <div class="top">
-            <button id="menu-btn">
-                <span class="material-icons material-symbols-sharp">menu</span>
-            </button>
-            <div class="theme-toggler">
-                <span class="material-icons material-symbols-sharp active">light_mode</span>
-                <span class="material-icons material-symbols-sharp">dark_mode</span>
-            </div>
-            <div class="profile">
-                <div class="info">
-                    <p><span>hey, </span><b>Pikachu01</b> </p>
-                    <small class="text-muted">Admin</small>
-                </div>
-                <div class="profile-photo">
-                    <img src="/images/pikachu2.png" alt="Pikachu01"/>
-                </div>
-            </div>
-        </div>
+        
 
         <div class="recent-updates">
             <h2>Recent Updates</h2>
@@ -476,19 +596,19 @@ export class DashboardLoader extends XUIObject {
 
         document.onreadystatechange = () => {
             if (document.readyState === 'complete') {
-              // document ready
-            this.hide()
+                // document ready
+                this.hide()
             }
-          };
+        };
 
-          let stateCheck = setInterval(() => {
-            
+        let stateCheck = setInterval(() => {
+
             if (document.readyState === 'complete') {
-              clearInterval(stateCheck);
-            this.hide()
+                clearInterval(stateCheck);
+                this.hide()
             }
-          }, 100);
-        
+        }, 100);
+
         // document.readyState === "complete" && this.hide()
         // setTimeout(() => {
         //     this.hide()
@@ -518,6 +638,126 @@ export class DashboardLoader extends XUIObject {
 
 }
 
+export class DashboardChart extends XUIObject {
+    private canvas: HTMLCanvasElement;
+    private ctx: CanvasRenderingContext2D | null;
+    private ids: String | null;
+    private chartConfig: {} | null;
+
+    constructor(data) {
+
+        const ids = XUtils.guid()
+        const defaults = {
+            _ids: ids,
+            _type: "dashboard-chart",
+            _html_tag: "div",
+            class: "dashboard-chart widget",
+
+            // _chart_config: {},
+
+            _chart_type: "line"
+            // Chart Types:
+            // line
+            // bar
+            // pie
+            // doughnut
+            // polarArea
+            // radar
+
+        }
+        super(data, defaults);
+        this.ids = ids
+
+        // ================= Chart config =================
+        const labels =
+            ['Jan', 'Feb', 'Mar'];
+        const data1 = [2, 4, 2];
+        const data2 = [1, 3, 5];
+        const borderWidth = 2;
+        const chartType = 'line';
+
+        const chartConfig = {
+            type: chartType,
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Label 1',
+                    data: data1,
+                    fill: true,
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(80, 210, 0, 0.2)',
+
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(80, 210, 0, 1)',
+
+                    ],
+                    borderWidth: borderWidth
+                }, {
+                    label: 'Label 2',
+                    data: data2,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(80, 210, 0, 0.2)',
+
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(80, 210, 0, 1)',
+
+                    ],
+                    borderWidth: borderWidth
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+        // ================= Chart config End =================
+
+        // Override default config
+        this.chartConfig = data["_chart_config"] ? data["_chart_config"] : chartConfig;
+
+        const canvasEl = XUI.create({ _type: "view", "_html_tag": "canvas", "_id": "chart-users" + ids, "class": "chart-users" })
+        this.append(canvasEl)
+
+        
+        // let dashboardRight = /* html */`
+        // `
+
+        // const sj = Xpell.parser.xmlString2Xpell(dashboardRight);
+        // const sjObj = XUI.create(sj)
+        // this.append(sjObj)
+
+    }
+
+    async onMount() {
+        let canvas = document.getElementById('chart-users' + this.ids) as HTMLCanvasElement;
+        let ctx = canvas.getContext("2d");
+
+        this.canvas = canvas;
+        this.ctx = ctx;
+
+        // Init chart
+        const myChart = new Chart(this.ctx, this.chartConfig);
+
+
+
+    }
+}
+
 export class DashboardPanel extends XUIObject {
     constructor(data) {
 
@@ -526,14 +766,16 @@ export class DashboardPanel extends XUIObject {
             _ids: ids,
             _type: "dashboard-panel",
             _html_tag: "div",
-            class: "container",
+            class: "dashboard-panel",
 
 
         }
         super(data, defaults);
 
+        const container = XUI.create({ "_type": "view", "_id": "dashboard-container" + ids, "class": "container" })
 
         // const dashboardLoader = new DashboardLoader({ _id: "dashboard-loader" })
+        const dashboardHeader = new DashboardHeader({ _id: "dashboard-header" })
         const dashboardLeft = new DashboardLeft({ _id: "dashboard-left" })
         const dashboardMain = new DashboardMain({ _id: "dashboard-main" })
         // const profileCard = new AimeProfileCard({ _id: "aime-profile-card" })
@@ -547,10 +789,12 @@ export class DashboardPanel extends XUIObject {
 
 
 
-        this.append(dashboardLeft)
-        this.append(dashboardMain)
+        this.append(dashboardHeader)
+        this.append(container)
+        container.append(dashboardLeft)
+        container.append(dashboardMain)
         // this.append(profileCard)
-        this.append(dashboardRight)
+        container.append(dashboardRight)
         // this.append(dashboardLoader)
 
     }
@@ -562,9 +806,11 @@ export class DashboardComponent extends XObjectPack {
     static getObjects() {
         return {
             "dashboard-panel": DashboardPanel,
+            "dashboard-header": DashboardHeader,
             "dashboard-left": DashboardLeft,
             "dashboard-main": DashboardMain,
             "dashboard-right": DashboardRight,
+            "dashboard-chart": DashboardChart,
             "dashboard-loader": DashboardLoader
             // "card": UserCard,
             // "card-pack": CardPack
