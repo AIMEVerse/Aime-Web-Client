@@ -258,7 +258,7 @@ b {
 /* ============= chart ============= */
 
 .dashboard-chart.widget {
-    /* display: flex; */
+    min-width: 50px;
     width: 100%;
     margin-top: 1rem;
     background: var(--color-white);
@@ -481,14 +481,17 @@ main .date input[type="date"] {
 } */
 
 main .insights {
+    /* display: flex;
+    flex-wrap: wrap; */
     display: grid;
     /* testing grid responsiveness */
-    /* grid-template-columns: repeat(auto-fill, minmax(min(300px,100%), 1fr)); */
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(min(300px,100%), 1fr));
+    /* grid-template-columns: repeat(3, 1fr); */
     gap: 1.6rem;
 }
 
 main .insights>div {
+    /* flex: 1 1 33%; */
     background: var(--color-white);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);

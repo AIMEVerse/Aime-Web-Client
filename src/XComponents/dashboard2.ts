@@ -33,7 +33,7 @@ export class DashboardHeader extends XUIObject {
             </div>
             <div class="profile">
                 <div class="info">
-                    <p><span>hey, </span><b>Pikachu01</b> </p>
+                    <p><span>hey, </span><b>Keren</b> </p>
                     <small class="text-muted">Admin</small>
                 </div>
                 <div class="profile-photo">
@@ -170,151 +170,163 @@ export class DashboardMain extends XUIObject {
             </ul>
 
             <div class="players-section">
-            <h2>Online Players</h2>
-            <div class="players-grid widget">
-            
-                <div class="player">
-                    <div class="player-attributes">
-                        <div class="player-fav"></div>
-                        <div class="player-time"></div>
+                <h2>Online Players</h2>
+                <div class="players-grid widget">
+    
+                    <div class="player">
+                        <div class="player-attributes">
+                            <div class="player-fav"></div>
+                            <div class="player-time"></div>
+                        </div>
+                        <div class="player-image">
+                            <img src="/images/pikachu4.png" alt="Pikachu04"/>
+                        </div>
+                        <div class="player-tag">
+                        <span class="player-online-status"></span>
+                            <p class="player-name">Aime User#136</p>
+                        </div>
                     </div>
-                    <div class="player-image">
-                        <img src="/images/pikachu4.png" alt="Pikachu04"/>
-                    </div>
-                    <div class="player-tag">
-                    <span class="player-online-status"></span>
-                        <p class="player-name">Aime User#136</p>
-                    </div>
-                </div>
 
-                <div class="player">
-                    <div class="player-attributes">
-                        <div class="player-fav"></div>
-                        <div class="player-time"></div>
+                    <div class="player">
+                        <div class="player-attributes">
+                            <div class="player-fav"></div>
+                            <div class="player-time"></div>
+                        </div>
+                        <div class="player-image">
+                            <img src="/images/pikachu3.png" alt="Pikachu03"/>
+                        </div>
+                        <div class="player-tag">
+                        <span class="player-online-status"></span>
+                            <p class="player-name">Aime Bombaba#423</p>
+                        </div>
                     </div>
-                    <div class="player-image">
-                        <img src="/images/pikachu3.png" alt="Pikachu03"/>
-                    </div>
-                    <div class="player-tag">
-                    <span class="player-online-status"></span>
-                        <p class="player-name">Aime Bombaba#423</p>
-                    </div>
-                </div>
 
-                <div class="player">
-                    <div class="player-attributes">
-                        <div class="player-fav"></div>
-                        <div class="player-time"></div>
+                    <div class="player">
+                        <div class="player-attributes">
+                            <div class="player-fav"></div>
+                            <div class="player-time"></div>
+                        </div>
+                        <div class="player-image">
+                            <img src="/images/pikachu2.png" alt="Pikachu02"/>
+                        </div>
+                        <div class="player-tag">
+                        <span class="player-online-status"></span>
+                            <p class="player-name">Aime User#379</p>
+                        </div>
                     </div>
-                    <div class="player-image">
-                        <img src="/images/pikachu2.png" alt="Pikachu02"/>
-                    </div>
-                    <div class="player-tag">
-                    <span class="player-online-status"></span>
-                        <p class="player-name">Aime User#379</p>
-                    </div>
-                </div>
 
-                <div class="player">
-                    <div class="player-attributes">
-                        <div class="player-fav"></div>
-                        <div class="player-time"></div>
+                    <div class="player">
+                        <div class="player-attributes">
+                            <div class="player-fav"></div>
+                            <div class="player-time"></div>
+                        </div>
+                        <div class="player-image">
+                            <img src="/images/pikachu4.png" alt="Pikachu04"/>
+                        </div>
+                        <div class="player-tag">
+                        <span class="player-online-status"></span>
+                            <p class="player-name">Aime User#379</p>
+                        </div>
                     </div>
-                    <div class="player-image">
-                        <img src="/images/pikachu4.png" alt="Pikachu04"/>
-                    </div>
-                    <div class="player-tag">
-                    <span class="player-online-status"></span>
-                        <p class="player-name">Aime User#379</p>
-                    </div>
-                </div>
 
-                <div class="player">
-                    <div class="player-attributes">
-                        <div class="player-fav"></div>
-                        <div class="player-time"></div>
+                    <div class="player">
+                        <div class="player-attributes">
+                            <div class="player-fav"></div>
+                            <div class="player-time"></div>
+                        </div>
+                        <div class="player-image">
+                            <img src="/images/pikachu2.png" alt="Pikachu02"/>
+                        </div>
+                        <div class="player-tag">
+                        <span class="player-online-status"></span>
+                            <p class="player-name">Aime User#379</p>
+                        </div>
                     </div>
-                    <div class="player-image">
-                        <img src="/images/pikachu2.png" alt="Pikachu02"/>
-                    </div>
-                    <div class="player-tag">
-                    <span class="player-online-status"></span>
-                        <p class="player-name">Aime User#379</p>
-                    </div>
-                </div>
 
-                <div class="player">
-                    <div class="player-attributes">
-                        <div class="player-fav"></div>
-                        <div class="player-time"></div>
+                    <div class="player">
+                        <div class="player-attributes">
+                            <div class="player-fav"></div>
+                            <div class="player-time"></div>
+                        </div>
+                        <div class="player-image">
+                            <img src="/images/pikachu3.png" alt="Pikachu03"/>
+                        </div>
+                        <div class="player-tag">
+                        <span class="player-online-status"></span>
+                            <p class="player-name">Aime User#379</p>
+                        </div>
                     </div>
-                    <div class="player-image">
-                        <img src="/images/pikachu3.png" alt="Pikachu03"/>
-                    </div>
-                    <div class="player-tag">
-                    <span class="player-online-status"></span>
-                        <p class="player-name">Aime User#379</p>
-                    </div>
-                </div>
 
-                <div class="player">
-                    <div class="player-attributes">
-                        <div class="player-fav"></div>
-                        <div class="player-time"></div>
+                    <div class="player">
+                        <div class="player-attributes">
+                            <div class="player-fav"></div>
+                            <div class="player-time"></div>
+                        </div>
+                        <div class="player-image">
+                            <img src="/images/pikachu2.png" alt="Pikachu02"/>
+                        </div>
+                        <div class="player-tag">
+                        <span class="player-online-status"></span>
+                            <p class="player-name">Aime User#379</p>
+                        </div>
                     </div>
-                    <div class="player-image">
-                        <img src="/images/pikachu2.png" alt="Pikachu02"/>
-                    </div>
-                    <div class="player-tag">
-                    <span class="player-online-status"></span>
-                        <p class="player-name">Aime User#379</p>
-                    </div>
-                </div>
 
-                <div class="player">
-                    <div class="player-attributes">
-                        <div class="player-fav"></div>
-                        <div class="player-time"></div>
+                    <div class="player">
+                        <div class="player-attributes">
+                            <div class="player-fav"></div>
+                            <div class="player-time"></div>
+                        </div>
+                        <div class="player-image">
+                            <img src="/images/pikachu4.png" alt="Pikachu04"/>
+                        </div>
+                        <div class="player-tag">
+                        <span class="player-online-status"></span>
+                            <p class="player-name">Aime User#379</p>
+                        </div>
                     </div>
-                    <div class="player-image">
-                        <img src="/images/pikachu4.png" alt="Pikachu04"/>
-                    </div>
-                    <div class="player-tag">
-                    <span class="player-online-status"></span>
-                        <p class="player-name">Aime User#379</p>
-                    </div>
-                </div>
 
-                <div class="player">
-                    <div class="player-attributes">
-                        <div class="player-fav"></div>
-                        <div class="player-time"></div>
+                    <div class="player">
+                        <div class="player-attributes">
+                            <div class="player-fav"></div>
+                            <div class="player-time"></div>
+                        </div>
+                        <div class="player-image">
+                            <img src="/images/pikachu3.png" alt="Pikachu03"/>
+                        </div>
+                        <div class="player-tag">
+                        <span class="player-online-status"></span>
+                            <p class="player-name">Aime User#379</p>
+                        </div>
                     </div>
-                    <div class="player-image">
-                        <img src="/images/pikachu3.png" alt="Pikachu03"/>
-                    </div>
-                    <div class="player-tag">
-                    <span class="player-online-status"></span>
-                        <p class="player-name">Aime User#379</p>
-                    </div>
-                </div>
 
+                </div>
             </div>
-        </div>
-
-            <div class="insights">
+        </div>`
+            
       
-                <div class="sales widget">
-                <span class="material-icons material-symbols-sharp">analytics</span>
-                <div class="middle">
-                    <div class="left">
-                        <h3>Online Users</h3>
-                        <h1>37</h1>
-                    </div>
-                </div>
-                    <small class="text-muted">Last 24 hours</small>
-                </div>
+                
 
+                let insights = /* html */`<div class="insights"></div>`
+
+                let insight1 = /* html */`
+                <div class="sales widget">
+
+                        <small class="text-muted">Last 24 hours</small>
+                </div>`
+
+                // let insight1 = /* html */`
+                // <div class="sales widget">
+                //     <span class="material-icons material-symbols-sharp">analytics</span>
+                //     <div class="middle">
+                //         <div class="left">
+                //             <h3>Online Users</h3>
+                //             <h1>37</h1>
+                //         </div>
+                //     </div>
+                //         <small class="text-muted">Last 24 hours</small>
+                // </div>`
+
+                let insight2 = /* html */`
                 <div class="expenses widget">
                     <span _html_tag="span" class="material-icons material-symbols-sharp">bar_chart</span>
                     <div class="middle">
@@ -334,8 +346,9 @@ export class DashboardMain extends XUIObject {
 
                     </div>
                     <small class="text-muted">Last 24 hours</small>
-                </div>
-  
+                </div>`
+
+                let insight3 = /* html */`
                 <div class="income widget">
                     <span _html_tag="span" class="material-icons material-symbols-sharp">stacked_line_chart</span>
                     <div class="middle">
@@ -355,13 +368,15 @@ export class DashboardMain extends XUIObject {
 
                     </div>
                     <small class="text-muted">Last 24 hours</small>
-                </div>
-
-
-                </div>
+                </div>`
+                
+  
                 
 
-        </div>`
+
+                
+
+
         // ================= Chart config =================
         const labels =
             ['Jan', 'Feb', 'Mar',
@@ -431,11 +446,92 @@ export class DashboardMain extends XUIObject {
             }
         };
         // ================= Chart config End =================
+        // ================= Chart config =================
+        const labels_2 =
+            ['Jan', 'Feb', 'Mar'];
+        const data1_2 = [5, 19, 16];
+        const data2_2 = [2, 13, 7];
+        const borderWidth_2 = 2;
+        const chartType_2 = 'doughnut';
+
+        const chartConfig2 = {
+            type: chartType_2,
+            data: {
+                labels: labels_2,
+                datasets: [{
+                    label: 'Max Online Users',
+                    data: data1_2,
+                    fill: true,
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: borderWidth_2
+                }, {
+                    label: 'Total sales',
+                    data: data2_2,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: borderWidth_2
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+        // ================= Chart config End =================
         const dashboardChart = new DashboardChart({ _id: "dashboard-chart", _chart_config: chartConfig })
+        const dashboardChart2 = new DashboardChart({ _id: "dashboard-chart2", _chart_config: chartConfig2 })
 
         const sj = Xpell.parser.xmlString2Xpell(dashboardMain);
+        const sj_insights = Xpell.parser.xmlString2Xpell(insights);
+        const sj_insight1 = Xpell.parser.xmlString2Xpell(insight1);
+        const sj_insight2 = Xpell.parser.xmlString2Xpell(insight2);
+        const sj_insight3 = Xpell.parser.xmlString2Xpell(insight3);
         const sjObj = XUI.create(sj)
+        const sj_insights_Obj = XUI.create(sj_insights)
+        const sj_insight1_Obj = XUI.create(sj_insight1)
+        const sj_insight2_Obj = XUI.create(sj_insight2)
+        const sj_insight3_Obj = XUI.create(sj_insight3)
+
         this.append(sjObj)
+        sjObj.append(sj_insights_Obj)
+        sj_insights_Obj.append(sj_insight1_Obj)
+        sj_insights_Obj.append(sj_insight2_Obj)
+        sj_insights_Obj.append(sj_insight3_Obj)
+        sj_insight1_Obj.append(dashboardChart2)
         this.append(dashboardChart)
     }
 
@@ -474,7 +570,7 @@ export class DashboardRight extends XUIObject {
                         <img src="/images/pikachu2.png" alt="Pikachu02"/>
                     </div>
                     <div class="message">
-                        <p><b>Pikachu 02</b><p>received 350 Mana Coins</p></p>
+                        <p><b>Player 2</b><p>received 350 Mana Coins</p></p>
                         <small class="text-muted">2 Minutes Ago</small>
                     </div>
                 </div>
@@ -483,7 +579,7 @@ export class DashboardRight extends XUIObject {
                         <img src="/images/pikachu3.png" alt="Pikachu03"/>
                     </div>
                     <div class="message">
-                        <p><b>Pikachu 03</b> <p>received 170 Mana Coins</p></p>
+                        <p><b>Player 03</b> <p>received 170 Mana Coins</p></p>
                         <small class="text-muted">2 Minutes Ago</small>
                     </div>
                 </div>
@@ -492,7 +588,7 @@ export class DashboardRight extends XUIObject {
                         <img src="/images/pikachu4.png" alt="Pikachu04"/>
                     </div>
                     <div class="message">
-                        <p><b>Pikachu 04</b> <p>received 230 Mana Coins</p></p>
+                        <p><b>Player 04</b> <p>received 230 Mana Coins</p></p>
                         <small class="text-muted">2 Minutes Ago</small>
                     </div>
                 </div>
