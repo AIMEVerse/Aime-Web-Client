@@ -452,6 +452,7 @@ export class DashboardLoader extends XUIObject {
             _html_tag: "div",
             class: "dashboard-loader"
 
+
         }
         super(data, defaults);
 
@@ -466,35 +467,53 @@ export class DashboardLoader extends XUIObject {
     }
 
     show() {
-        
-        // const loader = document.querySelector(".loader-container")
-        const loader = this.getDomObject()
-        console.log(loader);
-        
-        const oStep = 0.1;
+        const loader = this["getDOMObject"]();
 
-        if (!loader.style.opacity) {
+        if (!loader.style.opacity || loader.style.opacity == 0) {
             loader.style.opacity = 1
+            loader.style.display = "initial";
         }
 
-        setTimeout(() => {
-            const opacity = setInterval(() => {
-                loader.style.opacity -= oStep;
-                if (loader.style.opacity == 0) {
-                    clearInterval(opacity);
-                    loader.style.display = "none";
-                }
-            }, 50)
+        document.onreadystatechange = () => {
+            if (document.readyState === 'complete') {
+              // document ready
+            this.hide()
+            }
+          };
 
-        }, 1500)
+          let stateCheck = setInterval(() => {
+            
+            if (document.readyState === 'complete') {
+              clearInterval(stateCheck);
+            this.hide()
+            }
+          }, 100);
+        
+        // document.readyState === "complete" && this.hide()
+        // setTimeout(() => {
+        //     this.hide()
+        //     console.log(document.readyState === "complete")
+        // }, 3000);
+
     }
 
     hide() {
+        const loader = this["getDOMObject"]();
+
+        const oStep = 0.1;
+        const opacity = setInterval(() => {
+            loader.style.opacity -= oStep;
+            if (loader.style.opacity <= 0) {
+                clearInterval(opacity);
+                loader.style.display = "none";
+            }
+        }, 1000 / 15)
 
     }
 
-    async onCreate() {
-      this.show()
+    async onMount() {
+        this.show()
+        super.onMount()
     }
 
 }

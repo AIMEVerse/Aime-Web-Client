@@ -21,7 +21,6 @@ ___________________________________________________
 - number of messages for each user
 
 to fix---
-SVG
 text must be wrapped in a tag if it has children
 
 
@@ -47,3 +46,5 @@ screens to do:
     - organization update
     - add/remove users to organization
 
+Xpell bugs ------------------
+When refreshing a page it goes to default page

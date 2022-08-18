@@ -34,7 +34,7 @@ export class DashboardLogin extends XUIObject {
                 <xhtml _html_tag="i" class="fas fa-lock"></xhtml>
                 <input type="password" placeholder="Password" />
               </div>
-              <input type="submit" value="Login" class="btn solid" />
+              <input type="button" value="Login" class="btn solid" />
               <p class="social-text">Or Sign in with social platforms</p>
       
               
@@ -141,38 +141,37 @@ export class DashboardLogin extends XUIObject {
 
     const container = document.querySelector(".login-container");
 
-    container.addEventListener("click", () => {
+    container?.addEventListener("click", () => {
       // XUI.om.getObject("dashboard-loader").show()
-      
+
     });
-    
-    sign_up_btn.addEventListener("click", () => {
-      container.classList.add("sign-up-mode");
+
+    sign_up_btn?.addEventListener("click", () => {
+      container?.classList.add("sign-up-mode");
+    });
+
+    sign_in_btn?.addEventListener("click", () => {
+      container?.classList.remove("sign-up-mode");
+      solid_btn?.classList.remove("sign-up-mode");
+    });
+
+    solid_btn?.addEventListener("click", () => {
+      // container?.classList.add("sign-up-mode");
       XUI.vm.loadPage("dashboard-panel")
-      XUI.vm.showView("dashboard-panel")
-    });
-    
-    sign_in_btn.addEventListener("click", () => {
-      container.classList.remove("sign-up-mode");
-      solid_btn.classList.remove("sign-up-mode");
-      
-    });
-    
-    solid_btn.addEventListener("click", () => {
-      container.classList.add("sign-up-mode");
-      XUI.vm.showPage("dashboard-login")
+      XUI.om.getObject("dashboard-loader2").show()
+      XUI.vm.showPage("dashboard-panel")
+
+
     });
 
     // btn_sign_up.addEventListener("click", () => {
     //     container.classList.remove("sign-up-mode");
+
     // });
 
   }
 
 }
-
-
-
 
 export class LoginComponent extends XObjectPack {
   static getObjects() {

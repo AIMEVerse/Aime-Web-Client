@@ -106,12 +106,8 @@ async function main() {
 
     XUI.loadApp(xapp)
 
-    XUI.vm.showView("aime-profile-card")
-    // XUI.vm.showPage("aime-profile-card")
+    XUI.vm.showPage(xapp.views.defaults.view)
 
-    // setTimeout(() => {
-    //     XUI.vm.showPage("dashboard-panel")
-    // }, 3000)
 
     // const callUrl = "http://127.0.0.1:8080/users/online"
     // fetch(callUrl) .then((response) => response.json())
@@ -166,12 +162,15 @@ async function main() {
     const loader = {
         _type: "dashboard-loader",
         _id: "dashboard-loader2",
-        animation: "fade",
-        _parent_element: "xcontrols"
+        // animation: "fade",
+        _parent_element: "xcontrols",
     }
 
 
-    // XUI.loadControl(loader)
+    XUI.loadControl(loader)
+    XUI.om.getObject("dashboard-loader2").attach("xcontrols")
+
+
 
 }
 
