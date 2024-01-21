@@ -64,7 +64,7 @@ body {
 
 .main-content {
     width: 100%;
-    height: 90vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -76,7 +76,7 @@ body {
 
 .main-content-command-bar {
     width: 100%;
-    height: 30vh;
+    height: 70%;
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
@@ -84,18 +84,33 @@ body {
     align-items:flex-start;
     padding: 0;
     margin-left: 20px;
+    margin-top: 20px;
 }
 
 .main-content-command-bar-item {
-    width: 80%;
+    width: 90%;
     height: 100%;
     border: 1px solid #000;
     display: flex;
     justify-content:flex-start;
     align-items:flex-start;
     padding: 0;
-    margin: 0;
-    font-size: 0.5rem;
+    margin-left: 5%;
+    font-size: 0.8rem;
+    color: #000;
+    overflow: auto;
+}
+
+.main-content-command-bar-send {
+    width: 90%;
+    height: 100px;
+    /* border: 1px solid #000; */
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    padding: 0;
+    margin-left: 5%;
+    font-size: 1.0rem;
     color: #000;
     
 }
@@ -103,15 +118,15 @@ body {
 .main-content-command-bar-label {
     width: 5rem;
     padding: 0;
-    margin: 0;
-    font-size: 0.5rem;
+    margin-left: 5%;
+    font-size: 0.7rem;
     color: #000;
     font-family: "Poppins";
 }
 
 .main-content-buttons-bar {
     width: 100%;
-    height: 30vh;
+    height: 50px;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -119,6 +134,7 @@ body {
     padding: 0;
     margin-top: 20px;
     margin-left: 20px;
+    border-bottom: 1px solid #000;
 }
 
 .main-content-button {
