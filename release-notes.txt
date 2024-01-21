@@ -1,8 +1,10 @@
 AIME web client
 
-1.0.0:
+0.0.1:
 ---------
 
+- Xpell based client
+- Non xpell based client (nx-wormholes)
 
 
 

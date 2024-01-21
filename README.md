@@ -14,5 +14,5 @@ AIME Web Client
 - Browse to http://<server-ip>:3000 to browse your dev server
 
 
-Copyright AIME Web3 Technologies
+Copyright AIME Technologies
 

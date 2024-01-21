@@ -1,164 +1,79 @@
-import "../public/style/aime2.css"
+/**
+ * Aime Web Client - main entry point
+ * Author       : Tamir Fridman
+ * Date Created : 21/01/2024
+ * License      : GNU GPL v3+
+ * Copyright    : AIME Technologies 2024, all right reserved
+ */
 
-import { Xpell as _X, XUI, XData as _XD } from 'xpell'
+import { 
+    Xpell as _x,
+     XUI, XData as _XD ,_xem,Wormholes,WormholeEvents
+} from 'xpell'
 
-import { DashboardComponent } from './XComponents/dashboard2'
-import { LoginComponent } from './XComponents/login'
-import { ProfileComponent } from './XComponents/profileUserCard'
-import { DatingComponent } from './XComponents/datingHud'
-import Wormholes from "./wormholes"
+import * as AimeAPI from './aime-api/env'
+import "/public/style/aime.css"
 
 
 
 
 async function main() {
 
+    _x.loadModule(XUI); // load XUI module
+    _x.start() // start Xpell frame counter
 
+    const wormholeUrl = "ws://127.0.0.1:3030/" // wormhole server url (localhost)
 
-    console.log(_X.version)
+    
 
-    _X.loadModule(XUI)
-    XUI.importObjects(DashboardComponent)
-    XUI.importObjects(LoginComponent)
-    XUI.importObjects(ProfileComponent)
-    XUI.importObjects(DatingComponent)
+    
 
-
-    _X.start()
-
-
-    const xapp = {
-        spell: {
-            version: 1
-        },
-        views: {
-            // "login-view": {
-            //     _type: "view",
-            //     _id: "login-view",
-            //     animation: "fade",
-            //     _children:[{
-            //         _type:"svg"
-            //     }]
-            // },
-            "dashboard-login": {
-                _type: "dashboard-login",
-                _id: "dashboard-login",
-                animation: "fade",
-            },
-            "dashboard-panel": {
-                _type: "dashboard-panel",
-                _id: "dashboard-panel",
-            },
-            "aime-profile-card": {
-                _type: "aime-profile-card",
-                _id: "aime-profile-card",
-            },
-            "dating-hud": {
-                _type: "dating-hud",
-                _id: "dating-hud",
-                _children:
-                    [{
-                        _type: "view",
-                        _children:
-                            [{
-                                _type: "button",
-                                _id: "dating-hud",
-                                text: "Test button"
-                            },
-                            {
-                                _type: "button",
-                                _id: "dating-hud",
-                                text: "Test button"
-                            }]
-                    }]
-
-
-            },
-            defaults: {
-                view: "dashboard-login"
-            },
-            player: {
-                html_element: "xplayer"
-            }
-
-        }
-
-
-    }
-
-    let playersDataSource = {}
-
-
-    //update XData object 
-    _XD.objects["players-list"] = playersDataSource
-
-
-    XUI.loadApp(xapp)
-
-    XUI.vm.showPage("dashboard-panel")
-
-
-    // const callUrl = "http://127.0.0.1:8080/users/online"
-    // fetch(callUrl) .then((response) => response.json())
-    // .then((responseJSON) => {
-    //     _XD.objects["players-list"] = responseJSON
-
-    // });
-
-    type AIMEUser = {
-        _id?: string  //db object-id
-        userName: string,
-        firstName: string,
-        lastName: string,
-        password: string
-    }
-
-    const user: AIMEUser = {
-        userName: "tamirf",
-        firstName: "Tamir",
-        lastName: "Fridman",
-        password: "1234"
-    }
-
-
-    const wormholeUrl = "ws://127.0.0.1:8080/"
-    const xMessage = {
-        module: "user-manager",
-        op: "addNewUser",
-        params: {
-            user: user
-        }
-    }
-
-    const xMessage2 = {
-        module: "user-manager",
-        op: "checkName",
-        params: {
-            userName: "tamirf"
-        }
-    }
+    _xem.on(WormholeEvents.WormholeOpen, async (e) => {
+        const res = await Wormholes.sendSync(AimeAPI._get_environment_name)
+        console.log(res)
+    })
 
     Wormholes.open(wormholeUrl)
 
-    document.addEventListener("wormhole-open", (e) => {
 
-        Wormholes.send(xMessage2, (data) => {
-            console.log("data", data);
-
-        })
-    })
-
-    const loader = {
-        _type: "dashboard-loader",
-        _id: "dashboard-loader2",
-        // animation: "fade",
-        _parent_element: "xcontrols",
+    // XUI View 
+    const mainView = {
+        _type:"view", //xpell attribute starts with underscore "_"
+        _id:"main-view",
+        _parent_element:"xplayer",
+        class:"main-view", //non-xpell attribute starts without underscore "_"
+        _children:[
+            {
+                _type:"view",
+                _id:"nav-bar",
+                class:"nav-bar",
+                _children:[
+                    {
+                        _type:"image",
+                        _id:"aime-logo",
+                        class:"nav-bar-logo",
+                        src:"/public/svg/aime-logo-full.svg"
+                    },
+                    {
+                        _type:"view",
+                        _id:"nav-bar-title",
+                        class:"nav-bar-title",
+                        _text:"Aime Web Client"
+                    },
+                    {
+                        _type:"button",
+                        _id:"nav-bar-button",
+                        _text:"Contact"
+                    }
+                ]
+            }
+        ]
     }
 
+    XUI.loadControl(mainView)
+     
 
-    XUI.loadControl(loader)
-    XUI.om.getObject("dashboard-loader2").attach("xcontrols")
-
+    
 
 
 }
