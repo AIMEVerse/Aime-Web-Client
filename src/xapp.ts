@@ -6,9 +6,9 @@
  * Copyright    : AIME Technologies 2024, all right reserved
  */
 
-import { 
+import {
     Xpell as _x,
-     XUI, XData as _XD ,_xem,Wormholes,WormholeEvents
+    XUI, XData as _XD, _xem, Wormholes, WormholeEvents
 } from 'xpell'
 
 import * as AimeAPI from './aime-api/env'
@@ -17,53 +17,122 @@ import "/public/style/aime.css"
 
 
 
-async function main() {
+
+const main = async () => {
 
     _x.loadModule(XUI); // load XUI module
     _x.start() // start Xpell frame counter
 
-    const wormholeUrl = "ws://127.0.0.1:3030/" // wormhole server url (localhost)
 
-    
+    const wormholeServer = "127.0.0.1:3030"
+    const wormholeUrl = "ws://" + wormholeServer + "/" // wormhole server url (localhost)
 
-    
 
-    _xem.on(WormholeEvents.WormholeOpen, async (e) => {
-        const res = await Wormholes.sendSync(AimeAPI._get_environment_name)
-        console.log(res)
-    })
+
+
+
+    // _xem.on(WormholeEvents.WormholeOpen, async (e) => {
+    //     const res = await Wormholes.sendSync(AimeAPI._get_environment_name)
+    //     console.log(res)
+    // })
 
     Wormholes.open(wormholeUrl)
 
 
     // XUI View 
     const mainView = {
-        _type:"view", //xpell attribute starts with underscore "_"
-        _id:"main-view",
-        _parent_element:"xplayer",
-        class:"main-view", //non-xpell attribute starts without underscore "_"
-        _children:[
+        _type: "view", //xpell attribute starts with underscore "_"
+        _id: "main-view",
+        _parent_element: "xplayer",
+        class: "main-view", //non-xpell attribute starts without underscore "_"
+        _children: [
+            //Navigation bar
             {
-                _type:"view",
-                _id:"nav-bar",
-                class:"nav-bar",
-                _children:[
+                _type: "view",
+                _id: "nav-bar",
+                class: "nav-bar",
+                _children: [
                     {
-                        _type:"image",
-                        _id:"aime-logo",
-                        class:"nav-bar-logo",
-                        src:"/public/svg/aime-logo-full.svg"
+                        _type: "image",
+                        _id: "aime-logo",
+                        class: "nav-bar-logo",
+                        src: "/public/svg/aime-logo-full.svg"
                     },
                     {
-                        _type:"view",
-                        _id:"nav-bar-title",
-                        class:"nav-bar-title",
-                        _text:"Aime Web Client"
+                        _type: "view",
+                        _id: "nav-bar-title",
+                        class: "nav-bar-title",
+                        _text: wormholeServer
                     },
                     {
-                        _type:"button",
-                        _id:"nav-bar-button",
-                        _text:"Contact"
+                        _type: "view",
+                        _id: "server-status-led",
+                        class: "server-status-led",
+                        _on: {
+                            [WormholeEvents.WormholeOpen]: async (xobj, e) => {
+                                xobj.dom.style.backgroundColor = "green"
+                            },
+                            [WormholeEvents.WormholeClose]: async (xobj, e) => {
+                                xobj.dom.style.backgroundColor = "red"
+                            }
+                        }
+                    }
+                ]
+            },
+            // main content
+            {
+                _type: "view",
+                _id: "main-content",
+                class: "main-content",
+                _children: [
+                    {
+                        _type: "view",
+                        _id: "main-content-command-bar",
+                        class: "main-content-command-bar",
+                        _children: [
+                            {
+                                _type: "view",
+                                _id: "main-content-command-bar-label",
+                                class: "main-content-command-bar-label",
+                                _text: "Command"
+                            },
+                            {
+                                _type: "textarea",
+                                _id: "main-content-command-bar-input",
+                                class: "main-content-command-bar-item",
+                                _text: "request"
+                            },
+                            {
+                                _type: "view",
+                                _id: "main-content-command-bar-label",
+                                class: "main-content-command-bar-label",
+                                _text: "Response"
+                            },
+                            {
+                                _type: "view",
+                                _id: "main-content-command-bar-send",
+                                class: "main-content-command-bar-item",
+                                _text: "Response"
+                            }
+                        ]
+                    },
+                    {
+                        _type: "view",
+                        _id: "main-content-buttons-bar",
+                        class: "main-content-buttons-bar",
+                        _children: [
+                            {
+                                _type: "button",
+                                _id: "btn-get-environment-name",
+                                class: "main-content-button",
+                                _text: "Get Environment Name",
+                                _on_click: async (xobj, e) => {
+                                    XUI.getObject("main-content-command-bar-input").dom.value = JSON.stringify(AimeAPI._get_environment_name)
+                                    const res = await Wormholes.sendSync(AimeAPI._get_environment_name)
+                                    XUI.getObject("main-content-command-bar-send").setText(res)
+                                }
+                            }
+                        ]
                     }
                 ]
             }
@@ -71,9 +140,9 @@ async function main() {
     }
 
     XUI.loadControl(mainView)
-     
 
-    
+
+
 
 
 }
