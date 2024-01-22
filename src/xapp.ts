@@ -20,6 +20,7 @@ import "/public/style/aime.css"
 
 const main = async () => {
 
+    _x.verbose()
     _x.loadModule(XUI); // load XUI module
     _x.start() // start Xpell frame counter
 
